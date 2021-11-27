@@ -33,6 +33,6 @@ fisher install pure-fish/pure
 nvim --headless +PlugInstall +qall
 
 # finish message
-echo --------------------------
-echo |"Installation completed"|
-echo --------------------------
+echo ------------------------
+echo "|Installation completed|"
+echo ------------------------
