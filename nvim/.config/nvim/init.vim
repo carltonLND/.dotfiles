@@ -67,10 +67,10 @@ lua require('lua-config')
 let mapleader = ' '
 
 " -- Normal Mode
-nnoremap <leader>h :wincmd h<Cr>
-nnoremap <leader>j :wincmd j<Cr>
-nnoremap <leader>k :wincmd k<Cr>
-nnoremap <leader>l :wincmd l<Cr>
+nnoremap <leader>h <C-w><C-h>
+nnoremap <leader>j <C-w><C-j>
+nnoremap <leader>k <C-w><C-k>
+nnoremap <leader>l <C-w><C-l>
 nnoremap <C-s> :w<Cr>
 
 nnoremap <C-p> :Telescope find_files<Cr>
