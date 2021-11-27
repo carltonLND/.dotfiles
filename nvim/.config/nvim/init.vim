@@ -71,6 +71,7 @@ nnoremap <leader>h :wincmd h<Cr>
 nnoremap <leader>j :wincmd j<Cr>
 nnoremap <leader>k :wincmd k<Cr>
 nnoremap <leader>l :wincmd l<Cr>
+nnoremap <C-s> :w<Cr>
 
 nnoremap <C-p> :Telescope find_files<Cr>
 nnoremap <C-l> :Telescope buffers<Cr>
