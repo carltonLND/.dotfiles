@@ -28,3 +28,6 @@ curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 
 # install fish plugins
 fisher install pure-fish/pure
+
+# install neovim plugins
+nvim --headless +PlugInstall +qall

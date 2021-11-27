@@ -3,3 +3,7 @@
 [user]
 	name = Carlton (CJ)
 	email = carltonlnd@hotmail.com
+[credential]
+	helper = store
+[core]
+	editor = nvim
