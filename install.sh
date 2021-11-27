@@ -31,3 +31,8 @@ fisher install pure-fish/pure
 
 # install neovim plugins
 nvim --headless +PlugInstall +qall
+
+# finish message
+echo --------------------------
+echo |"Installation completed"|
+echo --------------------------
