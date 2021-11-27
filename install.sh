@@ -1,6 +1,3 @@
-# nix single user only for now
-chown -R $USER /nix
-
 # install nix
 curl -L https://nixos.org/nix/install | sh
 
@@ -16,18 +13,13 @@ nix-env -iA \
     nixpkgs.stow
 
 # stow packages
-stow fish
-stow git
-stow nvim
+cd ~/.dotfiles && stow *
 
 # add fish to valid login shells
 command -v fish | sudo tee -a /etc/shells
 
 # use fish as default shell
 chsh -s $(which fish) $USER
-
-# move to home
-cd
 
 # install neovim plugins
 nvim --headless +PlugInstall +qall
