@@ -13,7 +13,10 @@ nix-env -iA \
     nixpkgs.stow
 
 # stow packages
-cd ~/.dotfiles && stow *
+cd ~/.dotfiles
+stow fish
+stow nvim
+stow git
 
 # add fish to valid login shells
 command -v fish | sudo tee -a /etc/shells
