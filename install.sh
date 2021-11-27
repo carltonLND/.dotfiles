@@ -23,12 +23,6 @@ command -v fish | sudo tee -a /etc/shells
 # use fish as default shell
 sudo chsh -s $(which fish) $USER
 
-# move to new fish shell
-fish
-
-# add nix to fish path
-fish_add_path ~/.nix-profile/bin
-
 # install fish plugin manager
 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 
