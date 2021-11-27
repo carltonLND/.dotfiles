@@ -1,3 +1,6 @@
+# nix single user only for now
+chown -R $USER /nix
+
 # install nix
 curl -L https://nixos.org/nix/install | sh
 
@@ -21,18 +24,12 @@ stow nvim
 command -v fish | sudo tee -a /etc/shells
 
 # use fish as default shell
-sudo chsh -s $(which fish) $USER
-
-# install fish plugin manager
-curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
-
-# install fish plugins
-fisher install pure-fish/pure
+chsh -s $(which fish) $USER
 
 # install neovim plugins
 nvim --headless +PlugInstall +qall
 
-# finish message
-echo ------------------------
-echo "|Installation completed|"
-echo ------------------------
+# install fish plugins
+chmod +x install-fish.sh
+fish ./install-fish.sh
+
