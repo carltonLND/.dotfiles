@@ -26,7 +26,6 @@ set splitright
 set hidden
 set scrolloff=999
 set noshowmode
-set encoding=UTF-8
 set guicursor=
 
 " --- Plugins
@@ -53,6 +52,9 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'onsails/lspkind-nvim'
 
+" -- Formatting
+Plug 'jose-elias-alvarez/null-ls.nvim' 
+
 " -- Themes
 Plug 'sainnhe/gruvbox-material'
 
@@ -70,11 +72,8 @@ nnoremap <leader>h <C-w><C-h>
 nnoremap <leader>j <C-w><C-j>
 nnoremap <leader>k <C-w><C-k>
 nnoremap <leader>l <C-w><C-l>
-<<<<<<< HEAD
 nnoremap <leader><Tab> :bn<Cr>
 nnoremap <leader><S-Tab> :bp<Cr>
-=======
->>>>>>> refs/remotes/origin/main
 
 nnoremap <leader>ff <cmd>Telescope find_files<Cr>
 nnoremap <leader>fF <cmd>Telescope file_browser<Cr>
