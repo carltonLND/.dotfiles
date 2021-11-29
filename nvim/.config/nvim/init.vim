@@ -84,6 +84,7 @@ nnoremap <leader>fh <cmd>Telescope help_tags<Cr>
 
 " -- Insert Mode
 inoremap <C-c> <Esc>
+inoremap <M-Enter> <Esc>o
 
 " --- Colorscheme
 
