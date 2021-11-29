@@ -1,7 +1,6 @@
 " --- General
 
 syntax on
-syntax enable
 
 set tabstop=4
 set softtabstop=4
@@ -27,6 +26,7 @@ set hidden
 set scrolloff=999
 set noshowmode
 set guicursor=
+set clipboard+=unnamedplus
 
 " --- Plugins
 
@@ -43,7 +43,7 @@ Plug 'LunarWatcher/auto-pairs'
 
 " -- LSP
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate' }
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
 " - Autocompletion
 Plug 'hrsh7th/nvim-cmp'
@@ -57,6 +57,7 @@ Plug 'jose-elias-alvarez/null-ls.nvim'
 
 " -- Themes
 Plug 'sainnhe/gruvbox-material'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
 

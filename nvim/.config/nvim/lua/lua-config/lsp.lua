@@ -1,6 +1,6 @@
 -- lspconfig
 local nvim_lsp = require('lspconfig')
-local servers = { 'tsserver', "pyright" }
+local servers = { 'tsserver', "pyright", }
 
 local on_attach = function(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -18,13 +18,10 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
     buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
     buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-    buf_set_keymap('n', '<C-f>', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
-    if client ~= "null-ls" then
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
-    end
-
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
+    
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -43,10 +40,12 @@ local sources = {
     null_ls.builtins.formatting.prettier,
     null_ls.builtins.formatting.black,
 }
-
 null_ls.config({ sources = sources })
-nvim_lsp['null-ls'].setup {
-    on_attach = on_attach,
+
+nvim_lsp["null-ls"].setup {
+    on_attach = function()
+        vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()"
+    end
 }
 
 -- nvim-cmp
