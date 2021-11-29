@@ -57,7 +57,7 @@ Plug 'jose-elias-alvarez/null-ls.nvim'
 
 " -- Themes
 Plug 'sainnhe/gruvbox-material'
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'gruvbox-community/gruvbox'
 
 call plug#end()
 
