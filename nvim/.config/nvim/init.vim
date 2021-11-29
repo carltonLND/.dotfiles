@@ -71,7 +71,8 @@ nnoremap <leader>h <C-w><C-h>
 nnoremap <leader>j <C-w><C-j>
 nnoremap <leader>k <C-w><C-k>
 nnoremap <leader>l <C-w><C-l>
-nnoremap <C-s> :w<Cr>
+nnoremap <leader><Tab> :bn<Cr>
+nnoremap <leader><S-Tab> :bp<Cr>
 
 nnoremap <C-p> :Telescope find_files<Cr>
 nnoremap <C-l> :Telescope buffers<Cr>
