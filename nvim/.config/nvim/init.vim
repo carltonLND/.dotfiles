@@ -24,9 +24,8 @@ set nowrap
 set splitbelow
 set splitright
 set hidden
-set scrolloff=8
+set scrolloff=999
 set noshowmode
-set updatetime=250
 set encoding=UTF-8
 set guicursor=
 
@@ -71,10 +70,13 @@ nnoremap <leader>h <C-w><C-h>
 nnoremap <leader>j <C-w><C-j>
 nnoremap <leader>k <C-w><C-k>
 nnoremap <leader>l <C-w><C-l>
-nnoremap <C-s> :w<Cr>
 
-nnoremap <C-p> :Telescope find_files<Cr>
-nnoremap <C-l> :Telescope buffers<Cr>
+nnoremap <leader>ff <cmd>Telescope find_files<Cr>
+nnoremap <leader>fF <cmd>Telescope file_browser<Cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<Cr>
+nnoremap <leader>fG <cmd>Telescope grep_string<Cr>
+nnoremap <leader>fb <cmd>Telescope buffers<Cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<Cr>
 
 " -- Insert Mode
 inoremap <C-c> <Esc>
