@@ -37,7 +37,7 @@ end
 -- code formatting
 local null_ls = require('null-ls')
 local sources = {
-    null_ls.builtins.formatting.prettier,
+    null_ls.builtins.formatting.prettierd,
     null_ls.builtins.formatting.black,
 }
 null_ls.config({ sources = sources })
