@@ -75,6 +75,8 @@ nnoremap <leader>k <C-w><C-k>
 nnoremap <leader>l <C-w><C-l>
 nnoremap <leader><Tab> :bn<Cr>
 nnoremap <leader><S-Tab> :bp<Cr>
+nnoremap <leader>qq :bd<Cr>
+nnoremap <leader>qQ :bd!<Cr>
 
 nnoremap <leader>ff <cmd>Telescope find_files<Cr>
 nnoremap <leader>fF <cmd>Telescope file_browser<Cr>
