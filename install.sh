@@ -1,16 +1,9 @@
-# install nix
-curl -L https://nixos.org/nix/install | sh
-
-# source nix
-. ~/.nix-profile/etc/profile.d/nix.sh
-
-# install packages
-nix-env -iA \
-    nixpkgs.fish \
-    nixpkgs.git \
-    nixpkgs.neovim \
-    nixpkgs.bat \
-    nixpkgs.stow
+# check that gnu stow is installed and on PATH
+if ! command -v stow &> /dev/null
+then
+    echo "stow could not be found"
+    exit
+fi
 
 # stow packages
 cd ~/.dotfiles
