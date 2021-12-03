@@ -1,9 +1,14 @@
-# check that gnu stow is installed and on PATH
-if ! command -v stow &> /dev/null
-then
-    echo "stow could not be found"
-    exit
-fi
+# check if dependencies installed and on $PATH
+dependencies=(stow git fish nvim)
+for element in "${dependencies[@]}";
+do
+    if ! command -v $element &> /dev/null; then
+        echo "Error: Missing dependencies!"
+        echo "Please ensure [ ${dependencies[@]} ] are installed and in your PATH"
+        echo "Failed at: $element"
+        exit
+    fi
+done
 
 # stow packages
 cd ~/.dotfiles
