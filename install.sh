@@ -1,5 +1,5 @@
 # check if dependencies installed and on $PATH
-dependencies=(stow git fish nvim)
+dependencies=(stow git fish nvim kitty)
 for element in "${dependencies[@]}";
 do
     if ! command -v $element &> /dev/null; then
