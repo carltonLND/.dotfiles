@@ -54,12 +54,12 @@ local lspkind = require('lspkind')
 local luasnip = require('luasnip')
 
 -- better autocompletion experience
-vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt = 'menu,menuone,noselect'
 
 cmp.setup {
 	-- Format the autocomplete menu
 	formatting = {
-		format = lspkind.cmp_format()
+		format = lspkind.cmp_format({with_text = false, maxwidth = 50})
 	},
 	mapping = {
         -- Use Tab and shift-Tab to navigate autocomplete menu
