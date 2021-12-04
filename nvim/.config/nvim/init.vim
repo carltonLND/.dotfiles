@@ -36,6 +36,8 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', {'do': 'make' }
+Plug 'kyazdani42/nvim-web-devicons' 
+Plug 'kyazdani42/nvim-tree.lua'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'lewis6991/gitsigns.nvim'
@@ -62,6 +64,8 @@ Plug 'gruvbox-community/gruvbox'
 call plug#end()
 
 " --- Config
+let g:nvim_tree_quit_on_open = 1
+
 lua require('lua-config')
 
 " --- Remaps
@@ -84,6 +88,8 @@ nnoremap <leader>fg <cmd>Telescope live_grep<Cr>
 nnoremap <leader>fG <cmd>Telescope grep_string<Cr>
 nnoremap <leader>fb <cmd>Telescope buffers<Cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<Cr>
+
+nnoremap <leader>ft <cmd>NvimTreeToggle<CR>
 
 " -- Insert Mode
 inoremap <C-c> <Esc>
