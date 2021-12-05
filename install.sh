@@ -28,3 +28,10 @@ chsh -s $(which fish) $USER
 fish << 'endblock' 
     curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 endblock
+
+# finishing messages
+echo "INSTALLATION COMPLETE"
+echo "Neovim will install plugins on first launch."
+echo "Language servers must be installed locally with npm: typescript typescript-language-server pyright"
+echo "Formatting currently are: @fsouza/prettierd (npm), black (pip)"
+echo "Finally please install a patched NERD font, currently using: 'FiraCode Nerd Font'."
