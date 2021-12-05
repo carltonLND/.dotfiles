@@ -1,7 +1,8 @@
 # .dotfiles
 
 1. Clone this repository
-2. Run `install.sh`
+2. cd into home directory `cd`
+3. Run `install.sh`
 
 ## WARNING
 
