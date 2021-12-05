@@ -59,11 +59,16 @@ Plug 'jose-elias-alvarez/null-ls.nvim'
 
 " -- Themes
 Plug 'sainnhe/gruvbox-material'
-Plug 'gruvbox-community/gruvbox'
 
 call plug#end()
 
 " --- Config
+let g:loaded_python_provider = 0
+let g:loaded_python3_provider = 0
+let g:loaded_ruby_provider = 0
+let g:loaded_perl_provider = 0
+let g:loaded_node_provider = 0
+
 let g:nvim_tree_quit_on_open = 1
 
 lua require('lua-config')
