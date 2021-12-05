@@ -12,8 +12,13 @@ do
     fi
 done
 
+# remove previous configs -< WARNING NO BACKUPS ARE CREATED YET
+cd ~/.config
+rm -rf kitty fish nvim
+
 # stow packages
 cd ~/.dotfiles
+stow kitty
 stow fish
 stow nvim
 stow git

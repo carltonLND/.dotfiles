@@ -3,9 +3,11 @@
 1. Clone this repository
 2. Run `install.sh`
 
+## WARNING
+
+#### No backups are currently made for previous configurations in ~/.config
+
 ## TODO
 
-1. Change fish plugin sharing to the `fish_plugins` file
-2. Add https://github.com/numToStr/Comment.nvim
-3. Work on nvim-cmp config 
-4. fix fzf plugin not running 'make' when PlugInstall is called from nvim --headless
+1. Add https://github.com/numToStr/Comment.nvim
+2. Work on nvim-cmp config
