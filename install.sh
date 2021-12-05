@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # check if dependencies installed and on $PATH
 dependencies=(stow git kitty fish nvim)
 for element in "${dependencies[@]}";
@@ -22,10 +24,7 @@ command -v fish | sudo tee -a /etc/shells
 # use fish as default shell
 chsh -s $(which fish) $USER
 
-# install neovim plugins
-nvim --headless +PlugInstall +qall
-
-# install fish plugins
-chmod +x install-fish.sh
-fish ./install-fish.sh
-
+# install fish plugin manager
+fish << 'endblock' 
+    curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+endblock
