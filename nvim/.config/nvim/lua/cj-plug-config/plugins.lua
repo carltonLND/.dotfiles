@@ -1,3 +1,9 @@
+-- Install Packer If Missing
+local install_path = vim.fn.stdpath('config')..'/pack/packer/start/packer.nvim'
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+  packer_bootstrap = vim.fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+end
+
 return require("packer").startup(function ()
     -- Treesitter
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
@@ -19,4 +25,9 @@ return require("packer").startup(function ()
 
     -- Themes
     use "sainnhe/gruvbox-material"
+        
+    -- Sync Plugins On Install
+    if packer_bootstrap then
+        require('packer').sync()
+    end
 end)
