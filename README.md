@@ -18,4 +18,5 @@
 
 ### Considering
 
-1. simplify installation
+1. Simplify installation
+2. Test switching to a majority Lua nvim setup
