@@ -5,4 +5,5 @@ fish/.config/fish/fish_variables
 
 nvim/.config/nvim/plugged/
 nvim/.config/nvim/undodir/
+nvim/.config/nvim/plugin/
 
