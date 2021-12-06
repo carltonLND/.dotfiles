@@ -7,7 +7,7 @@ return require("packer").startup(function ()
         "nvim-telescope/telescope.nvim",
         requires = {
             "nvim-lua/plenary.nvim",
-            {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+            { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
         },
     }
 
@@ -18,5 +18,5 @@ return require("packer").startup(function ()
     use "LunarWatcher/auto-pairs"
 
     -- Themes
-	use "sainnhe/gruvbox-material"
+    use "sainnhe/gruvbox-material"
 end)
