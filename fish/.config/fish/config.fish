@@ -5,7 +5,7 @@ end
 # exports
 set -x EDITOR nvim
 set -x FISHRC ~/.config/fish/config.fish
-set -x VIMRC ~/.config/nvim/init.vim
+set -x VIMRC ~/.config/nvim/init.lua
 
 # aliases
 alias vi='nvim'

@@ -1,6 +1,0 @@
-require('lua-config/telescope')
-require('lua-config/lightline')
-require('lua-config/gitsigns')
-require('lua-config/lsp')
-require('lua-config/treesitter')
-require('lua-config/nvim-tree')
