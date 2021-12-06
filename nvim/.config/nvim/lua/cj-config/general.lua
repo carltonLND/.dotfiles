@@ -1,7 +1,7 @@
 local cmd = vim.cmd
 local opt = vim.opt
 local g = vim.g
-local HOME = os.getenv("HOME") -- Get path to $HOME
+local dir = vim.fn.stdpath('config')
 
 cmd "syntax on"
 
@@ -15,7 +15,7 @@ opt.relativenumber = true
 opt.signcolumn = "yes:1"
 opt.swapfile = false
 opt.backup = false
-opt.undodir = HOME .. "/.config/nvim/undodir/"
+opt.undodir = dir .. "/undodir/"
 opt.undofile = true
 opt.incsearch = true
 opt.hlsearch = false
