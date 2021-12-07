@@ -1,17 +1,11 @@
--- Install Packer If Missing
+-- Install packer if not found in ~/.config/nvim/ 
 local install_path = vim.fn.stdpath("config").."/pack/packer/start/packer.nvim"
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   packer_bootstrap = vim.fn.system({"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path})
 end
 
--- Prevent error in initial startup
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-  return
-end
-
+-- Start packer
 return require("packer").startup(function ()
-
   -- Packer
   use "wbthomason/packer.nvim"
 
