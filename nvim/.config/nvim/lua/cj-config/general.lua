@@ -13,6 +13,7 @@ opt.expandtab = true
 opt.smartindent = true
 opt.number = true
 opt.relativenumber = true
+opt.cmdheight = 2
 opt.signcolumn = "yes:1"
 opt.swapfile = false
 opt.backup = false
@@ -28,7 +29,6 @@ opt.splitright = true
 opt.hidden = true
 opt.scrolloff = 999
 opt.showmode = false
-opt.guicursor = ""
 opt.clipboard:append("unnamedplus")
 
 -- Providers
