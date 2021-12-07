@@ -38,6 +38,7 @@ endblock
 
 # install neovim plugins
 echo "Installing neovim plugins..."
+nvim --headless -c "quitall"
 nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
 
 # finishing messages
