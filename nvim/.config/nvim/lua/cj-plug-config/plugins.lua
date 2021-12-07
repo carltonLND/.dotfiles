@@ -21,6 +21,15 @@ return require("packer").startup(function ()
     },
   }
 
+  -- Nvim-tree
+  use {
+    "kyazdani42/nvim-tree.lua",
+    requires = {
+      "kyazdani42/nvim-web-devicons"
+    },
+  }
+
+
   -- Lightline
   use "itchyny/lightline.vim"
 

@@ -1,6 +1,5 @@
 local cmd = vim.cmd
 local opt = vim.opt
---local g = vim.g
 
 -- Colorscheme
 opt.termguicolors = true
