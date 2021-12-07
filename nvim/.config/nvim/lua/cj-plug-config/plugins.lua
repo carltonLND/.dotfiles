@@ -29,6 +29,8 @@ return require("packer").startup(function ()
     },
   }
 
+  -- Vim fugitive
+  use "tpope/vim-fugitive"
 
   -- Lightline
   use "itchyny/lightline.vim"

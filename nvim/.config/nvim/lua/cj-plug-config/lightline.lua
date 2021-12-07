@@ -2,9 +2,10 @@ local g = vim.g
 
 -- Setup lightline
 g.lightline = {
+  colorscheme = "deus",
   active = {
     left = {
-      { "mode", "past" },
+      { "mode", "paste" },
       { "gitbranch", "filename", "modified" },
     },
   },
