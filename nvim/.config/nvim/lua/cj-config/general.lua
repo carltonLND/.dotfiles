@@ -3,11 +3,12 @@ local opt = vim.opt
 local g = vim.g
 local dir = vim.fn.stdpath('config')
 
+-- General Settings
 cmd "syntax on"
 
-opt.tabstop = 4
-opt.softtabstop = 4
-opt.shiftwidth = 4
+opt.tabstop = 2
+opt.softtabstop = 2
+opt.shiftwidth = 2
 opt.expandtab = true
 opt.smartindent = true
 opt.number = true
@@ -29,3 +30,10 @@ opt.scrolloff = 999
 opt.showmode = false
 opt.guicursor = ""
 opt.clipboard:append("unnamedplus")
+
+-- Providers
+g.loaded_python_provider = 0
+g.loaded_python3_provider = 0
+g.loaded_ruby_provider = 0
+g.loaded_perl_provider = 0
+g.loaded_node_provider = 0
