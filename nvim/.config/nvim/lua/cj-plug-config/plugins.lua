@@ -1,33 +1,39 @@
 -- Install Packer If Missing
 local install_path = vim.fn.stdpath('config')..'/pack/packer/start/packer.nvim'
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-    packer_bootstrap = vim.fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  packer_bootstrap = vim.fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+end
+
+-- Prevent error in initial startup
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+  return
 end
 
 return require("packer").startup(function ()
-    -- Treesitter
-    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  -- Treesitter
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
-    -- Telescope
-    use {
-        "nvim-telescope/telescope.nvim",
-        requires = {
-            "nvim-lua/plenary.nvim",
-            { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
-        },
-    }
+  -- Telescope
+  use {
+    "nvim-telescope/telescope.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+    },
+  }
 
-    -- Lightline
-    use "itchyny/lightline.vim"
+  -- Lightline
+  use "itchyny/lightline.vim"
 
-    -- Auto Pairs
-    use "LunarWatcher/auto-pairs"
+  -- Auto Pairs
+  use "LunarWatcher/auto-pairs"
 
-    -- Themes
-    use "sainnhe/gruvbox-material"
-        
-    -- Sync Plugins On Install
-    if packer_bootstrap then
-        require('packer').sync()
-    end
+  -- Themes
+  use "sainnhe/gruvbox-material"
+      
+  -- Sync Plugins On Install
+  if packer_bootstrap then
+    require('packer').sync()
+  end
 end)

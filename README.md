@@ -14,7 +14,6 @@
 
 1. Add https://github.com/numToStr/Comment.nvim
 2. Work on nvim-cmp config
-3. Auto vim-plug installation if missing - remove autoload directory from .dotfiles
 
 ### Considering
 
