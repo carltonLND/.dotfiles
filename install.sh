@@ -5,8 +5,7 @@ dependencies=(stow git)
 configs=(kitty fish nvim)
 
 # check if dependencies installed and on $PATH
-for element in "${dependencies[@]}";
-do
+for element in "${dependencies[@]}"; do
   if ! command -v $element &> /dev/null; then
     echo "Error: Missing dependencies!"
     echo "Please ensure [ ${dependencies[@]} ] are installed and in your PATH"
@@ -18,8 +17,7 @@ done
 # backup old configuration directories
 cd ~/.config
 echo "Backing up previous folders in ~/.config..."
-for config in "${configs[@]}";
-do
+for config in "${configs[@]}"; do
   if -d "$config"; then
     mv -v "$config" "{dir}-backup"
   fi
@@ -28,10 +26,18 @@ done
 # stow packages
 cd ~/.dotfiles
 echo "Stowing packages..."
-for package in *
-do
-  if -d "$package"; then
-    stow $package
+for pkg in *; do
+  if [[ -d $pkg ]]; then
+    if [[ $pkg == "git" ]]; then
+      echo "WARNING: Attempting to install carltonLND's git config..."
+      read -r -p "Skipping personal git dotfiles. Override? [y/N] "
+      response=${response,,}
+      if [[ "$response" =~ ^(yes|y)$ ]]; then
+        stow $pkg
+      fi
+    else
+      stow $pkg
+    fi
   fi
 done
 
@@ -40,6 +46,7 @@ command -v fish | sudo tee -a /etc/shells
 
 # use fish as default shell
 echo "Changing default shell to fish..."
+echo "User password is required..."
 chsh -s $(which fish) $USER
 
 # install fish plugin manager
