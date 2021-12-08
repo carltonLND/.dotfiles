@@ -52,11 +52,13 @@ chsh -s $(which fish) $USER
 # install fish plugin manager
 echo "Installing fish plugins..."
 fish << 'endblock' 
-    curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+  curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+  fisher update
 endblock
 
 # install neovim plugins
 echo "Installing neovim plugins..."
+nvim --headless -c "quitall"
 nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
 
 # finishing messages
