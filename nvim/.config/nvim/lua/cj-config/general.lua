@@ -13,7 +13,6 @@ opt.expandtab = true
 opt.smartindent = true
 opt.number = true
 opt.relativenumber = true
-opt.cmdheight = 2
 opt.signcolumn = "yes:1"
 opt.swapfile = false
 opt.backup = false
