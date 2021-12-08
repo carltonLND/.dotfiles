@@ -66,11 +66,12 @@ EOF
 # install neovim plugins
 nvim --headless -c "quitall"
 echo "Installing neovim plugins..."
-nvim --headless -es -c "autocmd User PackerComplete quitall" -c "PackerSync"
+nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
+echo
 echo "Installing maintained treesitter parsers (This might take a while)..."
 nvim --headless -es -c "TSInstallSync maintained" -c "quitall" 
 
 # finishing messages
-echo "--------------------------------------------------------------------------------------------------"
+echo "----------------------------------------------------------------------------------"
 echo "INSTALLATION COMPLETE"
 echo "Finally please install a patched NERD font, currently using: 'FiraCode Nerd Font'."
