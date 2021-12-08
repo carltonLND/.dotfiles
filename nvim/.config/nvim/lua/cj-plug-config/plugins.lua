@@ -21,6 +21,12 @@ return require("packer").startup(function ()
     },
   }
 
+  -- Lsp-config
+  use {
+    "neovim/nvim-lspconfig",
+    "williamboman/nvim-lsp-installer"
+  }
+
   -- Nvim-tree
   use {
     "kyazdani42/nvim-tree.lua",
