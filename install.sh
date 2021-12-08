@@ -57,7 +57,7 @@ echo "Installing fish plugins..."
 fish << "EOF"
   curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 EOF
-rm ~/.config/fish/config.fish ~/.config/fish/fish_plugins
+rm ~/.config/fish/fish_plugins
 stow fish
 fish << "EOF"
   fisher update
@@ -67,7 +67,6 @@ EOF
 nvim --headless -c "quitall"
 echo "Installing neovim plugins..."
 nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
-echo
 echo "Installing maintained treesitter parsers (This might take a while)..."
 nvim --headless -es -c "TSInstallSync maintained" -c "quitall" 
 
