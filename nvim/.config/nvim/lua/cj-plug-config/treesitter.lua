@@ -1,13 +1,11 @@
 local prepare = require("utils").prepare
 
 -- Setup treesitter
-local treesitter = prepare("nvim-treesitter.configs")
+local config = {
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+}
 
-if treesitter then
-  treesitter.setup {
-    highlight = {
-      enable = true,
-      additional_vim_regex_highlighting = false,
-    },
-  }
-end
+prepare("nvim-treesitter.configs", config)
