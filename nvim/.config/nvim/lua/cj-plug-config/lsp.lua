@@ -1,5 +1,4 @@
--- Default servers I user
-local servers = { "tsserver", "pyright", "sumneko_lua" }
+local prepare = require("utils").prepare
 
 -- Define on_attach function for LSP servers
 local function on_attach(client, bufnr)
@@ -13,38 +12,29 @@ local function on_attach(client, bufnr)
 end
 
 -- Setup nvim-lsp-installer
-local lsp_installer = require("nvim-lsp-installer")
+local lsp_installer = prepare("nvim-lsp-installer")
 
-lsp_installer.on_server_ready(function(server)
-  local default_opts = {
-    on_attach = on_attach,
-    -- capabilities = capabilities,
-  }
+if lsp_installer then
+  lsp_installer.on_server_ready(function(server)
+    local default_opts = {
+      on_attach = on_attach,
+      -- capabilities = capabilities,
+    }
 
-  -- Custom server options
-  local server_opts = {
-    ["sumneko_lua"] = function()
-      default_opts.settings = {
-        Lua = {
-          diagnostics = {
-            globals = { "vim" }
+    -- Custom server options
+    local server_opts = {
+      ["sumneko_lua"] = function()
+        default_opts.settings = {
+          Lua = {
+            diagnostics = {
+              globals = { "vim" }
+            },
           },
-        },
-      }
-    end,
-  }
+        }
+      end,
+    }
 
-  local server_options = server_opts[server.name] and server_opts[server.name]() or default_opts
-  server:setup(server_options)
-end)
-
--- Automatically install servers
-for _,name in ipairs(servers) do
-  local server_is_found, server = lsp_installer.get_server(name)
-  if server_is_found then
-    if not server:is_installed() then
-      print("Installing " .. name)
-      server:install()
-    end
-  end
+    local server_options = server_opts[server.name] and server_opts[server.name]() or default_opts
+    server:setup(server_options)
+  end)
 end

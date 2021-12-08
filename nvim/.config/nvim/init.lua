@@ -1,15 +1,8 @@
 -- Neovim Config
 -- @ github.com/carltonlnd/.dotfiles
 
+local map = require("utils").map
 local cmd = vim.cmd
-
-local function map(mode, key, action, opts)
-  local options = { noremap = true }
-  if opts then
-    options = vim.tbl_extend("force", options, opts)
-  end
-  vim.api.nvim_set_keymap(mode, key, action, options)
-end
 
 -- Load neovim configuration
 require("cj-config")

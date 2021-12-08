@@ -1,8 +1,11 @@
-local cmd = vim.cmd
+local prepare = require("utils").prepare
 local g = vim.g
 
 -- Require icon dependency
-require("nvim-web-devicons").setup {}
+local icons = prepare("nvim-web-devicons")
+if icons then
+  icons.setup {}
+end
 
 -- Additional vim options
 g.nvim_tree_quit_on_open = 1
@@ -10,9 +13,7 @@ g.nvim_tree_add_trailing = 1
 g.nvim_tree_indent_markers = 1
 
 -- Setup nvim-tree
-local nvim_tree = require("nvim-tree")
-
-nvim_tree.setup {
+local config = {
   auto_close = true,
   view = {
     width = 45,
@@ -21,3 +22,4 @@ nvim_tree.setup {
   },
 }
 
+prepare("nvim-tree", config)

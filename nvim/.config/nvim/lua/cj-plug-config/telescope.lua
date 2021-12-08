@@ -1,7 +1,11 @@
+local prepare = require("utils").prepare
+
 -- Setup telescope
-local telescope = require("telescope")
+local telescope = prepare("telescope")
+if telescope then
+  telescope.setup {}
 
-telescope.setup {}
+  -- Load extensions
+  telescope.load_extension("fzf")
+end
 
--- Load extensions
-telescope.load_extension("fzf")

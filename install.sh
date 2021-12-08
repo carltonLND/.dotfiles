@@ -35,6 +35,16 @@ for pkg in *; do
       if [[ "$response" =~ ^(yes|y)$ ]]; then
         stow $pkg
       fi
+    elif [[ $pkg == "fish" ]]; then
+      fish << "EOB"
+        curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+      EOB
+
+      stow $pkg
+
+      fish << "EOB"
+        fisher update
+      EOB
     else
       stow $pkg
     fi
@@ -54,10 +64,6 @@ chsh -s $(which fish) $USER
 
 # install fish plugin manager
 echo "Installing fish plugins..."
-fish << 'endblock' 
-  curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
-  fisher update
-endblock
 
 # install neovim plugins
 echo "Installing neovim plugins..."

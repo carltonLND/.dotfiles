@@ -10,4 +10,3 @@ set -x VIMRC ~/.config/nvim/init.lua
 # aliases
 alias vi='nvim'
 alias vim='nvim'
-
