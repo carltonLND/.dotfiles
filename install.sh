@@ -1,7 +1,10 @@
 #!/bin/bash
 
+# list dependencies and current configs
+dependencies=(stow git)
+configs=(kitty fish nvim)
+
 # check if dependencies installed and on $PATH
-dependencies=(stow git kitty fish nvim)
 for element in "${dependencies[@]}";
 do
   if ! command -v $element &> /dev/null; then
@@ -12,16 +15,25 @@ do
   fi
 done
 
-# remove previous configs -< WARNING NO BACKUPS ARE CREATED YET
+# backup old configuration directories
 cd ~/.config
-rm -rf kitty fish nvim
+echo "Backing up previous folders in ~/.config..."
+for config in "${configs[@]}";
+do
+  if -d "$config"; then
+    mv -v "$config" "{dir}-backup"
+  fi
+done
 
 # stow packages
 cd ~/.dotfiles
-stow kitty
-stow fish
-stow nvim
-stow git
+echo "Stowing packages..."
+for package in *
+do
+  if -d "$package"; then
+    stow $package
+  fi
+done
 
 # add fish to valid login shells
 command -v fish | sudo tee -a /etc/shells
