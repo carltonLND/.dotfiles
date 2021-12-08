@@ -2,15 +2,13 @@
 -- @ github.com/carltonlnd/.dotfiles
 
 local cmd = vim.cmd
-local opt = vim.opt
-local g = vim.g
 
-function map(mode, key, cmd, opts)
+local function map(mode, key, action, opts)
   local options = { noremap = true }
   if opts then
     options = vim.tbl_extend("force", options, opts)
   end
-  vim.api.nvim_set_keymap(mode, key, cmd, options)
+  vim.api.nvim_set_keymap(mode, key, action, options)
 end
 
 -- Load neovim configuration
