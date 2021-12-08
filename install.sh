@@ -56,7 +56,10 @@ chsh -s $(which fish) $USER
 echo "Installing fish plugins..."
 fish << "EOF"
   curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
-  stow fish
+EOF
+rm ~/.config/fish/config.fish ~/.config/fish/fish_plugins
+stow fish
+fish << "EOF"
   fisher update
 EOF
 
