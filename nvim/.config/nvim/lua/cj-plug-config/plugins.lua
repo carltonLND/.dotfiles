@@ -2,10 +2,16 @@
 local install_path = vim.fn.stdpath("data").."/site/pack/packer/start/packer.nvim"
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = vim.fn.system({"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path})
+  print("Installing packer, quit and reopen Neovim...")
+end
+
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+  return
 end
 
 -- Start packer
-return require("packer").startup(function (use)
+return packer.startup(function (use)
   -- Packer
   use "wbthomason/packer.nvim"
 

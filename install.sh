@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # list dependencies and current configs
-dependencies=(stow git)
+dependencies=(stow git fish nvim)
 configs=(kitty fish nvim)
 
 # check if dependencies installed and on $PATH
@@ -42,11 +42,14 @@ for pkg in *; do
 done
 
 # add fish to valid login shells
-command -v fish | sudo tee -a /etc/shells
+echo "Setting up fish as default shell..."
+echo "Password for $USER may be required"
+if ! grep -q "/usr/bin/fish" "/etc/shells"; then
+  command -v fish | sudo tee -a /etc/shells
+fi
 
 # use fish as default shell
 echo "Changing default shell to fish..."
-echo "User password is required..."
 chsh -s $(which fish) $USER
 
 # install fish plugin manager
