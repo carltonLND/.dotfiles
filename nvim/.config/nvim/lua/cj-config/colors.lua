@@ -4,7 +4,13 @@ local opt = vim.opt
 -- Colorscheme
 opt.termguicolors = true
 opt.background = "dark"
-cmd "colorscheme gruvbox-material"
+
+cmd [[
+  try
+    colorscheme gruvbox-material
+    catch
+  endtry
+]]
 
 -- Transparency
 cmd "highlight Normal ctermbg=NONE guibg=NONE"
