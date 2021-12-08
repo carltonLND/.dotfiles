@@ -3,6 +3,9 @@ fish/.config/fish/conf.d/
 fish/.config/fish/functions/
 fish/.config/fish/fish_variables
 
+nvim/.config/nvim/autoload/
 nvim/.config/nvim/plugged/
+nvim/.config/nvim/pack/
 nvim/.config/nvim/undodir/
+nvim/.config/nvim/plugin/
 

@@ -6,15 +6,15 @@
 4. Make install.sh executable `chmod +x install.sh`
 5. Run installation script `./install.sh`
 
-## WARNING
+## KNOWN ISSUES
 
-### No backups are currently made for previous configurations in ~/.config
+1. Assert or check for nvim/fish before running commands in install.sh
+2. Neovim plugin install needs to be opened twice
 
 ## TODO
 
 1. Add https://github.com/numToStr/Comment.nvim
 2. Work on nvim-cmp config
-3. Auto vim-plug installation if missing - remove autoload directory from .dotfiles
 
 ### Considering
 
