@@ -66,12 +66,11 @@ EOF
 # install neovim plugins
 nvim --headless -c "quitall"
 echo "Installing neovim plugins..."
-nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
-echo "Installing maintained treesitter parsers..."
-nvim --headless -c "TSInstallSync maintained" -c "quitall" 
+nvim --headless -es -c "autocmd User PackerComplete quitall" -c "PackerSync"
+echo "Installing maintained treesitter parsers (This might take a while)..."
+nvim --headless -es -c "TSInstallSync maintained" -c "quitall" 
 
 # finishing messages
+echo "--------------------------------------------------------------------------------------------------"
 echo "INSTALLATION COMPLETE"
-echo "Language servers must be installed locally with npm: typescript typescript-language-server pyright"
-echo "Formatting sources are: @fsouza/prettierd (npm), black (pip)"
 echo "Finally please install a patched NERD font, currently using: 'FiraCode Nerd Font'."
