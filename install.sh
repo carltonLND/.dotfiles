@@ -64,9 +64,11 @@ fish << "EOF"
 EOF
 
 # install neovim plugins
-echo "Installing neovim plugins..."
 nvim --headless -c "quitall"
+echo "Installing neovim plugins..."
 nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
+echo "Installing maintained treesitter parsers..."
+nvim --headless -c "TSInstallSync maintained" -c "quitall" 
 
 # finishing messages
 echo "INSTALLATION COMPLETE"
