@@ -16,6 +16,8 @@ nvim_tree.setup {
   auto_close = true,
   view = {
     width = 45,
+    number = true,
+    relativenumber = true,
   },
 }
 

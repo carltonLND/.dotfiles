@@ -30,7 +30,7 @@ for pkg in *; do
   if [[ -d $pkg ]]; then
     if [[ $pkg == "git" ]]; then
       echo "WARNING: Attempting to install carltonLND's git config..."
-      read -r -p "Skipping personal git dotfiles. Override? [y/N] "
+      read -r -p "Skipping personal git dotfiles. Override? [y/N] " response
       response=${response,,}
       if [[ "$response" =~ ^(yes|y)$ ]]; then
         stow $pkg
