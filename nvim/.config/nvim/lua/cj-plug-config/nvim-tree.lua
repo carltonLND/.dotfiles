@@ -2,10 +2,7 @@ local prepare = require("utils").prepare
 local g = vim.g
 
 -- Require icon dependency
-local icons = prepare("nvim-web-devicons")
-if icons then
-  icons.setup {}
-end
+prepare("nvim-web-devicons", {})
 
 -- Additional vim options
 g.nvim_tree_quit_on_open = 1

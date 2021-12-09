@@ -43,13 +43,13 @@ done
 
 # add fish to valid login shells
 echo "Setting up fish as default shell..."
-echo "Password for $USER may be required"
 if ! grep -q "/usr/bin/fish" "/etc/shells"; then
   command -v fish | sudo tee -a /etc/shells
 fi
 
 # use fish as default shell
 echo "Changing default shell to fish..."
+echo "Password for $USER may be required"
 chsh -s $(which fish) $USER
 
 # install fish plugin manager
@@ -67,6 +67,7 @@ EOF
 nvim --headless -c "quitall"
 echo "Installing neovim plugins..."
 nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
+echo
 echo "Installing maintained treesitter parsers (This might take a while)..."
 nvim --headless -es -c "TSInstallSync maintained" -c "quitall" 
 

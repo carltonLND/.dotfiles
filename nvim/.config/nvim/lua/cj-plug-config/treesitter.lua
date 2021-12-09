@@ -9,3 +9,4 @@ local config = {
 }
 
 prepare("nvim-treesitter.configs", config)
+

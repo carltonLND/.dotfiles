@@ -22,14 +22,12 @@ map("n", "<leader>qq", "<cmd>bd<cr>")
 map("n", "<leader>qQ", "<cmd>bd!<cr>")
 
 map("i", "<C-c>", "<Esc>")
-map("i", "<M-Enter>", "<Esc>o")
 
 -- Load plugin configuration
 require("cj-plug-config")
 
 -- Set plugin keymaps
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
-map("n", "<leader>fF", "<cmd>Telescope file_browser<cr>")
 map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
 map("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
 

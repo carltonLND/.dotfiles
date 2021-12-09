@@ -29,6 +29,7 @@ opt.hidden = true
 opt.scrolloff = 999
 opt.showmode = false
 opt.clipboard:append("unnamedplus")
+opt.completeopt = "menuone,noselect"
 
 -- Providers
 g.loaded_python_provider = 0

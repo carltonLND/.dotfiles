@@ -32,6 +32,22 @@ if packer then
       "williamboman/nvim-lsp-installer"
     }
 
+    -- Nvim-cmp
+    use {
+      "hrsh7th/nvim-cmp",
+      requires = {
+        "L3MON4D3/LuaSnip",
+        "saadparwaiz1/cmp_luasnip",
+        "onsails/lspkind-nvim",
+        "hrsh7th/cmp-nvim-lua",
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-buffer",
+      }
+    }
+
+    -- Comment.nvim
+    use "numToStr/Comment.nvim"
+
     -- Nvim-tree
     use {
       "kyazdani42/nvim-tree.lua",
@@ -47,7 +63,7 @@ if packer then
     use "itchyny/lightline.vim"
 
     -- Auto Pairs
-    use "LunarWatcher/auto-pairs"
+    use "windwp/nvim-autopairs"
 
     -- Themes
     use "sainnhe/gruvbox-material"
