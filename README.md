@@ -8,15 +8,8 @@
 
 ## KNOWN ISSUES
 
-1. Assert or check for nvim/fish before running commands in install.sh
-2. Neovim plugin install needs to be opened twice
+1. Fish config install is a little big clunky
 
 ## TODO
 
-1. Add https://github.com/numToStr/Comment.nvim
-2. Work on nvim-cmp config
-
-### Considering
-
-1. Simplify installation
-2. Test switching to a majority Lua nvim setup
+TBD
