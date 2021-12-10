@@ -8,4 +8,4 @@
 [core]
 	editor = nvim
 [pull]
-	rebse = false
+	rebase = false
