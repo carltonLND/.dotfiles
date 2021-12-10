@@ -115,6 +115,5 @@ return packer.startup(function(use)
 
   if first_install then
     packer.sync()
-    -- packer.compile()
   end
 end)
