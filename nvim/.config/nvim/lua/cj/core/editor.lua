@@ -29,7 +29,7 @@ opt.hidden = true
 opt.scrolloff = 999
 opt.showmode = false
 opt.clipboard:append("unnamedplus")
-opt.completeopt = "menuone,noselect"
+opt.completeopt = "menu,menuone,noselect"
 
 -- Providers
 g.loaded_python_provider = 0
@@ -37,3 +37,14 @@ g.loaded_python3_provider = 0
 g.loaded_ruby_provider = 0
 g.loaded_perl_provider = 0
 g.loaded_node_provider = 0
+
+-- Theme
+opt.termguicolors = true
+opt.background = "dark"
+
+cmd [[
+  try
+    colorscheme gruvbox-material
+    catch
+  endtry
+]]

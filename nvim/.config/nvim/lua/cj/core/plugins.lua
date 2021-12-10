@@ -1,0 +1,120 @@
+local installed, packer_setup = pcall(require, "cj.packer")
+
+if not installed then
+  return false
+end
+
+local first_install = packer_setup.first_install
+local packer = packer_setup.packer
+return packer.startup(function(use)
+  -- Required
+  use "wbthomason/packer.nvim"
+  use "lewis6991/impatient.nvim"
+
+  -- Treesitter
+  use {
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+    config = function()
+      require("cj.plugins.treesitter")
+    end
+  }
+
+  -- Telescope
+  use {
+    "nvim-telescope/telescope.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        run = "make",
+      }
+    },
+    config = function()
+      require("cj.plugins.telescope")
+    end,
+    event = "BufWinEnter"
+  }
+
+  -- Nvim-tree
+  use {
+    "kyazdani42/nvim-tree.lua",
+    config = function()
+      require("cj.plugins/nvim-tree")
+    end,
+    cmd = {
+      "NvimTreeClipboard",
+      "NvimTreeClose",
+      "NvimTreeOpen",
+      "NvimTreeToggle",
+      "NvimTreeFindFile",
+      "NvimTreeRefresh",
+    }
+  }
+
+  -- Lsp
+  use {
+    "neovim/nvim-lspconfig",
+    requires = {
+      "williamboman/nvim-lsp-installer",
+      {
+        "hrsh7th/nvim-cmp",
+        requires = {
+          "onsails/lspkind-nvim",
+          "L3MON4D3/LuaSnip",
+          "saadparwaiz1/cmp_luasnip",
+          "hrsh7th/cmp-nvim-lua",
+          "hrsh7th/cmp-nvim-lsp",
+          "hrsh7th/cmp-buffer",
+          {
+            "windwp/nvim-autopairs",
+            config = function()
+              require("cj.plugins/auto-pairs")
+            end,
+            after = "nvim-cmp",
+          },
+        },
+      },
+    },
+    config = function()
+      require("cj.plugins.lsp")
+    end
+  }
+
+  -- Comment
+  use {
+    "numToStr/Comment.nvim",
+    config = function()
+      require("cj.plugins.comment-nvim")
+    end,
+    event = "BufWinEnter",
+  }
+
+  -- Lightline
+  use {
+    "itchyny/lightline.vim",
+    requires = {
+      "kyazdani42/nvim-web-devicons",
+      opt = true,
+    },
+    config = function()
+      require("cj.plugins.lightline")
+    end,
+  }
+
+  -- Dashboard
+  use {
+    "glepnir/dashboard-nvim",
+    config = function()
+      require("cj.plugins.dashboard")
+    end,
+  }
+
+  -- Theme
+  use "sainnhe/gruvbox-material"
+
+  if first_install then
+    packer.sync()
+    -- packer.compile()
+  end
+end)
