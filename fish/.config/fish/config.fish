@@ -5,9 +5,11 @@ end
 # exports
 set -x EDITOR nvim
 set -x DOT ~/.dotfiles
-set -x FISHRC ~/.config/fish/config.fish
-set -x VIMRC ~/.config/nvim/init.lua
+set -x FISHDIR ~/.config/fish/
+set -x VIMDIR ~/.config/nvim/
+set -x KITTYDIR ~/.config/kitty/
 
 # aliases
+alias ls="ls -a"
 alias vi='nvim'
 alias vim='nvim'
