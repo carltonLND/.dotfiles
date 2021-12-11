@@ -1,7 +1,7 @@
 local map = require("cj.utils").map
 
 -- Leader key
-vim.cmd "let mapleader = ' '"
+vim.g.mapleader = " "
 
 -- Normal Mode
 map("n", "<leader>h", "<cmd>wincmd h<cr>")

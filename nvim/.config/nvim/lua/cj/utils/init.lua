@@ -9,4 +9,13 @@ function M.map(mode, key, action, opts)
   vim.api.nvim_set_keymap(mode, key, action, options)
 end
 
+-- Return correct leader key
+function M.get_leader()
+  if vim.g.mapleader == nil then
+    return "SPACE"
+  else
+    return vim.g.mapleader
+  end
+end
+
 return M

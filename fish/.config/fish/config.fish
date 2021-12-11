@@ -10,6 +10,5 @@ set -x VIMDIR ~/.config/nvim/
 set -x KITTYDIR ~/.config/kitty/
 
 # aliases
-alias ls="ls -a"
 alias vi='nvim'
 alias vim='nvim'

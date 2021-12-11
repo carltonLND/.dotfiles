@@ -26,7 +26,7 @@ opt.wrap = false
 opt.splitbelow = true
 opt.splitright = true
 opt.hidden = true
-opt.scrolloff = 999
+opt.scrolloff = 12
 opt.showmode = false
 opt.clipboard:append("unnamedplus")
 opt.completeopt = "menu,menuone,noselect"
