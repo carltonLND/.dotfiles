@@ -66,7 +66,6 @@ local hi_groups = {
   "PurpleSign",
 }
 
-for group in hi_groups do
-  local highlight = "highlight " .. group .. " ctermbg=NONE guibg=NONE"
-  cmd(highlight)
+for _,group in ipairs(hi_groups) do
+  cmd(("highlight %s ctermbg=NONE guibg=NONE"):format(group))
 end

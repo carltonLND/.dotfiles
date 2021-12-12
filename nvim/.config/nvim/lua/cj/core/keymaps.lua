@@ -15,6 +15,8 @@ map("n", "<leader>qQ", "<cmd>bd!<cr>")
 
 -- Insert Mode
 map("i", "<C-c>", "<Esc>")
+map("i", "<C-Enter>", "<Esc>o")
+map("i", "<M-Enter>", "<Esc>O")
 
 -- Normal Mode Plugins
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
