@@ -48,3 +48,25 @@ cmd [[
     catch
   endtry
 ]]
+
+-- Transparency
+local hi_groups = {
+  "Normal",
+  "NonText",
+  "LineNr",
+  "Folded",
+  "EndOfBuffer",
+  "CursorLineNr",
+  "SignColumn",
+  "RedSign",
+  "YellowSign",
+  "BlueSign",
+  "AquaSign",
+  "GreenSign",
+  "PurpleSign",
+}
+
+for group in hi_groups do
+  local highlight = "highlight " .. group .. " ctermbg=NONE guibg=NONE"
+  cmd(highlight)
+end
