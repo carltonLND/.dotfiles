@@ -2,6 +2,9 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+# add homebrew to path for macos
+eval (/opt/homebrew/bin/brew shellenv)
+
 # exports
 set -x EDITOR nvim
 set -x DOT ~/.dotfiles
