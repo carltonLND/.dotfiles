@@ -51,6 +51,10 @@ local function on_attach(client, bufnr)
 
   buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
   buf_set_keymap("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
+
+  -- Disable formatting (Using null-ls)
+  client.resolved_capabilities.document_formatting = false
+  client.resolved_capabilities.document_range_formatting = false
 end
 
 -- Setup nvim-lsp-installer
@@ -76,3 +80,18 @@ require("nvim-lsp-installer").on_server_ready(function(server)
   local server_options = server_opts[server.name] and server_opts[server.name]() or default_opts
   server:setup(server_options)
 end)
+
+-- Setup null-ls formatting
+local null_ls = require('null-ls')
+
+null_ls.setup {
+  sources = {
+    null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.formatting.black,
+  },
+  on_attach = function(client)
+    if client.resolved_capabilities.document_formatting then
+        vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+    end
+  end,
+}
