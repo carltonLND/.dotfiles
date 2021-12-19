@@ -1,71 +1,78 @@
-local cmd = vim.cmd
-local opt = vim.opt
-local g = vim.g
-local dir = vim.fn.stdpath('config')
-
 -- General Settings
-cmd "syntax on"
+local options = {
+	tabstop = 2,
+	softtabstop = 2,
+	shiftwidth = 2,
+	expandtab = true,
+	smartindent = true,
+	number = true,
+	relativenumber = true,
+	signcolumn = "yes:1",
+	swapfile = false,
+	backup = false,
+	undodir = vim.fn.stdpath("config") .. "/undodir/",
+	undofile = true,
+	updatetime = 300,
+	incsearch = true,
+	hlsearch = false,
+	ignorecase = true,
+	smartcase = true,
+	wrap = false,
+	splitbelow = true,
+	splitright = true,
+	hidden = true,
+	scrolloff = 12,
+	sidescrolloff = 12,
+	showmode = false,
+	completeopt = "menu,menuone,noselect",
+	termguicolors = true,
+	clipboard = "unnamedplus",
+	pumheight = 10,
+}
 
-opt.tabstop = 2
-opt.softtabstop = 2
-opt.shiftwidth = 2
-opt.expandtab = true
-opt.smartindent = true
-opt.number = true
-opt.relativenumber = true
-opt.signcolumn = "yes:1"
-opt.swapfile = false
-opt.backup = false
-opt.undodir = dir .. "/undodir/"
-opt.undofile = true
-opt.incsearch = true
-opt.hlsearch = false
-opt.ignorecase = true
-opt.smartcase = true
-opt.wrap = false
-opt.splitbelow = true
-opt.splitright = true
-opt.hidden = true
-opt.scrolloff = 12
-opt.showmode = false
-opt.clipboard:append("unnamedplus")
-opt.completeopt = "menu,menuone,noselect"
+for option, value in pairs(options) do
+	vim.opt[option] = value
+end
+
+vim.cmd([[
+  set formatoptions-=c formatoptions-=r formatoptions-=o
+  set iskeyword+=-
+]])
 
 -- Providers
-g.loaded_python_provider = 0
-g.loaded_python3_provider = 0
-g.loaded_ruby_provider = 0
-g.loaded_perl_provider = 0
-g.loaded_node_provider = 0
+vim.g.loaded_python_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_node_provider = 0
 
 -- Theme
-opt.termguicolors = true
-opt.background = "dark"
-
-cmd [[
+vim.cmd([[
   try
     colorscheme gruvbox-material
-    catch
+  catch
+    colorscheme default
+    set background="dark"
   endtry
-]]
+]])
 
 -- Transparency
 local hi_groups = {
-  "Normal",
-  "NonText",
-  "LineNr",
-  "Folded",
-  "EndOfBuffer",
-  "CursorLineNr",
-  "SignColumn",
-  "RedSign",
-  "YellowSign",
-  "BlueSign",
-  "AquaSign",
-  "GreenSign",
-  "PurpleSign",
+	"Normal",
+	"NonText",
+	"LineNr",
+	"Folded",
+	"EndOfBuffer",
+	"CursorLineNr",
+	"SignColumn",
+	"RedSign",
+	"YellowSign",
+	"BlueSign",
+	"AquaSign",
+	"GreenSign",
+	"PurpleSign",
 }
 
-for _,group in ipairs(hi_groups) do
-  cmd(("highlight %s ctermbg=NONE guibg=NONE"):format(group))
+for _, group in ipairs(hi_groups) do
+	vim.cmd(("highlight %s ctermbg=NONE guibg=NONE"):format(group))
 end
