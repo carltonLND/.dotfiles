@@ -8,5 +8,5 @@ pcall(require, "impatient")
 local status_ok, err = pcall(require, "cj")
 
 if not status_ok then
-	error(("Error loading namespace configuration...\n\n%s"):format(err))
+  error(("Error loading namespace configuration...\n\n%s"):format(err))
 end

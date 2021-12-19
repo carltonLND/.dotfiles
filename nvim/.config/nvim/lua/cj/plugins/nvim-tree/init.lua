@@ -12,5 +12,5 @@ require("nvim-tree").setup {
     width = 35,
     number = true,
     relativenumber = true,
-  }
+  },
 }

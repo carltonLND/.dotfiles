@@ -6,6 +6,7 @@ end
 
 local first_install = packer_setup.first_install
 local packer = packer_setup.packer
+
 return packer.startup(function(use)
   -- Required
   use "wbthomason/packer.nvim"
@@ -16,8 +17,8 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
     config = function()
-      require("cj.plugins.treesitter")
-    end
+      require "cj.plugins.treesitter"
+    end,
   }
 
   -- Telescope
@@ -28,19 +29,19 @@ return packer.startup(function(use)
       {
         "nvim-telescope/telescope-fzf-native.nvim",
         run = "make",
-      }
+      },
     },
     config = function()
-      require("cj.plugins.telescope")
+      require "cj.plugins.telescope"
     end,
-    event = "BufWinEnter"
+    event = "BufWinEnter",
   }
 
   -- Nvim-tree
   use {
     "kyazdani42/nvim-tree.lua",
     config = function()
-      require("cj.plugins/nvim-tree")
+      require "cj.plugins/nvim-tree"
     end,
     cmd = {
       "NvimTreeClipboard",
@@ -49,7 +50,7 @@ return packer.startup(function(use)
       "NvimTreeToggle",
       "NvimTreeFindFile",
       "NvimTreeRefresh",
-    }
+    },
   }
 
   -- Lsp
@@ -69,7 +70,7 @@ return packer.startup(function(use)
           {
             "windwp/nvim-autopairs",
             config = function()
-              require("cj.plugins/auto-pairs")
+              require "cj.plugins/auto-pairs"
             end,
             after = "nvim-cmp",
           },
@@ -78,15 +79,15 @@ return packer.startup(function(use)
       "jose-elias-alvarez/null-ls.nvim",
     },
     config = function()
-      require("cj.plugins.lsp")
-    end
+      require "cj.plugins.lsp"
+    end,
   }
 
   -- Comment
   use {
     "numToStr/Comment.nvim",
     config = function()
-      require("cj.plugins.comment-nvim")
+      require "cj.plugins.comment-nvim"
     end,
     event = "BufWinEnter",
   }
@@ -99,7 +100,7 @@ return packer.startup(function(use)
       opt = true,
     },
     config = function()
-      require("cj.plugins.lightline")
+      require "cj.plugins.lightline"
     end,
   }
 
@@ -107,7 +108,7 @@ return packer.startup(function(use)
   use {
     "glepnir/dashboard-nvim",
     config = function()
-      require("cj.plugins.dashboard")
+      require "cj.plugins.dashboard"
     end,
   }
 

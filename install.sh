@@ -1,8 +1,8 @@
-#!/bin/bash
+# Install script for my dotfiles at github.com/carltonlnd/.dotfiles
 
 # list dependencies and current configs
 dependencies=(stow git fish nvim)
-configs=(kitty fish nvim)
+configs=(kitty fish nvim stylua)
 
 # check if dependencies installed and on $PATH
 for element in "${dependencies[@]}"; do

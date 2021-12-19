@@ -1,6 +1,6 @@
 -- Setup telescope
-local telescope = require("telescope")
+local telescope = require "telescope"
 telescope.setup {}
 
 -- Load extensions
-telescope.load_extension("fzf")
+telescope.load_extension "fzf"

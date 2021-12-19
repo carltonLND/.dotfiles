@@ -2,7 +2,7 @@ local g = vim.g
 local leader = require("cj.utils").get_leader()
 
 g.dashboard_default_executive = "telescope"
-g.dashboard_session_directory = vim.fn.stdpath("data").."/sessions"
+g.dashboard_session_directory = vim.fn.stdpath "data" .. "/sessions"
 
 g.dashboard_custom_section = {
   find_file = {
