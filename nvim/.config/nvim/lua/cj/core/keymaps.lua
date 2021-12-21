@@ -4,24 +4,33 @@ local map = require("cj.utils").map
 vim.g.mapleader = " "
 
 -- Normal Mode
-map("n", "<leader>h", "<cmd>wincmd h<cr>")
-map("n", "<leader>j", "<cmd>wincmd j<cr>")
-map("n", "<leader>k", "<cmd>wincmd k<cr>")
-map("n", "<leader>l", "<cmd>wincmd l<cr>")
-map("n", "<leader><Tab>", "<cmd>bn<cr>")
-map("n", "<leader><S-Tab>", "<cmd>bp<cr>")
+map("n", "<C-h>", "<cmd>wincmd h<cr>")
+map("n", "<C-j>", "<cmd>wincmd j<cr>")
+map("n", "<C-k>", "<cmd>wincmd k<cr>")
+map("n", "<C-l>", "<cmd>wincmd l<cr>")
+map("n", "<S-h>", "<cmd>bp<cr>")
+map("n", "<S-l>", "<cmd>bn<cr>")
 map("n", "<leader>qq", "<cmd>bd<cr>")
 map("n", "<leader>qQ", "<cmd>bd!<cr>")
+map("n", "<C-Up>", "<cmd>resize +2<cr>")
+map("n", "<C-Down>", "<cmd>resize -2<cr>")
+map("n", "<C-Left>", "<cmd>vertical resize -2<cr>")
+map("n", "<C-Right>", "<cmd>vertical resize +2<cr>")
 
 -- Insert Mode
 map("i", "<C-c>", "<Esc>")
 map("i", "<C-Enter>", "<Esc>o")
 map("i", "<M-Enter>", "<Esc>O")
 
+-- Visual Mode
+map("v", "<", "<gv")
+map("v", ">", ">gv")
+map("v", "p", '"_dP')
+
 -- Normal Mode Plugins
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
 map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
 map("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
-map("n", "<leader>ft", "<cmd>NvimTreeToggle<cr>")
+map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>")
 map("n", "<leader>ss", "<cmd>SessionSave<cr>")
 map("n", "<leader>sl", "<cmd>SessionLoad<cr>")
