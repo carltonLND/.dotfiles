@@ -3,7 +3,9 @@ if status is-interactive
 end
 
 # add homebrew to path for macos
-eval (/opt/homebrew/bin/brew shellenv)
+if test -d /opt/homebrew
+  eval (/opt/homebrew/bin/brew shellenv)
+end
 
 # exports
 set -x EDITOR nvim

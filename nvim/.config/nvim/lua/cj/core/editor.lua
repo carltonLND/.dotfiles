@@ -29,6 +29,7 @@ local options = {
   clipboard = "unnamedplus",
   pumheight = 10,
   background = "dark",
+  lazyredraw = true,
 }
 
 for option, value in pairs(options) do
