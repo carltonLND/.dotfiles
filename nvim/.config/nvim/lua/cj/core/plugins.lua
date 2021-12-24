@@ -7,6 +7,13 @@ end
 local first_install = packer_setup.first_install
 local packer = packer_setup.packer
 
+vim.cmd [[
+  augroup packer_config_cj
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]]
+
 return packer.startup(function(use)
   -- Required
   use "wbthomason/packer.nvim"
@@ -114,6 +121,7 @@ return packer.startup(function(use)
 
   -- Theme
   use "sainnhe/gruvbox-material"
+  use "folke/tokyonight.nvim"
 
   if first_install then
     packer.sync()

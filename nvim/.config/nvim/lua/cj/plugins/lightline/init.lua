@@ -1,6 +1,15 @@
 -- Setup lightline
+local colorscheme = function()
+  local status_ok, _ = pcall(vim.cmd, "colorscheme tokyonight")
+  if not status_ok then
+    return "deus"
+  end
+
+  return "tokyonight"
+end
+
 vim.g.lightline = {
-  colorscheme = "deus",
+  colorscheme = colorscheme(),
   active = {
     left = {
       { "mode", "paste" },

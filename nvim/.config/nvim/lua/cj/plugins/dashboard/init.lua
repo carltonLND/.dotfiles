@@ -1,16 +1,15 @@
-local g = vim.g
 local leader = require("cj.utils").get_leader()
 
-g.dashboard_default_executive = "telescope"
-g.dashboard_session_directory = vim.fn.stdpath "data" .. "/sessions"
+vim.g.dashboard_default_executive = "telescope"
+vim.g.dashboard_session_directory = vim.fn.stdpath "data" .. "/sessions"
 
-g.dashboard_custom_section = {
+vim.g.dashboard_custom_section = {
   find_file = {
     description = { ("  Find File              %s ff"):format(leader) },
     command = "Telescope find_files",
   },
   file_explorer = {
-    description = { ("  File Tree              %s ft"):format(leader) },
+    description = { ("  File Tree              %s e "):format(leader) },
     command = "NvimTreeToggle",
   },
   find_string = {

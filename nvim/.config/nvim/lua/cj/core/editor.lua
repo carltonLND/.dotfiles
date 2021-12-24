@@ -28,6 +28,7 @@ local options = {
   termguicolors = true,
   clipboard = "unnamedplus",
   pumheight = 10,
+  background = "dark",
 }
 
 for option, value in pairs(options) do
@@ -45,34 +46,3 @@ vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_node_provider = 0
-
--- Theme
-vim.cmd [[
-  try
-    colorscheme gruvbox-material
-  catch
-    colorscheme default
-    set background="dark"
-  endtry
-]]
-
--- Transparency
-local hi_groups = {
-  "Normal",
-  "NonText",
-  "LineNr",
-  "Folded",
-  "EndOfBuffer",
-  "CursorLineNr",
-  "SignColumn",
-  "RedSign",
-  "YellowSign",
-  "BlueSign",
-  "AquaSign",
-  "GreenSign",
-  "PurpleSign",
-}
-
-for _, group in ipairs(hi_groups) do
-  vim.cmd(("highlight %s ctermbg=NONE guibg=NONE"):format(group))
-end

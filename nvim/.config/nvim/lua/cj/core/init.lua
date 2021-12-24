@@ -1,6 +1,7 @@
 local modules = {
   "cj.core.plugins",
   "cj.core.editor",
+  "cj.core.theme",
   "cj.core.keymaps",
 }
 
