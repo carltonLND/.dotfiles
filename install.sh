@@ -1,4 +1,5 @@
-# Install script for my dotfiles at github.com/carltonlnd/.dotfiles
+# WIP Installation script for my dotfiles
+# @ github.com/carltonlnd/.dotfiles
 
 # list dependencies and current configs
 dependencies=(stow git fish nvim)
@@ -68,6 +69,5 @@ echo "Installing neovim plugins..."
 nvim --headless -c "autocmd User PackerComplete quitall"
 
 # finishing messages
-echo "----------------------------------------------------------------------------------"
-echo "INSTALLATION COMPLETE"
-echo "Finally please install a patched NERD font, currently using: 'FiraCode Nerd Font'."
+echo "----------------------------INSTALLATION COMPLETE---------------------------------"
+echo "Finally please install a patched NERD font, currently using: 'FiraCode Nerd Font'"
