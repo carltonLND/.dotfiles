@@ -53,7 +53,7 @@ local function on_attach(client, bufnr)
 
   buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
   buf_set_keymap("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
-  buf_set_keymap("n", "<leader>dl", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>", opts)
+  buf_set_keymap("n", "<leader>dl", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
 
   -- Disable formatting (Using null-ls)
   client.resolved_capabilities.document_formatting = false
