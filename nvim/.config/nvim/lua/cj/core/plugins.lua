@@ -41,6 +41,7 @@ return packer.startup(function(use)
     config = function()
       require "cj.plugins.telescope"
     end,
+    after = "telescope-fzf-native.nvim",
     event = "BufWinEnter",
   }
 
