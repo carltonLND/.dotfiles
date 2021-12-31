@@ -10,10 +10,12 @@ end
 # exports
 set -x EDITOR nvim
 set -x DOT ~/.dotfiles
-set -x PROJECTS ~/Projects
 set -x FISHDIR ~/.config/fish/
 set -x VIMDIR ~/.config/nvim/
 set -x KITTYDIR ~/.config/kitty/
+if test -e /mnt/p
+  set -x PROJECTS /mnt/p/
+end
 
 # aliases
 alias vi='nvim'
