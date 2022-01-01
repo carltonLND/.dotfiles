@@ -101,6 +101,7 @@ null_ls.setup {
     null_ls.builtins.formatting.stylua.with {
       extra_args = { "--config-path", vim.fn.expand "~/.config/stylua/stylua.toml" },
     },
+    null_ls.builtins.code_actions.gitsigns,
   },
   on_attach = function(client)
     if client.resolved_capabilities.document_formatting then
