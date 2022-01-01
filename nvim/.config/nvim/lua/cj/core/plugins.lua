@@ -91,6 +91,17 @@ return packer.startup(function(use)
     end,
   }
 
+  -- Git signs
+  use {
+    "lewis6991/gitsigns.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      require("gitsigns").setup()
+    end,
+  }
+
   -- Comment
   use {
     "numToStr/Comment.nvim",
