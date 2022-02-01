@@ -1,23 +1,24 @@
-if status is-interactive
+# if status is-interactive
     # Commands to run in interactive sessions can go here
-end
+# end
 
-# add homebrew to path for macos
+# add homebrew to path for macOS
 if test -d /opt/homebrew
   eval (/opt/homebrew/bin/brew shellenv)
 end
 
-# exports
-set -x EDITOR nvim
-set -x DOT ~/.dotfiles
-set -x PROJECTS ~/Projects
-set -x FISHDIR ~/.config/fish/
-set -x VIMDIR ~/.config/nvim/
-set -x KITTYDIR ~/.config/kitty/
+# shell variables
+set -U EDITOR nvim
+set -U DOT ~/.dotfiles
+set -U PROJECTS ~/Projects
+set -U FISHDIR ~/.config/fish/
+set -U VIMDIR ~/.config/nvim/
+set -U KITTYDIR ~/.config/kitty/
 
 # aliases
 alias vi='nvim'
 alias vim='nvim'
+alias activate='source env/bin/activate.fish'
 
 # tokyonight colorscheme
 set -l foreground c0caf5

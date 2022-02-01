@@ -30,6 +30,7 @@ local options = {
   pumheight = 10,
   background = "dark",
   lazyredraw = true,
+  mouse = "a",
 }
 
 for option, value in pairs(options) do
