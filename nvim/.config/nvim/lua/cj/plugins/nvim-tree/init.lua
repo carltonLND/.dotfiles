@@ -1,16 +1,26 @@
 local g = vim.g
 
 -- Additional vim options
-g.nvim_tree_quit_on_open = 1
 g.nvim_tree_add_trailing = 1
 g.nvim_tree_indent_markers = 1
 
 -- Setup nvim-tree
 require("nvim-tree").setup {
-  auto_close = true,
+  actions = {
+    open_file = {
+      quit_on_open = true,
+    },
+  },
   view = {
     width = 35,
     number = true,
     relativenumber = true,
   },
 }
+
+vim.cmd [[
+  augroup nvim_tree_auto_close
+    autocmd!
+    autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
+  augroup end
+]]

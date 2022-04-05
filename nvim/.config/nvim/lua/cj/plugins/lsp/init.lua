@@ -91,7 +91,7 @@ require("nvim-lsp-installer").on_server_ready(function(server)
   server:setup(server_options)
 end)
 
--- Setup null-ls formatting
+-- Setup null-ls formatting and code actions
 local null_ls = require "null-ls"
 
 null_ls.setup {
