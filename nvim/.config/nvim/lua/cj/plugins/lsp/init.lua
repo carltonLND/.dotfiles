@@ -102,7 +102,7 @@ null_ls.setup({
       extra_args = { "--config-path", vim.fn.expand("~/.config/stylua/stylua.toml") },
     }),
     null_ls.builtins.formatting.rustfmt.with({
-      extra_args = { "--edition", 2021 },
+      extra_args = { "--config-path", vim.fn.expand("~/.config/rustfmt/") },
     }),
     null_ls.builtins.code_actions.gitsigns,
   },
