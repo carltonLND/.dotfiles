@@ -1,11 +1,11 @@
 -- Setup nvim-cmp
-local cmp = require "cmp"
-local lspkind = require "lspkind"
-cmp.setup {
+local cmp = require("cmp")
+local lspkind = require("lspkind")
+cmp.setup({
   formatting = {
-    format = lspkind.cmp_format {
+    format = lspkind.cmp_format({
       with_text = false,
-    },
+    }),
   },
 
   snippet = {
@@ -15,7 +15,7 @@ cmp.setup {
   },
 
   mapping = {
-    ["<TAB>"] = cmp.mapping.confirm { select = true },
+    ["<TAB>"] = cmp.mapping.confirm({ select = true }),
   },
 
   sources = cmp.config.sources({
@@ -29,7 +29,7 @@ cmp.setup {
   experimental = {
     ghost_text = true,
   },
-}
+})
 
 cmp.setup.cmdline("/", {
   sources = {
@@ -38,7 +38,7 @@ cmp.setup.cmdline("/", {
 })
 
 -- Update native lsp with nvim-cmp capabilities
-local cmp_nvim_lsp = require "cmp_nvim_lsp"
+local cmp_nvim_lsp = require("cmp_nvim_lsp")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
@@ -92,20 +92,23 @@ require("nvim-lsp-installer").on_server_ready(function(server)
 end)
 
 -- Setup null-ls formatting and code actions
-local null_ls = require "null-ls"
+local null_ls = require("null-ls")
 
-null_ls.setup {
+null_ls.setup({
   sources = {
     null_ls.builtins.formatting.prettierd,
     null_ls.builtins.formatting.black,
-    null_ls.builtins.formatting.stylua.with {
-      extra_args = { "--config-path", vim.fn.expand "~/.config/stylua/stylua.toml" },
-    },
+    null_ls.builtins.formatting.stylua.with({
+      extra_args = { "--config-path", vim.fn.expand("~/.config/stylua/stylua.toml") },
+    }),
+    null_ls.builtins.formatting.rustfmt.with({
+      extra_args = { "--edition", 2021 },
+    }),
     null_ls.builtins.code_actions.gitsigns,
   },
   on_attach = function(client)
     if client.resolved_capabilities.document_formatting then
-      vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()"
+      vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
     end
   end,
-}
+})
