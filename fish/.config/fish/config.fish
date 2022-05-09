@@ -14,6 +14,7 @@ set -U PROJECTS ~/Projects
 set -U FISHDIR ~/.config/fish/
 set -U VIMDIR ~/.config/nvim/
 set -U KITTYDIR ~/.config/kitty/
+set -U nvm_default_version latest
 
 # aliases
 alias vi='nvim'
