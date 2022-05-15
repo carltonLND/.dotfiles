@@ -85,6 +85,20 @@ require("nvim-lsp-installer").on_server_ready(function(server)
         },
       }
     end,
+    ["rust-analyzer"] = function()
+      default_opts.settings = {
+        assist = {
+          importGranularity = "module",
+          importPrefix = "self",
+        },
+        cargo = {
+          loadOutDirsFromCheck = true,
+        },
+        procMacro = {
+          enable = true,
+        },
+      }
+    end,
   }
 
   local server_options = server_opts[server.name] and server_opts[server.name]() or default_opts

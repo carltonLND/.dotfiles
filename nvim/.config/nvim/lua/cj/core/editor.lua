@@ -8,7 +8,6 @@ local options = {
   number = true,
   relativenumber = true,
   signcolumn = "yes:1",
-  cursorline = true,
   swapfile = false,
   backup = false,
   undodir = vim.fn.stdpath("config") .. "/undodir/",
