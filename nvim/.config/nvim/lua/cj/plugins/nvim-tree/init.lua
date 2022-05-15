@@ -2,10 +2,9 @@ local g = vim.g
 
 -- Additional vim options
 g.nvim_tree_add_trailing = 1
-g.nvim_tree_indent_markers = 1
 
 -- Setup nvim-tree
-require("nvim-tree").setup {
+require("nvim-tree").setup({
   actions = {
     open_file = {
       quit_on_open = true,
@@ -16,11 +15,16 @@ require("nvim-tree").setup {
     number = true,
     relativenumber = true,
   },
-}
+  renderer = {
+    indent_markers = {
+      enable = true,
+    },
+  },
+})
 
-vim.cmd [[
+vim.cmd([[
   augroup nvim_tree_auto_close
     autocmd!
     autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
   augroup end
-]]
+]])

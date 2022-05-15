@@ -14,9 +14,9 @@ cmp.setup({
     end,
   },
 
-  mapping = {
+  mapping = cmp.mapping.preset.insert({
     ["<TAB>"] = cmp.mapping.confirm({ select = true }),
-  },
+  }),
 
   sources = cmp.config.sources({
     { name = "nvim_lua" },
@@ -56,8 +56,9 @@ local function on_attach(client, bufnr)
   buf_set_keymap("n", "<leader>dl", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
 
   -- Disable formatting (Using null-ls)
-  client.resolved_capabilities.document_formatting = false
-  client.resolved_capabilities.document_range_formatting = false
+  client.server_capabilities.documentFormattingProvider = false
+  client.server_capabilities.documentRangeFormattingProvider = false
+  client.server_capabilities.documentOnTypeFormattingProvider = {}
 
   -- Disable virtual text when not ERROR severity
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -107,7 +108,7 @@ end)
 
 -- Setup null-ls formatting and code actions
 local null_ls = require("null-ls")
-
+local fmt_augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
   sources = {
     null_ls.builtins.formatting.prettierd,
@@ -120,9 +121,16 @@ null_ls.setup({
     }),
     null_ls.builtins.code_actions.gitsigns,
   },
-  on_attach = function(client)
-    if client.resolved_capabilities.document_formatting then
-      vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+  on_attach = function(client, bufnr)
+    if client.supports_method("textDocument/formatting") then
+      vim.api.nvim_clear_autocmds({ group = fmt_augroup, buffer = bufnr })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = fmt_augroup,
+        buffer = bufnr,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = bufnr })
+        end,
+      })
     end
   end,
 })

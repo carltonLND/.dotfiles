@@ -7,29 +7,29 @@ end
 local first_install = packer_setup.first_install
 local packer = packer_setup.packer
 
-vim.cmd [[
+vim.cmd([[
   augroup packer_config_cj
     autocmd!
     autocmd BufWritePost plugins.lua source <afile> | PackerSync
   augroup end
-]]
+]])
 
 return packer.startup(function(use)
   -- Required
-  use "wbthomason/packer.nvim"
-  use "lewis6991/impatient.nvim"
+  use("wbthomason/packer.nvim")
+  use("lewis6991/impatient.nvim")
 
   -- Treesitter
-  use {
+  use({
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
     config = function()
-      require "cj.plugins.treesitter"
+      require("cj.plugins.treesitter")
     end,
-  }
+  })
 
   -- Telescope
-  use {
+  use({
     "nvim-telescope/telescope.nvim",
     requires = {
       "nvim-lua/plenary.nvim",
@@ -39,17 +39,17 @@ return packer.startup(function(use)
       },
     },
     config = function()
-      require "cj.plugins.telescope"
+      require("cj.plugins.telescope")
     end,
     after = "telescope-fzf-native.nvim",
     event = "BufWinEnter",
-  }
+  })
 
   -- Nvim-tree
-  use {
+  use({
     "kyazdani42/nvim-tree.lua",
     config = function()
-      require "cj.plugins/nvim-tree"
+      require("cj.plugins/nvim-tree")
     end,
     cmd = {
       "NvimTreeClipboard",
@@ -59,10 +59,10 @@ return packer.startup(function(use)
       "NvimTreeFindFile",
       "NvimTreeRefresh",
     },
-  }
+  })
 
   -- Lsp
-  use {
+  use({
     "neovim/nvim-lspconfig",
     requires = {
       "williamboman/nvim-lsp-installer",
@@ -78,7 +78,7 @@ return packer.startup(function(use)
           {
             "windwp/nvim-autopairs",
             config = function()
-              require "cj.plugins/auto-pairs"
+              require("cj.plugins/auto-pairs")
             end,
             after = "nvim-cmp",
           },
@@ -87,12 +87,12 @@ return packer.startup(function(use)
       "jose-elias-alvarez/null-ls.nvim",
     },
     config = function()
-      require "cj.plugins.lsp"
+      require("cj.plugins.lsp")
     end,
-  }
+  })
 
   -- Git signs
-  use {
+  use({
     "lewis6991/gitsigns.nvim",
     requires = {
       "nvim-lua/plenary.nvim",
@@ -100,49 +100,49 @@ return packer.startup(function(use)
     config = function()
       require("gitsigns").setup()
     end,
-  }
+  })
 
   -- Comment
-  use {
+  use({
     "numToStr/Comment.nvim",
     config = function()
-      require "cj.plugins.comment-nvim"
+      --require "cj.plugins.comment-nvim"
+      require("Comment").setup()
     end,
-    event = "BufWinEnter",
-  }
+  })
 
   -- Colorizer
-  use {
+  use({
     "norcalli/nvim-colorizer.lua",
     config = function()
-      vim.cmd "set termguicolors"
+      vim.cmd("set termguicolors")
       require("colorizer").setup()
     end,
-  }
+  })
 
   -- Lightline
-  use {
+  use({
     "itchyny/lightline.vim",
     requires = {
       "kyazdani42/nvim-web-devicons",
       opt = true,
     },
     config = function()
-      require "cj.plugins.lightline"
+      require("cj.plugins.lightline")
     end,
-  }
+  })
 
   -- Dashboard
-  use {
+  use({
     "glepnir/dashboard-nvim",
     config = function()
-      require "cj.plugins.dashboard"
+      require("cj.plugins.dashboard")
     end,
-  }
+  })
 
   -- Theme
-  use "sainnhe/gruvbox-material"
-  use "folke/tokyonight.nvim"
+  use("sainnhe/gruvbox-material")
+  use("folke/tokyonight.nvim")
 
   if first_install then
     packer.sync()

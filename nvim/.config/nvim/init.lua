@@ -1,14 +1,15 @@
 -- Neovim Config
 -- @ github.com/carltonlnd/.dotfiles
 
-local NVIM_VERSION = "0.6"
+local NVIM_VERSION = "0.8"
 
+-- TODO: THIS IS CURRENTLY NOT WORKING AS INTENDED
 -- Check current Neovim version
 if vim.call("has", ("nvim-%s"):format(NVIM_VERSION)) ~= 1 then
   vim.api.nvim_notify(("Neovim version must be at least %s or above."):format(NVIM_VERSION), vim.log.levels.WARN, {})
   if not next(vim.api.nvim_list_uis()) then
     vim.api.nvim_notify("Plugins not installed, please update neovim.", vim.log.levels.WARN, {})
-    vim.cmd "quitall!"
+    vim.cmd("quitall!")
   end
 end
 
