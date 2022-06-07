@@ -6,7 +6,7 @@ vim.g.dashboard_session_directory = vim.fn.stdpath("data") .. "/sessions"
 vim.g.dashboard_custom_section = {
   find_file = {
     description = { ("  Find File              %s ff"):format(leader) },
-    command = "Telescope find_files",
+    command = "DashboardFindFile",
   },
   file_explorer = {
     description = { ("  File Tree              %s e "):format(leader) },

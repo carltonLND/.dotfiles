@@ -42,7 +42,6 @@ return packer.startup(function(use)
       require("cj.plugins.telescope")
     end,
     after = "telescope-fzf-native.nvim",
-    event = "BufWinEnter",
   })
 
   -- Nvim-tree
@@ -141,8 +140,8 @@ return packer.startup(function(use)
   })
 
   -- Theme
-  use("sainnhe/gruvbox-material")
   use("folke/tokyonight.nvim")
+  use("folke/lsp-colors.nvim")
 
   if first_install then
     packer.sync()
