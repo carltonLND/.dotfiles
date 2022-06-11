@@ -1,8 +1,3 @@
-local g = vim.g
-
--- Additional vim options
-g.nvim_tree_add_trailing = 1
-
 -- Setup nvim-tree
 require("nvim-tree").setup({
   actions = {
@@ -16,6 +11,7 @@ require("nvim-tree").setup({
     relativenumber = true,
   },
   renderer = {
+    add_trailing = true,
     indent_markers = {
       enable = true,
     },

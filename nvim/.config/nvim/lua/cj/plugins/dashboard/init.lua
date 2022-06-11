@@ -1,23 +1,35 @@
 local leader = require("cj.utils").get_leader()
+local dashboard = require("dashboard")
 
-vim.g.dashboard_default_executive = "telescope"
-vim.g.dashboard_session_directory = vim.fn.stdpath("data") .. "/sessions"
-
-vim.g.dashboard_custom_section = {
-  find_file = {
-    description = { ("  Find File              %s ff"):format(leader) },
-    command = "DashboardFindFile",
+dashboard.custom_header = {
+  "",
+  "",
+  "",
+  " ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗",
+  " ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║",
+  " ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║",
+  " ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║",
+  " ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║",
+  " ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝",
+  "",
+  "",
+  "",
+}
+dashboard.custom_center = {
+  {
+    icon = "  ",
+    desc = "Find File               ",
+    shortcut = leader .. " ff",
   },
-  file_explorer = {
-    description = { ("  File Tree              %s e "):format(leader) },
-    command = "NvimTreeToggle",
+  {
+    icon = "  ",
+    desc = "File Tree               ",
+    shortcut = leader .. " e",
   },
-  find_string = {
-    description = { ("  Grep String            %s fg"):format(leader) },
-    command = "Telescope grep_string",
+  {
+    icon = "  ",
+    desc = "Live Grep               ",
+    shortcut = leader .. " fg",
   },
-  load_session = {
-    description = { ("缾 Load Session           %s sl"):format(leader) },
-    command = "SessionLoad",
-  },
+  { desc = "" },
 }
