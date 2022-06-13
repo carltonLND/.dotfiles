@@ -27,7 +27,11 @@ map("v", ">", ">gv")
 map("v", "p", '"_dP')
 
 -- Normal Mode Plugins
+map("n", "<leader>t", "<cmd>FloatermToggle!<cr>")
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
 map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
 map("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
 map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>")
+
+-- Terminal Mode Plugins
+map("t", "<Esc>", "<cmd>FloatermToggle!<cr>")

@@ -90,6 +90,9 @@ return packer.startup(function(use)
     end,
   })
 
+  -- Floating terminal window
+  use("voldikss/vim-floaterm")
+
   -- Git signs
   use({
     "lewis6991/gitsigns.nvim",
