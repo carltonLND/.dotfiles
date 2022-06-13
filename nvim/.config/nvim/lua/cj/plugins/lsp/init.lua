@@ -113,6 +113,7 @@ null_ls.setup({
   sources = {
     null_ls.builtins.formatting.prettierd,
     null_ls.builtins.formatting.black,
+    null_ls.builtins.formatting.xmllint,
     null_ls.builtins.formatting.stylua.with({
       extra_args = { "--config-path", vim.fn.expand("~/.config/stylua/stylua.toml") },
     }),
