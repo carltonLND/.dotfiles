@@ -15,9 +15,10 @@ dashboard.custom_header = {
   "",
   "",
 }
+
 dashboard.custom_center = {
   {
-    icon = "  ",
+    icon = "   ",
     desc = "Find File               ",
     shortcut = leader .. " ff",
   },
@@ -27,9 +28,8 @@ dashboard.custom_center = {
     shortcut = leader .. " e",
   },
   {
-    icon = "  ",
-    desc = "Live Grep               ",
-    shortcut = leader .. " fg",
+    icon = "   ",
+    desc = "Load Session            ",
+    shortcut = leader .. " sc",
   },
-  { desc = "" },
 }

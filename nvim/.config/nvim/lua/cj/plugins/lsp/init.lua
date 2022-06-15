@@ -122,6 +122,7 @@ null_ls.setup({
     }),
     null_ls.builtins.code_actions.gitsigns,
   },
+
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
       vim.api.nvim_clear_autocmds({ group = fmt_augroup, buffer = bufnr })

@@ -91,7 +91,24 @@ return packer.startup(function(use)
   })
 
   -- Floating terminal window
-  use("voldikss/vim-floaterm")
+  use({
+    "voldikss/vim-floaterm",
+    config = function()
+      require("cj.plugins.floaterm")
+    end,
+    cmd = { "FloatermNew", "FloatermToggle" },
+  })
+
+  -- Session manager
+  use({
+    "Shatur/neovim-session-manager",
+    requires = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      require("cj.plugins.session-manager")
+    end,
+  })
 
   -- Git signs
   use({

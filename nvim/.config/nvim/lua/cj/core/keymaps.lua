@@ -27,11 +27,18 @@ map("v", ">", ">gv")
 map("v", "p", '"_dP')
 
 -- Normal Mode Plugins
-map("n", "<leader>t", "<cmd>FloatermToggle!<cr>")
+map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>")
+map("n", "<leader>tn", "<cmd>FloatermNew!<cr>")
+map("n", "<leader>tt", "<cmd>FloatermToggle!<cr>")
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
 map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
 map("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
-map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>")
+map("n", "<leader>sc", "<cmd>SessionManager! load_current_dir_session<cr>")
+map("n", "<leader>sl", "<cmd>SessionManager! load_session<cr>")
 
 -- Terminal Mode Plugins
-map("t", "<Esc>", "<cmd>FloatermToggle!<cr>")
+map("t", "<Esc><Esc>", "<cmd>FloatermToggle!<cr>")
+map("t", "<Esc>n", "<cmd>FloatermNew!<cr>")
+map("t", "<Esc>q", "<cmd>FloatermKill!<cr>")
+map("t", "<Esc>h", "<cmd>FloatermPrev<cr>")
+map("t", "<Esc>l", "<cmd>FloatermNext<cr>")
