@@ -143,8 +143,8 @@ return packer.startup(function(use)
   use({
     "itchyny/lightline.vim",
     requires = {
-      "kyazdani42/nvim-web-devicons",
-      opt = true,
+      { "kyazdani42/nvim-web-devicons" },
+      { "itchyny/vim-gitbranch" },
     },
     config = function()
       require("cj.plugins.lightline")
