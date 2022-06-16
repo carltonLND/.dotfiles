@@ -6,9 +6,12 @@ require("nvim-tree").setup({
     },
   },
   view = {
+    adaptive_size = true,
     width = 35,
     number = true,
+    hide_root_folder = true,
     relativenumber = true,
+    signcolumn = "no",
   },
   renderer = {
     add_trailing = true,

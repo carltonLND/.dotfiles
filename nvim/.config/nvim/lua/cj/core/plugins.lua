@@ -51,14 +51,6 @@ return packer.startup(function(use)
     config = function()
       require("cj.plugins/nvim-tree")
     end,
-    cmd = {
-      "NvimTreeClipboard",
-      "NvimTreeClose",
-      "NvimTreeOpen",
-      "NvimTreeToggle",
-      "NvimTreeFindFile",
-      "NvimTreeRefresh",
-    },
   })
 
   -- Lsp
