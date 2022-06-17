@@ -53,19 +53,15 @@ local function on_attach(client, bufnr)
 
   buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
   buf_set_keymap("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
+  buf_set_keymap("n", "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
+  buf_set_keymap("n", "<leader>dn", "<cmd>lua vim.diagnostic.goto_next()<cr>", opts)
+  buf_set_keymap("n", "<leader>dp", "<cmd>lua vim.diagnostic.goto_prev()<cr>", opts)
   buf_set_keymap("n", "<leader>dl", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
 
   -- Disable formatting (Using null-ls)
   client.server_capabilities.documentFormattingProvider = false
   client.server_capabilities.documentRangeFormattingProvider = false
   client.server_capabilities.documentOnTypeFormattingProvider = {}
-
-  -- Disable virtual text when not ERROR severity
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = {
-      severity = vim.diagnostic.severity.ERROR,
-    },
-  })
 end
 
 -- Setup nvim-lsp-installer
@@ -106,12 +102,19 @@ require("nvim-lsp-installer").on_server_ready(function(server)
   server:setup(server_options)
 end)
 
-local diag_config = {
-  -- virtual_text = false,
+local config = {
+  virtual_text = false,
   update_in_insert = true,
+  float = {
+    focusable = false,
+    style = "minimal",
+    border = "rounded",
+    header = "",
+    prefix = "",
+  },
 }
 
-vim.diagnostic.config(diag_config)
+vim.diagnostic.config(config)
 
 -- Setup null-ls formatting and code actions
 local null_ls = require("null-ls")
