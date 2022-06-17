@@ -106,6 +106,13 @@ require("nvim-lsp-installer").on_server_ready(function(server)
   server:setup(server_options)
 end)
 
+local diag_config = {
+  -- virtual_text = false,
+  update_in_insert = true,
+}
+
+vim.diagnostic.config(diag_config)
+
 -- Setup null-ls formatting and code actions
 local null_ls = require("null-ls")
 local fmt_augroup = vim.api.nvim_create_augroup("LspFormatting", {})

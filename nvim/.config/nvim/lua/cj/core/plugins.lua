@@ -144,15 +144,17 @@ return packer.startup(function(use)
     end,
   })
 
+  -- TODO Only works after running PackerSync, not on startup
   -- Bufferline
-  -- use({
-  --   "akinsho/bufferline.nvim",
-  --   tag = "v2.*",
-  --   requires = "kyazdani42/nvim-web-devicons",
-  --   config = function()
-  --     require("bufferline").setup({})
-  --   end,
-  -- })
+  use({
+    "akinsho/bufferline.nvim",
+    tag = "v2.*",
+    requires = "kyazdani42/nvim-web-devicons",
+    event = "VimEnter",
+    config = function()
+      require("cj.plugins.bufferline")
+    end,
+  })
 
   -- Quickscope
   use({
