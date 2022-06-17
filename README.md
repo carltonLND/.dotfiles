@@ -8,8 +8,9 @@
 
 ## KNOWN ISSUES
 
-1. Fish config install is a little big clunky
+1. Install script does not check neovim version
 
 ## TODO
 
-TBD
+1. Perform better pre-installation checks ( Most notably prerequistes and their versions )
+2. Fix backups and stowing packages when directory already exists ( E.g. ~/.config/nvim/ )
