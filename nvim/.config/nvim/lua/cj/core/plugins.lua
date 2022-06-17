@@ -49,7 +49,7 @@ return packer.startup(function(use)
   use({
     "kyazdani42/nvim-tree.lua",
     config = function()
-      require("cj.plugins/nvim-tree")
+      require("cj.plugins.nvim-tree")
     end,
   })
 
@@ -70,7 +70,7 @@ return packer.startup(function(use)
           {
             "windwp/nvim-autopairs",
             config = function()
-              require("cj.plugins/auto-pairs")
+              require("cj.plugins.auto-pairs")
             end,
             after = "nvim-cmp",
           },
@@ -141,6 +141,24 @@ return packer.startup(function(use)
     },
     config = function()
       require("cj.plugins.lightline")
+    end,
+  })
+
+  -- Bufferline
+  -- use({
+  --   "akinsho/bufferline.nvim",
+  --   tag = "v2.*",
+  --   requires = "kyazdani42/nvim-web-devicons",
+  --   config = function()
+  --     require("bufferline").setup({})
+  --   end,
+  -- })
+
+  -- Quickscope
+  use({
+    "unblevable/quick-scope",
+    config = function()
+      require("cj.plugins.quick-scope")
     end,
   })
 

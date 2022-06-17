@@ -12,3 +12,8 @@ vim.g.tokyonight_italic_comments = false
 vim.g.tokyonight_italic_keywords = false
 
 vim.cmd("colorscheme tokyonight")
+
+vim.cmd([[
+  highlight QuickScopePrimary guifg='#af4f5f' gui=underline ctermfg=155 cterm=underline
+  highlight QuickScopeSecondary guifg='#dacc49' gui=underline ctermfg=81 cterm=underline
+]])
