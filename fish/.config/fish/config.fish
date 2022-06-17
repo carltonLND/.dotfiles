@@ -20,6 +20,12 @@ set -U nvm_default_version latest
 alias vi='nvim'
 alias vim='nvim'
 alias activate='source env/bin/activate.fish'
+alias py='python3'
+
+# add alias to windows home directory if using wsl
+if test -d /mnt/c/Users/CJ
+  alias cj='cd /mnt/c/Users/CJ'
+end
 
 # tokyonight colorscheme
 set -l foreground c0caf5
