@@ -38,6 +38,12 @@ return packer.startup(function(use)
         "nvim-telescope/telescope-fzf-native.nvim",
         run = "make",
       },
+      {
+        "rcarriga/nvim-notify",
+        config = function()
+          vim.notify = require("notify")
+        end,
+      },
     },
     config = function()
       require("cj.plugins.telescope")
