@@ -16,7 +16,7 @@ map("n", "<C-Up>", "<cmd>resize +2<cr>")
 map("n", "<C-Down>", "<cmd>resize -2<cr>")
 map("n", "<C-Left>", "<cmd>vertical resize -2<cr>")
 map("n", "<C-Right>", "<cmd>vertical resize +2<cr>")
-map("n", "q", "") -- I fat-finger q too much and don't use the feature
+map("n", "q", "") -- I fat-finger q too much and don't use the feature currently
 
 -- Insert Mode
 map("i", "<C-Enter>", "<Esc>o")
@@ -34,10 +34,12 @@ map("n", "<leader>tt", "<cmd>FloatermToggle!<cr>")
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
 map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
 map("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
+map("n", "<leader>fp", "<cmd>Telescope projects theme=dropdown<cr>")
 map("n", "<leader>fn", "<cmd>Telescope notify theme=dropdown<cr>")
 map("n", "<leader>f.", "<cmd>Telescope find_files cwd=~/.config/nvim<cr>")
-map("n", "<leader>sc", "<cmd>SessionManager! load_current_dir_session<cr>")
+map("n", "<leader>sc", "<cmd>SessionManager! load_last_session<cr>")
 map("n", "<leader>sl", "<cmd>SessionManager! load_session<cr>")
+map("n", "<leader>sd", "<cmd>SessionManager! delete_session<cr>")
 map("n", "<leader>pm", "<cmd>MarkdownPreviewToggle<cr>")
 
 -- Terminal Mode Plugins

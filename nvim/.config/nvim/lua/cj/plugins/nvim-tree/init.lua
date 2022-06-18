@@ -1,5 +1,7 @@
 -- Setup nvim-tree
 require("nvim-tree").setup({
+  respect_buf_cwd = true,
+  update_cwd = true,
   actions = {
     open_file = {
       quit_on_open = true,

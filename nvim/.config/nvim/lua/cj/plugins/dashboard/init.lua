@@ -19,17 +19,27 @@ dashboard.custom_header = {
 dashboard.custom_center = {
   {
     icon = "   ",
-    desc = "Find File               ",
+    desc = "Find File                   ",
     shortcut = leader .. " ff",
   },
   {
     icon = "  ",
-    desc = "File Tree               ",
+    desc = "File Tree                   ",
     shortcut = leader .. " e",
   },
   {
     icon = "   ",
-    desc = "Load Session            ",
+    desc = "Previous Session            ",
     shortcut = leader .. " sc",
+  },
+  {
+    icon = "   ",
+    desc = "Recent Projects             ",
+    shortcut = leader .. " fp",
+  },
+  {
+    icon = "   ",
+    desc = "Edit Config                 ",
+    shortcut = leader .. " f.",
   },
 }

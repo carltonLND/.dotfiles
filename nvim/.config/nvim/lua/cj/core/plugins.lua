@@ -41,7 +41,12 @@ return packer.startup(function(use)
       {
         "rcarriga/nvim-notify",
         config = function()
-          vim.notify = require("notify")
+          vim.opt.termguicolors = true
+          local notify = require("notify")
+          notify.setup({
+            background_color = "#000000",
+          })
+          vim.notify = notify
         end,
       },
     },
@@ -106,6 +111,14 @@ return packer.startup(function(use)
     },
     config = function()
       require("cj.plugins.session-manager")
+    end,
+  })
+
+  -- Lua
+  use({
+    "ahmedkhalf/project.nvim",
+    config = function()
+      require("cj.plugins.project")
     end,
   })
 
