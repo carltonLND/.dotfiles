@@ -38,6 +38,7 @@ map("n", "<leader>fn", "<cmd>Telescope notify theme=dropdown<cr>")
 map("n", "<leader>f.", "<cmd>Telescope find_files cwd=~/.config/nvim<cr>")
 map("n", "<leader>sc", "<cmd>SessionManager! load_current_dir_session<cr>")
 map("n", "<leader>sl", "<cmd>SessionManager! load_session<cr>")
+map("n", "<leader>pm", "<cmd>MarkdownPreviewToggle<cr>")
 
 -- Terminal Mode Plugins
 map("t", "<Esc><Esc>", "<cmd>FloatermToggle!<cr>")
