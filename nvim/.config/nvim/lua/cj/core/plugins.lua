@@ -150,7 +150,6 @@ return packer.startup(function(use)
     end,
   })
 
-  -- TODO Only works after running PackerSync, not on startup
   -- Bufferline
   use({
     "akinsho/bufferline.nvim",
@@ -167,6 +166,14 @@ return packer.startup(function(use)
     "unblevable/quick-scope",
     config = function()
       require("cj.plugins.quick-scope")
+    end,
+  })
+
+  -- Markdown preview
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = function()
+      vim.fn["mkdp#util#install"]()
     end,
   })
 

@@ -7,17 +7,18 @@ cmp.setup({
       with_text = false,
     }),
   },
-
   snippet = {
     expand = function(args)
       require("luasnip").lsp_expand(args.body)
     end,
   },
-
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
   mapping = cmp.mapping.preset.insert({
     ["<TAB>"] = cmp.mapping.confirm({ select = true }),
   }),
-
   sources = cmp.config.sources({
     { name = "nvim_lua" },
     { name = "nvim_lsp" },
@@ -25,7 +26,6 @@ cmp.setup({
   }, {
     { name = "buffer" },
   }),
-
   experimental = {
     ghost_text = true,
   },
