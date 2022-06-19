@@ -6,6 +6,10 @@
 4. Make install.sh executable `chmod +x install.sh`
 5. Run installation script `./install.sh`
 
+## Errors
+
+1. Install script hangs on installing neovim plugins
+
 ## Bugs
 
 1. Install script does not check neovim version
