@@ -21,6 +21,6 @@ vim.g.lightline = {
   },
 }
 
-vim.cmd("highlight LightlineMiddle_command ctermbg=NONE guibg=NONE")
-vim.cmd("highlight LightlineMiddle_normal ctermbg=NONE guibg=NONE")
-vim.cmd("highlight LightlineMiddle_insert ctermbg=NONE guibg=NONE")
+vim.cmd "highlight LightlineMiddle_command ctermbg=NONE guibg=NONE"
+vim.cmd "highlight LightlineMiddle_normal ctermbg=NONE guibg=NONE"
+vim.cmd "highlight LightlineMiddle_insert ctermbg=NONE guibg=NONE"

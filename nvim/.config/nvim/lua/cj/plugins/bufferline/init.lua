@@ -1,4 +1,4 @@
-require("bufferline").setup({
+require("bufferline").setup {
   options = {
     offsets = { { filetype = "NvimTree", text = "File Explorer" } },
     show_buffer_close_icons = false,
@@ -6,4 +6,4 @@ require("bufferline").setup({
     show_tab_indicators = false,
     diagnostics = "nvim_lsp",
   },
-})
+}

@@ -1,5 +1,5 @@
 -- Setup nvim-tree
-require("nvim-tree").setup({
+require("nvim-tree").setup {
   respect_buf_cwd = true,
   update_cwd = true,
   actions = {
@@ -21,11 +21,11 @@ require("nvim-tree").setup({
       enable = true,
     },
   },
-})
+}
 
-vim.cmd([[
+vim.cmd [[
   augroup nvim_tree_auto_close
     autocmd!
     autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
   augroup end
-]])
+]]

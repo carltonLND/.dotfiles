@@ -1,11 +1,11 @@
 -- Setup nvim-cmp
-local cmp = require("cmp")
-local lspkind = require("lspkind")
-cmp.setup({
+local cmp = require "cmp"
+local lspkind = require "lspkind"
+cmp.setup {
   formatting = {
-    format = lspkind.cmp_format({
+    format = lspkind.cmp_format {
       with_text = false,
-    }),
+    },
   },
   snippet = {
     expand = function(args)
@@ -16,9 +16,9 @@ cmp.setup({
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
   },
-  mapping = cmp.mapping.preset.insert({
-    ["<TAB>"] = cmp.mapping.confirm({ select = true }),
-  }),
+  mapping = cmp.mapping.preset.insert {
+    ["<TAB>"] = cmp.mapping.confirm { select = true },
+  },
   sources = cmp.config.sources({
     { name = "nvim_lua" },
     { name = "nvim_lsp" },
@@ -29,7 +29,7 @@ cmp.setup({
   experimental = {
     ghost_text = true,
   },
-})
+}
 
 cmp.setup.cmdline("/", {
   sources = {
@@ -38,7 +38,7 @@ cmp.setup.cmdline("/", {
 })
 
 -- Update native lsp with nvim-cmp capabilities
-local cmp_nvim_lsp = require("cmp_nvim_lsp")
+local cmp_nvim_lsp = require "cmp_nvim_lsp"
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
@@ -117,32 +117,32 @@ local config = {
 vim.diagnostic.config(config)
 
 -- Setup null-ls formatting and code actions
-local null_ls = require("null-ls")
+local null_ls = require "null-ls"
 local fmt_augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-null_ls.setup({
+null_ls.setup {
   sources = {
     null_ls.builtins.formatting.prettierd,
     null_ls.builtins.formatting.black,
     null_ls.builtins.formatting.xmllint,
-    null_ls.builtins.formatting.stylua.with({
-      extra_args = { "--config-path", vim.fn.expand("~/.config/stylua/stylua.toml") },
-    }),
-    null_ls.builtins.formatting.rustfmt.with({
-      extra_args = { "--config-path", vim.fn.expand("~/.config/rustfmt/") },
-    }),
+    null_ls.builtins.formatting.stylua.with {
+      extra_args = { "--config-path", vim.fn.expand "~/.config/stylua/stylua.toml" },
+    },
+    null_ls.builtins.formatting.rustfmt.with {
+      extra_args = { "--config-path", vim.fn.expand "~/.config/rustfmt/" },
+    },
     null_ls.builtins.code_actions.gitsigns,
   },
 
   on_attach = function(client, bufnr)
-    if client.supports_method("textDocument/formatting") then
-      vim.api.nvim_clear_autocmds({ group = fmt_augroup, buffer = bufnr })
+    if client.supports_method "textDocument/formatting" then
+      vim.api.nvim_clear_autocmds { group = fmt_augroup, buffer = bufnr }
       vim.api.nvim_create_autocmd("BufWritePre", {
         group = fmt_augroup,
         buffer = bufnr,
         callback = function()
-          vim.lsp.buf.format({ bufnr = bufnr })
+          vim.lsp.buf.format { bufnr = bufnr }
         end,
       })
     end
   end,
-})
+}

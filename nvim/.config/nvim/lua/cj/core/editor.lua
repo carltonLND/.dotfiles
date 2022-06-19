@@ -10,7 +10,7 @@ local options = {
   signcolumn = "yes:1",
   swapfile = false,
   backup = false,
-  undodir = vim.fn.stdpath("config") .. "/undodir/",
+  undodir = vim.fn.stdpath "config" .. "/undodir/",
   undofile = true,
   updatetime = 300,
   incsearch = true,
@@ -36,11 +36,11 @@ for option, value in pairs(options) do
   vim.opt[option] = value
 end
 
-vim.cmd([[
+vim.cmd [[
   set formatoptions-=c formatoptions-=r formatoptions-=o
   set iskeyword+=-
   set clipboard+=unnamedplus
-]])
+]]
 
 -- Providers
 vim.g.loaded_python_provider = 0

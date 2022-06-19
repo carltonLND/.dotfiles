@@ -1,5 +1,5 @@
 local leader = require("cj.utils").get_leader()
-local dashboard = require("dashboard")
+local dashboard = require "dashboard"
 
 dashboard.custom_header = {
   "",

@@ -1,6 +1,6 @@
 -- Setup telescope
-local telescope = require("telescope")
-telescope.setup({
+local telescope = require "telescope"
+telescope.setup {
   defaults = {
     file_ignore_patterns = { ".git/" },
     vimgrep_arguments = {
@@ -24,13 +24,13 @@ telescope.setup({
   },
   extensions = {
     ["ui-select"] = {
-      require("telescope.themes").get_dropdown({}),
+      require("telescope.themes").get_dropdown {},
     },
   },
-})
+}
 
 -- Load extensions
-telescope.load_extension("fzf")
-telescope.load_extension("ui-select")
-telescope.load_extension("notify")
-telescope.load_extension("projects")
+telescope.load_extension "fzf"
+telescope.load_extension "ui-select"
+telescope.load_extension "notify"
+telescope.load_extension "projects"
