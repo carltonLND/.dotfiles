@@ -1,6 +1,10 @@
 -- Setup nvim-cmp
 local cmp = require "cmp"
 local lspkind = require "lspkind"
+
+local completion_window = cmp.config.window.bordered()
+completion_window.winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:Visual,Search:None"
+
 cmp.setup {
   formatting = {
     format = lspkind.cmp_format {
@@ -13,8 +17,8 @@ cmp.setup {
     end,
   },
   window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
+    completion = completion_window,
+    documentation = completion_window,
   },
   mapping = cmp.mapping.preset.insert {
     ["<TAB>"] = cmp.mapping.confirm { select = true },
@@ -57,6 +61,10 @@ local function on_attach(client, bufnr)
   buf_set_keymap("n", "<leader>dn", "<cmd>lua vim.diagnostic.goto_next()<cr>", opts)
   buf_set_keymap("n", "<leader>dp", "<cmd>lua vim.diagnostic.goto_prev()<cr>", opts)
   buf_set_keymap("n", "<leader>dl", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
+
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = "rounded",
+  })
 
   -- Disable formatting (Using null-ls)
   client.server_capabilities.documentFormattingProvider = false

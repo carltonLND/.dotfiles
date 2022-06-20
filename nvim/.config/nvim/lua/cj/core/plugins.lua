@@ -42,11 +42,10 @@ return packer.startup(function(use)
         "rcarriga/nvim-notify",
         config = function()
           vim.opt.termguicolors = true
-          local notify = require "notify"
-          notify.setup {
+          require("notify").setup {
             background_color = "#000000",
           }
-          vim.notify = notify
+          vim.notify = require "notify"
         end,
       },
     },
