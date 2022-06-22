@@ -111,6 +111,7 @@ require("nvim-lsp-installer").on_server_ready(function(server)
 end)
 
 local config = {
+  underline = false,
   virtual_text = false,
   update_in_insert = true,
   float = {
