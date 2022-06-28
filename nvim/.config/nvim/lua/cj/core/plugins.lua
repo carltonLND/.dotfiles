@@ -22,7 +22,6 @@ return packer.startup(function(use)
   -- Treesitter
   use {
     "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
     config = function()
       require "cj.plugins.treesitter"
     end,
@@ -41,14 +40,12 @@ return packer.startup(function(use)
       {
         "rcarriga/nvim-notify",
         config = function()
-          vim.notify = require "notify"
-          vim.cmd [[
-            highlight link NotifyERRORBody NormalFloat
-            highlight link NotifyWARNBody NormalFloat
-            highlight link NotifyINFOBody NormalFloat
-            highlight link NotifyDEBUGBody NormalFloat
-            highlight link NotifyTRACEBody NormalFloat
-          ]]
+          local notify = require "notify"
+          vim.opt.termguicolors = true
+          notify.setup {
+            background_colour = "NormalFloat",
+          }
+          vim.notify = notify
         end,
       },
     },
@@ -148,7 +145,7 @@ return packer.startup(function(use)
   use {
     "norcalli/nvim-colorizer.lua",
     config = function()
-      vim.cmd "set termguicolors"
+      vim.opt.termguicolors = true
       require("colorizer").setup()
     end,
   }
@@ -189,6 +186,9 @@ return packer.startup(function(use)
     "iamcco/markdown-preview.nvim",
     run = function()
       vim.fn["mkdp#util#install"]()
+    end,
+    config = function()
+      vim.g.mkdp_auto_close = 0
     end,
   }
 
