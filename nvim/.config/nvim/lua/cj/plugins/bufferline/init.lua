@@ -11,5 +11,44 @@ require("bufferline").setup {
     buffer_selected = {
       gui = "none",
     },
+    diagnostic_selected = {
+      gui = "none",
+    },
+    info_selected = {
+      gui = "none",
+    },
+    info_diagnostic_selected = {
+      gui = "none",
+    },
+    warning_selected = {
+      gui = "none",
+    },
+    warning_diagnostic_selected = {
+      gui = "none",
+    },
+    error_selected = {
+      gui = "none",
+    },
+    error_diagnostic_selected = {
+      gui = "none",
+    },
+    duplicate_selected = {
+      gui = "none",
+    },
+    duplicate_visible = {
+      gui = "none",
+    },
+    duplicate = {
+      gui = "none",
+    },
+    pick_selected = {
+      gui = "none",
+    },
+    pick_visible = {
+      gui = "none",
+    },
+    pick = {
+      gui = "none",
+    },
   },
 }

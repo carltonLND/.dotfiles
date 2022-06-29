@@ -112,8 +112,9 @@ end)
 
 local config = {
   underline = false,
-  virtual_text = false,
-  update_in_insert = true,
+  virtual_text = {
+    severity = vim.diagnostic.severity.ERROR,
+  },
   float = {
     focusable = false,
     style = "minimal",

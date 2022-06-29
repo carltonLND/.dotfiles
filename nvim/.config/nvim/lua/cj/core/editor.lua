@@ -37,7 +37,7 @@ for option, value in pairs(options) do
 end
 
 vim.cmd [[
-  set formatoptions-=c formatoptions-=r formatoptions-=o
+  set formatoptions-=cro
   set iskeyword+=-
   set clipboard+=unnamedplus
 ]]
