@@ -17,6 +17,7 @@ map("n", "<C-Down>", "<cmd>resize -2<cr>")
 map("n", "<C-Left>", "<cmd>vertical resize -2<cr>")
 map("n", "<C-Right>", "<cmd>vertical resize +2<cr>")
 map("n", "q", "") -- I fat-finger q too much and don't use the feature currently
+map("n", "Q", "") -- As above
 
 -- Insert Mode
 map("i", "<C-c>", "<Esc>")
