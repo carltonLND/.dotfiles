@@ -19,8 +19,7 @@ map("n", "<C-Right>", "<cmd>vertical resize +2<cr>")
 
 -- Insert Mode
 map("i", "<C-c>", "<Esc>")
-map("i", "<C-Enter>", "<Esc>o")
-map("i", "<M-Enter>", "<Esc>O")
+map("i", "<M-Enter>", "<Esc>o")
 
 -- Visual Mode
 map("v", "<", "<gv")
