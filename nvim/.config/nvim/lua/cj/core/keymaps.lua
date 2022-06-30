@@ -19,13 +19,10 @@ map("n", "<C-Right>", "<cmd>vertical resize +2<cr>")
 map("n", "q", "") -- I fat-finger q too much and don't use the feature currently
 
 -- Insert Mode
-<<<<<<< HEAD
 map("i", "<C-c>", "<Esc>")
 map("i", "<M-Enter>", "<Esc>o")
-=======
 map("i", "<C-Enter>", "<Esc>o")
 map("i", "<M-Enter>", "<Esc>O")
->>>>>>> 074dcb99318a5dd58f5dc7e85382eacc18630d70
 
 -- Visual Mode
 map("v", "<", "<gv")
