@@ -59,7 +59,7 @@ local function on_attach(client, bufnr)
   buf_set_keymap("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
   buf_set_keymap("n", "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
   buf_set_keymap("n", "<leader>dn", "<cmd>lua vim.diagnostic.goto_next()<cr>", opts)
-  buf_set_keymap("n", "<leader>dp", "<cmd>lua vim.diagnostic.goto_prev()<cr>", opts)
+  buf_set_keymap("n", "<leader>dN", "<cmd>lua vim.diagnostic.goto_prev()<cr>", opts)
   buf_set_keymap("n", "<leader>dl", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
 
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
@@ -112,9 +112,12 @@ end)
 
 local config = {
   underline = false,
-  virtual_text = {
-    severity = vim.diagnostic.severity.ERROR,
-  },
+  -- I can't decide whether i like this or not...
+  -- virtual_text = {
+  --   severity = vim.diagnostic.severity.ERROR,
+  -- },
+  virtual_text = false,
+  update_in_insert = true,
   float = {
     focusable = false,
     style = "minimal",

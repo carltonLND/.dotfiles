@@ -44,6 +44,7 @@ map("n", "<leader>sc", "<cmd>SessionManager! load_last_session<cr>")
 map("n", "<leader>sl", "<cmd>SessionManager! load_session<cr>")
 map("n", "<leader>sd", "<cmd>SessionManager! delete_session<cr>")
 map("n", "<leader>pm", "<cmd>MarkdownPreviewToggle<cr>")
+map("n", "<leader>Gd", "<cmd>Gitsigns diffthis<cr>")
 
 -- Terminal Mode Plugins
 map("t", "<Esc><Esc>", "<cmd>FloatermToggle!<cr>")

@@ -1,11 +1,17 @@
 require("bufferline").setup {
   options = {
     offsets = { { filetype = "NvimTree", text = "File Explorer" } },
-    separator_style = "thick",
+    separator_style = "slant",
     show_buffer_close_icons = false,
     show_close_icon = false,
     show_tab_indicators = false,
     diagnostics = "nvim_lsp",
+    diagnostics_update_in_insert = true,
+    diagnostics_indicator = function(_, level)
+      if level == "error" then
+        return " " .. ""
+      end
+    end,
   },
   highlights = {
     buffer_selected = {
