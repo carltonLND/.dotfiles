@@ -22,7 +22,6 @@ return packer.startup(function(use)
   -- Treesitter
   use {
     "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
     config = function()
       require "cj.plugins.treesitter"
     end,
@@ -33,32 +32,35 @@ return packer.startup(function(use)
     "nvim-telescope/telescope.nvim",
     requires = {
       "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-ui-select.nvim",
       {
         "nvim-telescope/telescope-fzf-native.nvim",
         run = "make",
+      },
+      {
+        "rcarriga/nvim-notify",
+        config = function()
+          local notify = require "notify"
+          vim.opt.termguicolors = true
+          notify.setup {
+            background_colour = "NormalFloat",
+          }
+          vim.notify = notify
+        end,
       },
     },
     config = function()
       require "cj.plugins.telescope"
     end,
     after = "telescope-fzf-native.nvim",
-    event = "BufWinEnter",
   }
 
   -- Nvim-tree
   use {
     "kyazdani42/nvim-tree.lua",
     config = function()
-      require "cj.plugins/nvim-tree"
+      require "cj.plugins.nvim-tree"
     end,
-    cmd = {
-      "NvimTreeClipboard",
-      "NvimTreeClose",
-      "NvimTreeOpen",
-      "NvimTreeToggle",
-      "NvimTreeFindFile",
-      "NvimTreeRefresh",
-    },
   }
 
   -- Lsp
@@ -78,7 +80,7 @@ return packer.startup(function(use)
           {
             "windwp/nvim-autopairs",
             config = function()
-              require "cj.plugins/auto-pairs"
+              require "cj.plugins.auto-pairs"
             end,
             after = "nvim-cmp",
           },
@@ -88,6 +90,34 @@ return packer.startup(function(use)
     },
     config = function()
       require "cj.plugins.lsp"
+    end,
+  }
+
+  -- Floating terminal window
+  use {
+    "voldikss/vim-floaterm",
+    config = function()
+      require "cj.plugins.floaterm"
+    end,
+    cmd = { "FloatermNew", "FloatermToggle" },
+  }
+
+  -- Session manager
+  use {
+    "Shatur/neovim-session-manager",
+    requires = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      require "cj.plugins.session-manager"
+    end,
+  }
+
+  -- Lua
+  use {
+    "ahmedkhalf/project.nvim",
+    config = function()
+      require "cj.plugins.project"
     end,
   }
 
@@ -106,16 +136,16 @@ return packer.startup(function(use)
   use {
     "numToStr/Comment.nvim",
     config = function()
-      require "cj.plugins.comment-nvim"
+      --require "cj.plugins.comment-nvim"
+      require("Comment").setup()
     end,
-    event = "BufWinEnter",
   }
 
   -- Colorizer
   use {
     "norcalli/nvim-colorizer.lua",
     config = function()
-      vim.cmd "set termguicolors"
+      vim.opt.termguicolors = true
       require("colorizer").setup()
     end,
   }
@@ -124,11 +154,41 @@ return packer.startup(function(use)
   use {
     "itchyny/lightline.vim",
     requires = {
-      "kyazdani42/nvim-web-devicons",
-      opt = true,
+      { "kyazdani42/nvim-web-devicons" },
+      { "itchyny/vim-gitbranch" },
     },
     config = function()
       require "cj.plugins.lightline"
+    end,
+  }
+
+  -- Bufferline
+  use {
+    "akinsho/bufferline.nvim",
+    tag = "v2.*",
+    requires = "kyazdani42/nvim-web-devicons",
+    event = "VimEnter",
+    config = function()
+      require "cj.plugins.bufferline"
+    end,
+  }
+
+  -- Quickscope
+  use {
+    "unblevable/quick-scope",
+    config = function()
+      require "cj.plugins.quick-scope"
+    end,
+  }
+
+  -- Markdown preview
+  use {
+    "iamcco/markdown-preview.nvim",
+    run = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+    config = function()
+      vim.g.mkdp_auto_close = 0
     end,
   }
 
@@ -141,8 +201,8 @@ return packer.startup(function(use)
   }
 
   -- Theme
-  use "sainnhe/gruvbox-material"
   use "folke/tokyonight.nvim"
+  use "folke/lsp-colors.nvim"
 
   if first_install then
     packer.sync()

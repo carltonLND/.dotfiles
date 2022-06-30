@@ -14,11 +14,18 @@ set -U PROJECTS ~/Projects
 set -U FISHDIR ~/.config/fish/
 set -U VIMDIR ~/.config/nvim/
 set -U KITTYDIR ~/.config/kitty/
+set -U nvm_default_version latest
 
 # aliases
 alias vi='nvim'
 alias vim='nvim'
 alias activate='source env/bin/activate.fish'
+alias py='python3'
+
+# add alias to windows home directory if using wsl
+if test -d /mnt/c/Users/CJ
+  alias cj='cd /mnt/c/Users/CJ'
+end
 
 # tokyonight colorscheme
 set -l foreground c0caf5

@@ -1,4 +1,3 @@
-local cmd = vim.cmd
 local fn = vim.fn
 
 local installed, packer = pcall(require, "packer")
@@ -18,7 +17,7 @@ if not installed then
     packer_path,
   }
 
-  cmd "packadd packer.nvim"
+  vim.cmd "packadd packer.nvim"
   installed, packer = pcall(require, "packer")
 
   if installed then

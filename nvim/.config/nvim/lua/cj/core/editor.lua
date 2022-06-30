@@ -26,7 +26,6 @@ local options = {
   showmode = false,
   completeopt = "menu,menuone,noselect",
   termguicolors = true,
-  clipboard = "unnamedplus",
   pumheight = 10,
   background = "dark",
   lazyredraw = true,
@@ -38,8 +37,9 @@ for option, value in pairs(options) do
 end
 
 vim.cmd [[
-  set formatoptions-=c formatoptions-=r formatoptions-=o
+  set formatoptions-=cro
   set iskeyword+=-
+  set clipboard+=unnamedplus
 ]]
 
 -- Providers

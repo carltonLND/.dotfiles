@@ -1,23 +1,28 @@
 -- Setup nvim-cmp
 local cmp = require "cmp"
 local lspkind = require "lspkind"
+
+local completion_window = cmp.config.window.bordered()
+completion_window.winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:Visual,Search:None"
+
 cmp.setup {
   formatting = {
     format = lspkind.cmp_format {
       with_text = false,
     },
   },
-
   snippet = {
     expand = function(args)
       require("luasnip").lsp_expand(args.body)
     end,
   },
-
-  mapping = {
+  window = {
+    completion = completion_window,
+    documentation = completion_window,
+  },
+  mapping = cmp.mapping.preset.insert {
     ["<TAB>"] = cmp.mapping.confirm { select = true },
   },
-
   sources = cmp.config.sources({
     { name = "nvim_lua" },
     { name = "nvim_lsp" },
@@ -25,7 +30,6 @@ cmp.setup {
   }, {
     { name = "buffer" },
   }),
-
   experimental = {
     ghost_text = true,
   },
@@ -53,18 +57,19 @@ local function on_attach(client, bufnr)
 
   buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
   buf_set_keymap("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
+  buf_set_keymap("n", "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
+  buf_set_keymap("n", "<leader>dn", "<cmd>lua vim.diagnostic.goto_next()<cr>", opts)
+  buf_set_keymap("n", "<leader>dp", "<cmd>lua vim.diagnostic.goto_prev()<cr>", opts)
   buf_set_keymap("n", "<leader>dl", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
 
-  -- Disable formatting (Using null-ls)
-  client.resolved_capabilities.document_formatting = false
-  client.resolved_capabilities.document_range_formatting = false
-
-  -- Disable virtual text when not ERROR severity
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = {
-      severity = vim.diagnostic.severity.ERROR,
-    },
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = "rounded",
   })
+
+  -- Disable formatting (Using null-ls)
+  client.server_capabilities.documentFormattingProvider = false
+  client.server_capabilities.documentRangeFormattingProvider = false
+  client.server_capabilities.documentOnTypeFormattingProvider = {}
 end
 
 -- Setup nvim-lsp-installer
@@ -85,27 +90,69 @@ require("nvim-lsp-installer").on_server_ready(function(server)
         },
       }
     end,
+    ["rust-analyzer"] = function()
+      default_opts.settings = {
+        assist = {
+          importGranularity = "module",
+          importPrefix = "self",
+        },
+        cargo = {
+          loadOutDirsFromCheck = true,
+        },
+        procMacro = {
+          enable = true,
+        },
+      }
+    end,
   }
 
   local server_options = server_opts[server.name] and server_opts[server.name]() or default_opts
   server:setup(server_options)
 end)
 
+local config = {
+  underline = false,
+  virtual_text = {
+    severity = vim.diagnostic.severity.ERROR,
+  },
+  float = {
+    focusable = false,
+    style = "minimal",
+    border = "rounded",
+    header = "",
+    prefix = "",
+  },
+}
+
+vim.diagnostic.config(config)
+
 -- Setup null-ls formatting and code actions
 local null_ls = require "null-ls"
-
+local fmt_augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup {
   sources = {
     null_ls.builtins.formatting.prettierd,
     null_ls.builtins.formatting.black,
+    null_ls.builtins.formatting.xmllint,
     null_ls.builtins.formatting.stylua.with {
       extra_args = { "--config-path", vim.fn.expand "~/.config/stylua/stylua.toml" },
     },
+    null_ls.builtins.formatting.rustfmt.with {
+      extra_args = { "--config-path", vim.fn.expand "~/.config/rustfmt/" },
+    },
     null_ls.builtins.code_actions.gitsigns,
   },
-  on_attach = function(client)
-    if client.resolved_capabilities.document_formatting then
-      vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()"
+
+  on_attach = function(client, bufnr)
+    if client.supports_method "textDocument/formatting" then
+      vim.api.nvim_clear_autocmds { group = fmt_augroup, buffer = bufnr }
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = fmt_augroup,
+        buffer = bufnr,
+        callback = function()
+          vim.lsp.buf.format { bufnr = bufnr }
+        end,
+      })
     end
   end,
 }

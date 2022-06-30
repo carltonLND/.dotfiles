@@ -6,10 +6,16 @@
 4. Make install.sh executable `chmod +x install.sh`
 5. Run installation script `./install.sh`
 
-## KNOWN ISSUES
+## Errors
 
-1. Fish config install is a little big clunky
+1. Install script hangs on installing neovim plugins
+
+## Bugs
+
+1. Install script does not check neovim version
 
 ## TODO
 
-TBD
+1. Perform better pre-installation checks ( Most notably prerequistes and their versions ).
+2. Fix backups and stowing packages when directory already exists ( E.g. ~/.config/nvim/ ).
+3. Update error handling for neovim config modules.
