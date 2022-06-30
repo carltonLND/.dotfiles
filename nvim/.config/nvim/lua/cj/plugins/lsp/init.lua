@@ -36,6 +36,7 @@ cmp.setup {
 }
 
 cmp.setup.cmdline("/", {
+  mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = "buffer" },
   },
@@ -58,8 +59,18 @@ local function on_attach(client, bufnr)
   buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
   buf_set_keymap("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
   buf_set_keymap("n", "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
-  buf_set_keymap("n", "<leader>dn", "<cmd>lua vim.diagnostic.goto_next()<cr>", opts)
-  buf_set_keymap("n", "<leader>dN", "<cmd>lua vim.diagnostic.goto_prev()<cr>", opts)
+  buf_set_keymap(
+    "n",
+    "<leader>dn",
+    "<cmd>lua vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })<cr>",
+    opts
+  )
+  buf_set_keymap(
+    "n",
+    "<leader>dN",
+    "<cmd>lua vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })<cr>",
+    opts
+  )
   buf_set_keymap("n", "<leader>dl", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
 
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
