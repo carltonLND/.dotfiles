@@ -55,7 +55,6 @@ local function on_attach(client, bufnr)
 
   -- LSP Keymaps
   local opts = { noremap = true, silent = true }
-
   buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
   buf_set_keymap("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
   buf_set_keymap("n", "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
@@ -142,7 +141,6 @@ vim.diagnostic.config(config)
 
 -- Setup null-ls formatting and code actions
 local null_ls = require "null-ls"
-local fmt_augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup {
   sources = {
     null_ls.builtins.formatting.prettierd,
@@ -159,6 +157,7 @@ null_ls.setup {
 
   on_attach = function(client, bufnr)
     if client.supports_method "textDocument/formatting" then
+      local fmt_augroup = vim.api.nvim_create_augroup("LspFormatting", {})
       vim.api.nvim_clear_autocmds { group = fmt_augroup, buffer = bufnr }
       vim.api.nvim_create_autocmd("BufWritePre", {
         group = fmt_augroup,
@@ -168,5 +167,22 @@ null_ls.setup {
         end,
       })
     end
+
+    local function buf_set_keymap(...)
+      vim.api.nvim_buf_set_keymap(bufnr, ...)
+    end
+
+    local ft = vim.bo.filetype
+    local opts = { noremap = true, silent = true }
+    if ft == "python" then
+      buf_set_keymap("n", "<leader>r", "<cmd>FloatermNew! --autoclose=0 py %<cr>", opts)
+    elseif ft == "javascript" then
+      buf_set_keymap("n", "<leader>r", "<cmd>FloatermNew! --autoclose=0 node %<cr>", opts)
+    elseif ft == "lua" then
+      buf_set_keymap("n", "<leader>r", "<cmd>FloatermNew! --autoclose=0 lua %<cr>", opts)
+    elseif ft == "rust" then
+      buf_set_keymap("n", "<leader>r", "<cmd>FloatermNew! --autoclose=0 cargo run %<cr>", opts)
+    end
+
   end,
 }

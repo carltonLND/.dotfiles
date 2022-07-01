@@ -49,7 +49,7 @@ map("n", "<leader>Gd", "<cmd>Gitsigns diffthis<cr>")
 -- Terminal Mode Plugins
 map("t", "<Esc><Esc>", "<cmd>FloatermToggle!<cr>")
 map("t", "<Esc>n", "<cmd>FloatermNew!<cr>")
-map("t", "<Esc>q", "<cmd>FloatermKill!<cr>")
+map("t", "<Esc>q", "<cmd>FloatermKill<cr>")
 map("t", "<Esc>h", "<cmd>FloatermPrev<cr>")
 map("t", "<Esc>l", "<cmd>FloatermNext<cr>")
 map("t", "<Esc>k", "<Up>")

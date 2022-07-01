@@ -99,7 +99,6 @@ return packer.startup(function(use)
     config = function()
       require "cj.plugins.floaterm"
     end,
-    cmd = { "FloatermNew", "FloatermToggle" },
   }
 
   -- Session manager
