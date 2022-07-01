@@ -168,20 +168,22 @@ null_ls.setup {
       })
     end
 
-    local function buf_set_keymap(...)
-      vim.api.nvim_buf_set_keymap(bufnr, ...)
-    end
+    if _G.packer_plugins and _G.packer_plugins["vim-floaterm"] then
+      local function buf_set_keymap(...)
+        vim.api.nvim_buf_set_keymap(bufnr, ...)
+      end
 
-    local ft = vim.bo.filetype
-    local opts = { noremap = true, silent = true }
-    if ft == "python" then
-      buf_set_keymap("n", "<leader>r", "<cmd>FloatermNew! --autoclose=0 py %<cr>", opts)
-    elseif ft == "javascript" then
-      buf_set_keymap("n", "<leader>r", "<cmd>FloatermNew! --autoclose=0 node %<cr>", opts)
-    elseif ft == "lua" then
-      buf_set_keymap("n", "<leader>r", "<cmd>FloatermNew! --autoclose=0 lua %<cr>", opts)
-    elseif ft == "rust" then
-      buf_set_keymap("n", "<leader>r", "<cmd>FloatermNew! --autoclose=0 cargo run %<cr>", opts)
+      local ft = vim.bo.filetype
+      local opts = { noremap = true, silent = true }
+      if ft == "python" then
+        buf_set_keymap("n", "<leader>r", "<cmd>FloatermNew! --autoclose=0 py %<cr>", opts)
+      elseif ft == "javascript" then
+        buf_set_keymap("n", "<leader>r", "<cmd>FloatermNew! --autoclose=0 node %<cr>", opts)
+      elseif ft == "lua" then
+        buf_set_keymap("n", "<leader>r", "<cmd>FloatermNew! --autoclose=0 lua %<cr>", opts)
+      elseif ft == "rust" then
+        buf_set_keymap("n", "<leader>r", "<cmd>FloatermNew! --autoclose=0 cargo run %<cr>", opts)
+      end
     end
 
   end,
