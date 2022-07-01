@@ -6,6 +6,7 @@ function M.map(mode, key, action, opts)
   if opts then
     options = vim.tbl_extend("force", options, opts)
   end
+
   vim.api.nvim_set_keymap(mode, key, action, options)
 end
 
@@ -13,9 +14,9 @@ end
 function M.get_leader()
   if vim.g.mapleader == nil then
     return "SPACE"
-  else
-    return vim.g.mapleader
   end
+
+  return vim.g.mapleader
 end
 
 return M
