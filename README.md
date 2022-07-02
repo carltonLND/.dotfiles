@@ -16,6 +16,7 @@
 
 ## TODO
 
-1. Perform better pre-installation checks ( Most notably prerequistes and their versions ).
-2. Fix backups and stowing packages when directory already exists ( E.g. ~/.config/nvim/ ).
-3. Update error handling for neovim config modules.
+1. Decide on a neovim project manager plugin ( Some interactions are wierd ).
+2. Perform better pre-installation checks ( Most notably prerequistes and their versions ).
+3. Fix backups and stowing packages when directory already exists ( E.g. ~/.config/nvim/ ).
+4. Update error handling for neovim config modules.
