@@ -176,15 +176,14 @@ null_ls.setup {
       local ft = vim.bo.filetype
       local opts = { noremap = true, silent = true }
       if ft == "python" then
-        buf_set_keymap("n", "<leader>r", "<cmd>FloatermNew! --autoclose=0 py %<cr>", opts)
+        buf_set_keymap("n", "<leader>r", "<cmd>FloatermNew --autoclose=0 --title=Run py %<cr>", opts)
       elseif ft == "javascript" then
-        buf_set_keymap("n", "<leader>r", "<cmd>FloatermNew! --autoclose=0 node %<cr>", opts)
+        buf_set_keymap("n", "<leader>r", "<cmd>FloatermNew --autoclose=0 --title=Run node %<cr>", opts)
       elseif ft == "lua" then
-        buf_set_keymap("n", "<leader>r", "<cmd>FloatermNew! --autoclose=0 lua %<cr>", opts)
+        buf_set_keymap("n", "<leader>r", "<cmd>FloatermNew --autoclose=0 --title=Run lua %<cr>", opts)
       elseif ft == "rust" then
-        buf_set_keymap("n", "<leader>r", "<cmd>FloatermNew! --autoclose=0 cargo run %<cr>", opts)
+        buf_set_keymap("n", "<leader>r", "<cmd>FloatermNew --autoclose=0 --title=Run cargo run<cr>", opts)
       end
     end
-
   end,
 }

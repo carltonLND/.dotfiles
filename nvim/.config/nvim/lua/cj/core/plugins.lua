@@ -7,12 +7,12 @@ end
 local first_install = packer_setup.first_install
 local packer = packer_setup.packer
 
-vim.cmd [[
-  augroup packer_config_cj
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]]
+vim.api.nvim_create_augroup("packer_config_cj", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = "plugins.lua",
+  command = "source <afile> | PackerSync",
+  group = "packer_config_cj",
+})
 
 return packer.startup(function(use)
   -- Required
@@ -96,10 +96,10 @@ return packer.startup(function(use)
   -- Floating terminal window
   use {
     "voldikss/vim-floaterm",
+    event = "VimEnter", -- Will not correctly load config otherwise, no idea why
     config = function()
       require "cj.plugins.floaterm"
     end,
-    cmd = { "FloatermNew", "FloatermToggle" },
   }
 
   -- Session manager
@@ -167,7 +167,7 @@ return packer.startup(function(use)
     "akinsho/bufferline.nvim",
     tag = "v2.*",
     requires = "kyazdani42/nvim-web-devicons",
-    event = "VimEnter",
+    event = "VimEnter", -- Will not correctly load config otherwise, no idea why
     config = function()
       require "cj.plugins.bufferline"
     end,
