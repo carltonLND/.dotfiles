@@ -168,7 +168,8 @@ null_ls.setup {
       })
     end
 
-    if _G.packer_plugins and _G.packer_plugins["vim-floaterm"] then
+    local plugins = _G["packer_plugins"]
+    if plugins and plugins["vim-floaterm"] then
       local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
       end

@@ -1,11 +1,8 @@
 local installed, packer_setup = pcall(require, "cj.packer")
 
 if not installed then
-  return false
+  return
 end
-
-local first_install = packer_setup.first_install
-local packer = packer_setup.packer
 
 vim.api.nvim_create_augroup("packer_config_cj", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePost", {
@@ -14,7 +11,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
   group = "packer_config_cj",
 })
 
-return packer.startup(function(use)
+return packer_setup.packer.startup(function(use)
   -- Required
   use "wbthomason/packer.nvim"
   use "lewis6991/impatient.nvim"
@@ -204,7 +201,7 @@ return packer.startup(function(use)
   use "folke/tokyonight.nvim"
   use "folke/lsp-colors.nvim"
 
-  if first_install then
-    packer.sync()
+  if packer_setup.first_install then
+    packer_setup.packer.sync()
   end
 end)
