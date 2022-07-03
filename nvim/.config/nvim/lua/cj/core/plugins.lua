@@ -22,6 +22,7 @@ return packer_setup.packer.startup(function(use)
     config = function()
       require "cj.plugins.treesitter"
     end,
+    run = "TSUpdate",
   }
 
   -- Telescope
