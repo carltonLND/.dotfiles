@@ -83,6 +83,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# Homebrew setup
 export HOMEBREW_NO_ENV_HINTS=1
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -109,6 +110,7 @@ fi
 alias vi="nvim"
 alias lg="lazygit"
 alias zshconfig="nvim ~/.zshrc"
+alias dotfiles="cd ~/.dotfiles"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
