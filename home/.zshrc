@@ -107,6 +107,7 @@ fi
 #
 # Example aliases
 alias vi="nvim"
+alias lg="lazygit"
 alias zshconfig="nvim ~/.zshrc"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
