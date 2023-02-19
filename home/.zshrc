@@ -110,7 +110,7 @@ fi
 alias vi="nvim"
 alias lg="lazygit"
 alias zshconfig="nvim ~/.zshrc"
-alias dotfiles="cd ~/.dotfiles"
+alias dotconfig="cd ~/.dotfiles"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
