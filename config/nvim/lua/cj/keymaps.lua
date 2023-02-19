@@ -28,6 +28,7 @@ vim.keymap.set("n", "<leader>p", '"+p', opts)
 vim.keymap.set("n", "s", "", opts)
 vim.keymap.set("n", "q", "", opts)
 
+-- TODO: Move to plugin spec
 -- Plugin keymaps
-vim.keymap.set("n", "<leader>wm", ":MaximizerToggle<CR>", opts)
-vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+-- vim.keymap.set("n", "<leader>wm", ":MaximizerToggle<CR>", opts)
+-- vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
