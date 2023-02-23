@@ -37,12 +37,15 @@ end
 return {
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-fzf-native.nvim" },
+
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make"
+      }
+    },
     init = telescope_maps,
     config = telescope_config
   },
-  {
-    "nvim-telescope/telescope-fzf-native.nvim",
-    build = "make"
-  }
 }
