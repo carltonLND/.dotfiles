@@ -1,4 +1,4 @@
---f Load config modules
+-- Load config modules
 require("cj.keymaps")
 require("cj.options")
 require("cj.autocmds")

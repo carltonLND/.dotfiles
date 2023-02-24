@@ -5,7 +5,7 @@ local function treesitter_config()
     },
     indent = {
       enable = true,
-      disable = { "python" },
+      --disable = { "python" },
     },
     autotag = {
       enable = true,
