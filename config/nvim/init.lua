@@ -19,3 +19,9 @@ end
 -- Load plugins
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("cj.plugins", { ui = { border = "rounded" } })
+
+-- TODO:
+-- autopairs
+-- comment
+-- nvim-tree
+-- notify/noice
