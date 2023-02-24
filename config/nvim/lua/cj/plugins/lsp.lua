@@ -130,6 +130,7 @@ return {
   },
   {
     "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
     config = cmp_config,
     dependencies = {
       "neovim/nvim-lspconfig",
