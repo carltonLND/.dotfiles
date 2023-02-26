@@ -21,7 +21,11 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("cj.plugins", { ui = { border = "rounded" } })
 
 -- TODO:
+-- impatient
 -- autopairs
+-- window keymaps
+-- tmux
 -- comment
 -- nvim-tree
--- notify/noice
+
+

@@ -69,6 +69,8 @@ return {
     priority = 1000,
     config = function()
       vim.cmd [[colorscheme dracula]]
+      vim.cmd [[highlight link CmpItemAbbr Normal]]
+      vim.cmd [[highlight CmpItemAbbrMatch ctermbg=none guibg=none]]
     end,
   },
   {

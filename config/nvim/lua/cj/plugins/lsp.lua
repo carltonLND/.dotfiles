@@ -74,15 +74,6 @@ local function cmp_config()
       })
   })
 
-  -- Set configuration for specific filetype.
-  cmp.setup.filetype('gitcommit', {
-    sources = cmp.config.sources({
-      { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
-    }, {
-        { name = 'buffer' },
-      })
-  })
-
   -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline({ '/', '?' }, {
     mapping = cmp.mapping.preset.cmdline(),
@@ -144,32 +135,26 @@ return {
   },
   {
     "L3MON4D3/LuaSnip",
-    -- dependencies = { "rafamadriz/friendly-snippets" },
-    config = function()
-      require("luasnip.loaders.from_vscode").lazy_load()
-    end,
+    dependencies = {
+      "rafamadriz/friendly-snippets",
+      config = function()
+        require("luasnip.loaders.from_vscode").lazy_load()
+      end,
+    },
+    opts = {
+      history = true,
+      delete_check_events = "TextChanged",
+    },
     keys = {
       {
         "<tab>",
-        function ()
+        function()
           return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
         end,
-        expr = true, silent = true, mode = "i"
+        expr = true, silent = true, mode = "i",
       },
-      {
-        "<tab>",
-        function ()
-          require("luasnip").jump(1)
-        end,
-        mode = "s"
-      },
-      {
-        "<tab>",
-        function ()
-          require("luasnip").jump(-1)
-        end,
-        mode = {"i", "s"}
-      },
-    }
+      { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
+      { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
+    },
   },
 }
