@@ -22,7 +22,7 @@ vim.opt.hlsearch = false
 -- history
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = vim.fn.stdpath "config" .. "/undodir/"
+vim.opt.undodir = vim.fn.stdpath("config") .. "/undodir/"
 vim.opt.undofile = true
 
 -- cursor line
@@ -44,7 +44,7 @@ vim.opt.backspace = "indent,eol,start"
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
-vim.opt.iskeyword:append "-"
+vim.opt.iskeyword:append("-")
 
 -- providers
 vim.g.loaded_python3_provider = 0
