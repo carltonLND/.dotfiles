@@ -70,6 +70,7 @@ return {
 			vim.cmd([[colorscheme dracula]])
 			vim.cmd([[highlight CmpItemAbbr ctermbg=none guibg=none]])
 			vim.cmd([[highlight CmpItemAbbrMatch ctermbg=none guibg=none]])
+			vim.cmd([[highlight Todo cterm=bold gui=bold]]) -- Remove italic 'todo'
 		end,
 	},
 	{
