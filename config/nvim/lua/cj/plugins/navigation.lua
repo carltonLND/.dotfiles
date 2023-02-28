@@ -65,6 +65,24 @@ local function nvim_tree_config()
 			dotfiles = true,
 		},
 	})
+
+  -- OPEN ON DIRECTORY OR EMPTY BUFFER
+	-- local function open_nvim_tree(data)
+	-- 	local directory = vim.fn.isdirectory(data.file) == 1
+	-- 	local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
+	--
+	-- 	if not directory and not no_name then
+	-- 		return
+	-- 	end
+	--
+	-- 	if directory then
+	-- 		vim.cmd.cd(data.file)
+	-- 	end
+	--
+	-- 	require("nvim-tree.api").tree.open()
+	-- end
+	--
+	-- vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 end
 
 local function nvim_tree_maps()
