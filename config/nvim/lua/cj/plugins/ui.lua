@@ -15,7 +15,6 @@ local function treesitter_config()
 			keymaps = {
 				init_selection = "<c-s>",
 				node_incremental = "<c-s>",
-				scope_incremental = "<c-space>",
 				node_decremental = "<c-backspace>",
 			},
 		},
@@ -77,14 +76,6 @@ return {
 		"nvim-lualine/lualine.nvim",
 		config = true,
 		opts = {
-			-- disabled_filetypes = {
-			--   statusline = {"NvimTree"},
-			--   winbar = {"NvimTree"},
-			-- },
-			sections = {
-				lualine_b = { "filename" },
-				lualine_c = {},
-			},
 			extensions = { "nvim-tree" },
 		},
 	},
@@ -92,5 +83,6 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		config = treesitter_config,
+		dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
 	},
 }
