@@ -15,6 +15,30 @@ local function lua_lsp_setup()
 	})
 end
 
+local function rust_lsp_setup()
+	require("lspconfig").rust_analyzer.setup({
+		capabilities = require("cmp_nvim_lsp").default_capabilities(),
+		settings = {
+			["rust-analyzer"] = {
+				imports = {
+					granularity = {
+						group = "module",
+					},
+					prefix = "self",
+				},
+				cargo = {
+					buildScripts = {
+						enable = true,
+					},
+				},
+				procMacro = {
+					enable = true,
+				},
+			},
+		},
+	})
+end
+
 local function lsp_config()
 	local mason_lspconfig = require("mason-lspconfig")
 	mason_lspconfig.setup()
@@ -25,6 +49,7 @@ local function lsp_config()
 			})
 		end,
 		["lua_ls"] = lua_lsp_setup,
+		["rust_analyzer"] = rust_lsp_setup,
 	})
 end
 
@@ -49,7 +74,6 @@ local function lspsaga_maps()
 	vim.keymap.set({ "n", "t" }, "<A-d>", "<cmd>Lspsaga term_toggle<CR>")
 end
 
-
 -- AUTO COMPLETION CONFIG
 local function cmp_config()
 	local cmp = require("cmp")
@@ -68,8 +92,8 @@ local function cmp_config()
 			["<TAB>"] = cmp.mapping.confirm({ select = true }),
 		}),
 		sources = cmp.config.sources({
-			{ name = "nvim_lsp" },
 			{ name = "luasnip" },
+			{ name = "nvim_lsp" },
 		}, {
 			{ name = "buffer" },
 		}),
@@ -133,8 +157,7 @@ local function formatter_config()
 end
 
 local function formatter_maps()
-	vim.keymap.set("n", "<leader>f", ":FormatLock<CR>")
-	vim.keymap.set("n", "<leader>F", ":FormatWriteLock<CR>")
+	vim.keymap.set("n", "<leader>f", ":FormatLock<CR>", { silent = true })
 end
 
 return {
@@ -150,6 +173,11 @@ return {
 		event = "BufRead",
 		init = lspsaga_maps,
 		config = true,
+		opts = {
+			lightbulb = {
+				enable = false,
+			},
+		},
 		dependencies = { "nvim-tree/nvim-web-devicons", "nvim-treesitter/nvim-treesitter" },
 	},
 	{
