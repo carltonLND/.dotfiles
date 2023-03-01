@@ -27,5 +27,7 @@ require("lazy").setup("cj.plugins", { ui = { border = "rounded" }, change_detect
 
 -- TODO:
 -- dashboard
+-- LSP kind / formatting
 -- tmux
 -- hide hint diagnostics
+
