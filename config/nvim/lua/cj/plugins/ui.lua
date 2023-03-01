@@ -69,10 +69,11 @@ return {
 		config = function()
 			vim.cmd([[colorscheme dracula]])
 			vim.cmd([[highlight CmpItemAbbr ctermbg=none guibg=none]])
+			vim.cmd([[highlight CmpItemAbbrDeprecated ctermbg=none guibg=none]])
 			vim.cmd([[highlight CmpItemAbbrMatch ctermbg=none guibg=none]])
-			vim.cmd([[highlight Todo cterm=bold gui=bold]]) -- Remove italic 'todo'
-			vim.cmd([[highlight @type.builtin cterm=NONE gui=NONE]]) -- Remove italic 'todo'
-			vim.cmd([[highlight Special cterm=NONE gui=NONE]]) -- Remove italic 'todo'
+			vim.cmd([[highlight Todo cterm=bold gui=bold]]) -- Remove italic
+			vim.cmd([[highlight @type.builtin cterm=NONE gui=NONE]]) -- Remove italic
+			vim.cmd([[highlight Special cterm=NONE gui=NONE]]) -- Remove italic
 		end,
 	},
 	{
