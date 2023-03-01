@@ -1,14 +1,11 @@
 -- Set leader key
 vim.g.mapleader = " "
-
 local opts = { silent = true, noremap = true }
 
 -- General keymaps
 vim.keymap.set("n", "x", '"_x', opts)
 vim.keymap.set("n", "<leader>bn", ":bn<CR>", opts)
 vim.keymap.set("n", "<leader>bp", ":bp<CR>", opts)
-vim.keymap.set("n", "<leader>=", "<C-a>", opts)
-vim.keymap.set("n", "<leader>-", "<C-x>", opts)
 vim.keymap.set("n", "<leader>wv", "<C-w>v", opts)
 vim.keymap.set("n", "<leader>wh", "<C-w>s", opts)
 vim.keymap.set("n", "<leader>we", "<C-w>=", opts)
