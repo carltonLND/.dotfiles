@@ -79,6 +79,13 @@ local function cmp_config()
 		mapping = cmp.mapping.preset.insert({
 			["<TAB>"] = cmp.mapping.confirm({ select = true }),
 		}),
+
+		formatting = {
+			format = require("lspkind").cmp_format({
+				maxwidth = 25,
+				ellipsis_char = "...",
+			}),
+		},
 		sources = cmp.config.sources({
 			{ name = "nvim_lsp" },
 			{ name = "luasnip" },
@@ -202,6 +209,7 @@ return {
 		dependencies = {
 			"neovim/nvim-lspconfig",
 			"L3MON4D3/LuaSnip",
+      "onsails/lspkind.nvim",
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
