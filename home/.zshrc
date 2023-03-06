@@ -77,14 +77,16 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting)
+plugins=(git tmux zsh-syntax-highlighting z)
+
+# tmux plugin setup
+ZSH_TMUX_DEFAULT_SESSION_NAME="Home"
+ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_AUTOQUIT=true
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-# Homebrew setup
-export HOMEBREW_NO_ENV_HINTS=1
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -92,11 +94,11 @@ export HOMEBREW_NO_ENV_HINTS=1
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nvim'
-else
-  export EDITOR='nvim'
-fi
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -107,10 +109,10 @@ fi
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vi="nvim"
 alias lg="lazygit"
-alias zshconfig="nvim ~/.zshrc"
-alias dotconfig="cd ~/.dotfiles"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

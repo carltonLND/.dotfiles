@@ -1,33 +1,36 @@
--- Load cached files for faster startup
-pcall(require, "impatient")
+require "carltonLND.options"
+require "carltonLND.keymaps"
 
--- Load config modules
-require("cj.keymaps")
-require("cj.options")
-require("cj.autocmds")
-
--- Bootstrap plugin manager
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable",
-		lazypath,
-	})
+  vim.fn.system {
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  }
 end
-
--- Load plugins
 vim.opt.rtp:prepend(lazypath)
-require("lazy").setup("cj.plugins", { ui = { border = "rounded" }, change_detection = {
-	notify = false,
-} })
 
--- TODO:
--- dashboard
--- LSP kind / formatting
--- tmux
--- hide hint diagnostics
-
+require("lazy").setup("carltonLND/plugins", {
+  ui = {
+    border = "rounded",
+  },
+  install = {
+    colorscheme = { "github_dark", "habamax" },
+  },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "gzip",
+        "matchit",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
+  },
+})
