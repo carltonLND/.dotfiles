@@ -113,12 +113,7 @@ return {
           on_attach = function(_, bufnr)
             local opts = { buffer = bufnr, silent = true, noremap = true }
             vim.keymap.set("n", "K", rt.hover_actions.hover_actions, opts)
-            vim.keymap.set(
-              "n",
-              "<leader>ca",
-              rt.code_action_group.code_action_group,
-              opts
-            )
+            vim.keymap.set("n", "<leader>ca", rt.code_action_group.code_action_group, opts)
           end,
           cmd = { "rustup", "run", "stable", "rust-analyzer" },
         },
@@ -154,8 +149,7 @@ return {
       {
         "<S-TAB>",
         function()
-          return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next"
-            or "<TAB>"
+          return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<TAB>"
         end,
         expr = true,
         silent = true,
@@ -179,7 +173,6 @@ return {
   },
   {
     "hrsh7th/nvim-cmp",
-    version = false,
     event = "InsertEnter",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
@@ -210,12 +203,12 @@ return {
             ellipses_char = "...",
           },
         },
-        sources = cmp.config.sources({
-          { name = "luasnip" },
+        sources = cmp.config.sources {
           { name = "nvim_lsp" },
-        }, {
+          { name = "luasnip" },
           { name = "buffer" },
-        }),
+          { name = "path" },
+        },
         window = {
           completion = cmp.config.window.bordered(),
           documentation = cmp.config.window.bordered(),
@@ -230,10 +223,7 @@ return {
     config = function()
       local fmt = require "formatter.filetypes"
 
-      local augroup = vim.api.nvim_create_augroup(
-        "UserFormatGroup",
-        { clear = true }
-      )
+      local augroup = vim.api.nvim_create_augroup("UserFormatGroup", { clear = true })
       vim.api.nvim_create_autocmd({ "BufWritePost" }, {
         command = "FormatWrite",
         group = augroup,

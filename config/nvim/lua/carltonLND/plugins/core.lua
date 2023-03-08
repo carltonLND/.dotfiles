@@ -39,35 +39,26 @@ return {
             a = { "@block.outer", "@conditional.outer", "@loop.outer" },
             i = { "@block.inner", "@conditional.inner", "@loop.inner" },
           }, {}),
-          f = ai.gen_spec.treesitter(
-            { a = "@function.outer", i = "@function.inner" },
-            {}
-          ),
-          c = ai.gen_spec.treesitter(
-            { a = "@class.outer", i = "@class.inner" },
-            {}
-          ),
+          f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
+          c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
         },
       }
     end,
   },
   {
     "folke/noice.nvim",
+    event = "VeryLazy",
     config = function()
       require("noice").setup {
-        popupmenu = { backend = "cmp" },
         lsp = {
           override = {
             ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
             ["vim.lsp.util.stylize_markdown"] = true,
-            ["cmp.entry.get_documentation"] = true,
           },
         },
         presets = {
           bottom_search = true,
-          command_palette = false,
           long_message_to_split = true,
-          inc_rename = true,
           lsp_doc_border = true,
         },
         messages = {
@@ -82,12 +73,7 @@ return {
         opts = {
           minimum_width = -1,
           timeout = 2000,
-          max_height = function()
-            return math.floor(vim.o.lines * 0.75)
-          end,
-          max_width = function()
-            return math.floor(vim.o.columns * 0.75)
-          end,
+          level = 3,
         },
       },
     },
@@ -113,19 +99,10 @@ return {
     },
     config = true,
   },
-  { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
   {
-    "echasnovski/mini.comment",
+    "numToStr/Comment.nvim",
     event = "VeryLazy",
-    config = function()
-      require("mini.comment").setup {
-        hooks = {
-          pre = function()
-            require("ts_context_commentstring.internal").update_commentstring {}
-          end,
-        },
-      }
-    end,
+    config = true,
   },
   {
     "echasnovski/mini.pairs",
