@@ -18,11 +18,13 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
+      "windwp/nvim-ts-autotag",
     },
     config = function()
       require("nvim-treesitter.configs").setup {
         highlight = { enable = true },
         indent = { enable = true, disable = { "python" } },
+        autotag = { enable = true },
       }
     end,
   },
@@ -39,8 +41,14 @@ return {
             a = { "@block.outer", "@conditional.outer", "@loop.outer" },
             i = { "@block.inner", "@conditional.inner", "@loop.inner" },
           }, {}),
-          f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
-          c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
+          f = ai.gen_spec.treesitter(
+            { a = "@function.outer", i = "@function.inner" },
+            {}
+          ),
+          c = ai.gen_spec.treesitter(
+            { a = "@class.outer", i = "@class.inner" },
+            {}
+          ),
         },
       }
     end,
@@ -73,7 +81,7 @@ return {
         opts = {
           minimum_width = -1,
           timeout = 2000,
-          level = 3,
+          level = 2,
         },
       },
     },
@@ -105,11 +113,9 @@ return {
     config = true,
   },
   {
-    "echasnovski/mini.pairs",
+    "windwp/nvim-ts-autotag",
     event = "VeryLazy",
-    config = function()
-      require("mini.pairs").setup {}
-    end,
+    config = true,
   },
   {
     "lewis6991/gitsigns.nvim",
