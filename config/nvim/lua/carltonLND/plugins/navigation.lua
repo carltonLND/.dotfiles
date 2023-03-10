@@ -22,32 +22,7 @@ return {
         end,
       },
     },
-    config = function()
-      local telescope = require "telescope"
-      telescope.setup {
-        extensions = {
-          file_browser = {
-            theme = "ivy",
-          },
-        },
-      }
-      telescope.load_extension "file_browser"
-    end,
-  },
-  {
-    "nvim-telescope/telescope-file-browser.nvim",
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-      "nvim-lua/plenary.nvim",
-      "kyazdani42/nvim-web-devicons",
-    },
-    keys = {
-      {
-        "<leader>sp",
-        "<CMD>Telescope file_browser path=%:p:h select_buffer=true<CR>",
-      },
-      { "<leader>sP", "<CMD>Telescope file_browser<CR>" },
-    },
+    config = true,
   },
   {
     "alexghergh/nvim-tmux-navigation",
@@ -80,5 +55,26 @@ return {
     opts = {
       disable_when_zoomed = true,
     },
+  },
+  {
+    "mbbill/undotree",
+    keys = {
+      { "<leader>su", "<CMD>UndotreeToggle<CR>" },
+    },
+  },
+  {
+    "nvim-tree/nvim-tree.lua",
+    keys = {
+      { "<leader>sp", "<CMD>NvimTreeToggle<CR>" },
+    },
+    dependencies = {
+      "kyazdani42/nvim-web-devicons",
+    },
+    config = function()
+      vim.g.loaded_netrw = 1
+      vim.g.loaded_netrwPlugin = 1
+
+      require("nvim-tree").setup()
+    end,
   },
 }
