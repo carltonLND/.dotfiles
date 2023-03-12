@@ -104,6 +104,12 @@ return {
         on_attach = on_attach,
         capabilities = capabilities,
       }
+
+      -- Python
+      lspconfig["pyright"].setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+      }
     end,
   },
   {
