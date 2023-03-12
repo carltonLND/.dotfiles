@@ -1,14 +1,14 @@
 return {
   {
-    "projekt0n/github-nvim-theme",
-    version = "0.0.x",
+    "Mofiqul/vscode.nvim",
     priority = 1000,
     config = function()
-      require("github-theme").setup {
-        comment_style = "NONE",
-        keyword_style = "NONE",
+      vim.o.background = "dark"
+      require("vscode").setup {
+        italic_comments = false,
       }
-      vim.cmd [[colorscheme github_dark]]
+
+      vim.cmd [[colorscheme vscode]]
     end,
   },
   {
@@ -138,6 +138,11 @@ return {
   },
   {
     "kwkarlwang/bufresize.nvim",
+    event = "VeryLazy",
+    config = true,
+  },
+  {
+    "windwp/nvim-autopairs",
     event = "VeryLazy",
     config = true,
   },
