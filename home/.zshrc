@@ -112,8 +112,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vi="nvim"
+alias vim="nvim"
 alias lg="lazygit"
-alias tf="tmux-sessionizer"
 
 # bash like ctrl-d wrapper for IGNOREEOF
 setopt ignore_eof
