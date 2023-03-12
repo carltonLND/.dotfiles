@@ -2,7 +2,7 @@
 export IGNOREEOF=2
 
 # Add .local/bin to PATH
-export PATH=$HOME/.local/bin/:$PATH
+export PATH=$HOME/.local/scripts/:$PATH
 
 # Set editor to Neovim
 export SUDO_EDITOR=/home/linuxbrew/.linuxbrew/bin/nvim
