@@ -1,7 +1,7 @@
 # x amount of <C-d> to exit
 export IGNOREEOF=2
 
-# Add .local/bin to PATH
+# Add .local scripts to PATH
 export PATH=$HOME/.local/scripts/:$PATH
 
 # Set editor to Neovim
