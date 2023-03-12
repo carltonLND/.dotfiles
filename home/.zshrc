@@ -115,5 +115,22 @@ alias vi="nvim"
 alias lg="lazygit"
 alias tf="tmux-sessionizer"
 
+# bash like ctrl-d wrapper for IGNOREEOF
+setopt ignore_eof
+function bash-ctrl-d() {
+  if [[ $CURSOR == 0 && -z $BUFFER ]]
+  then
+    [[ -z $IGNOREEOF || $IGNOREEOF == 0 ]] && exit
+    if [[ "$LASTWIDGET" == "bash-ctrl-d" ]]
+    then
+      (( --__BASH_IGNORE_EOF <= 0 )) && exit
+    else
+      (( __BASH_IGNORE_EOF = IGNOREEOF ))
+    fi
+  fi
+}
+zle -N bash-ctrl-d
+bindkey "^d" bash-ctrl-d
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
