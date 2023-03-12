@@ -6,9 +6,11 @@ return {
       vim.o.background = "dark"
       require("vscode").setup {
         italic_comments = false,
+        disable_nvimtree_bg = true,
       }
 
       vim.cmd [[colorscheme vscode]]
+      vim.cmd [[ hi link NormalFloat Normal ]]
     end,
   },
   {
