@@ -65,9 +65,9 @@ return {
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
         vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
         vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-        vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
-        vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
-        vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
+        vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
+        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
+        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
         vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
       end
 
@@ -93,11 +93,13 @@ return {
         },
       }
 
+      -- Go
       lspconfig["gopls"].setup {
         on_attach = on_attach,
         capabilities = capabilities,
       }
 
+      -- Javascript, Typescript
       lspconfig["tsserver"].setup {
         on_attach = on_attach,
         capabilities = capabilities,
@@ -114,13 +116,26 @@ return {
         server = {
           capabilities = require("cmp_nvim_lsp").default_capabilities(),
           on_attach = function(_, bufnr)
-            local opts = { buffer = bufnr, silent = true, noremap = true }
-            vim.keymap.set("n", "K", rt.hover_actions.hover_actions, opts)
+            local bufopts = { buffer = bufnr, silent = true, noremap = true }
+            vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+            vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+            vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+            vim.keymap.set(
+              "n",
+              "<leader>D",
+              vim.lsp.buf.type_definition,
+              bufopts
+            )
+            vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
+            vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+
+            -- Rust specific keymaps
+            vim.keymap.set("n", "K", rt.hover_actions.hover_actions, bufopts)
             vim.keymap.set(
               "n",
               "<leader>ca",
               rt.code_action_group.code_action_group,
-              opts
+              bufopts
             )
           end,
           cmd = { "rustup", "run", "stable", "rust-analyzer" },
@@ -198,6 +213,7 @@ return {
         completion = {
           completeopt = "menu,menuone,noinsert",
         },
+        preselect = cmp.PreselectMode.None,
         snippet = {
           expand = function(args)
             require("luasnip").lsp_expand(args.body)
@@ -209,6 +225,7 @@ return {
         formatting = {
           format = require("lspkind").cmp_format {
             mode = "symbol",
+            menu = {},
             maxwidth = 50,
             ellipses_char = "...",
           },
@@ -216,8 +233,7 @@ return {
         sources = cmp.config.sources {
           { name = "luasnip" },
           { name = "nvim_lsp" },
-          { name = "buffer" },
-          { name = "path" },
+          { { name = "buffer" }, { name = "path" } },
         },
         window = {
           completion = cmp.config.window.bordered(),
@@ -241,7 +257,7 @@ return {
       local augroup =
         vim.api.nvim_create_augroup("UserFormatGroup", { clear = true })
       vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-        command = "FormatWrite",
+        command = "silent FormatWrite",
         group = augroup,
       })
 
