@@ -7,10 +7,16 @@ export IGNOREEOF=2
 # Add .local scripts to PATH
 export PATH=$HOME/.local/scripts/:$PATH
 
-# Set editor to Neovim
-export SUDO_EDITOR=/home/linuxbrew/.linuxbrew/bin/nvim
-export EDITOR=/home/linuxbrew/.linuxbrew/bin/nvim
-export VISUAL=/home/linuxbrew/.linuxbrew/bin/nvim
+# Set editor to Neovim (sudo -e $file)
+if [[ $os = "Linux" ]]; then
+    export SUDO_EDITOR=/home/linuxbrew/.linuxbrew/bin/nvim
+    export EDITOR=/home/linuxbrew/.linuxbrew/bin/nvim
+    export VISUAL=/home/linuxbrew/.linuxbrew/bin/nvim
+elif [[ $os = "Darwin" ]]; then
+    export SUDO_EDITOR=/opt/homebrew/bin/nvim
+    export EDITOR=/opt/homebrew/bin/nvim
+    export VISUAL=/opt/homebrew/bin/nvim
+fi
 
 # Add Golang to PATH
 export GOROOT=/usr/local/go
