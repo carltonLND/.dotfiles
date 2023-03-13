@@ -1,3 +1,6 @@
+# Get OS for Linux / Mac specifics
+os=$(uname -s)
+
 # x amount of <C-d> to exit
 export IGNOREEOF=2
 
@@ -19,4 +22,8 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 # Add Homebrew env to PATH
 export HOMEBREW_NO_ENV_HINTS=1
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+if [[ $os = "Linux" ]]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+elif [[ $os = "Darwin" ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
