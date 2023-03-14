@@ -2,6 +2,7 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
+    dependencies = { "stevearc/dressing.nvim" },
     version = false,
     keys = {
       { "<leader>sf", "<CMD>Telescope find_files<CR>" },

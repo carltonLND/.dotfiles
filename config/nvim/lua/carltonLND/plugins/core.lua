@@ -65,6 +65,10 @@ return {
           override = {
             ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
             ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true,
+          },
+          signature = {
+            auto_open = { enabled = false },
           },
         },
         presets = {
@@ -148,5 +152,20 @@ return {
     "windwp/nvim-autopairs",
     event = "VeryLazy",
     config = true,
+  },
+  {
+    "stevearc/dressing.nvim",
+    event = "VeryLazy",
+    opts = {
+      select = {
+        get_config = function(opts)
+          if opts.kind == "codeaction" then
+            return {
+              telescope = require("telescope.themes").get_cursor(),
+            }
+          end
+        end,
+      },
+    },
   },
 }

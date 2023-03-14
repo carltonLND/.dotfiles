@@ -64,6 +64,8 @@ return {
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
         vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+        vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
+        vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, bufopts)
         vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
         vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
         vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
@@ -133,16 +135,13 @@ return {
               bufopts
             )
             vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
+            vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
             vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+            vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
+            vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, bufopts)
 
             -- Rust specific keymaps
             vim.keymap.set("n", "K", rt.hover_actions.hover_actions, bufopts)
-            vim.keymap.set(
-              "n",
-              "<leader>ca",
-              rt.code_action_group.code_action_group,
-              bufopts
-            )
           end,
           cmd = { "rustup", "run", "stable", "rust-analyzer" },
         },
@@ -217,7 +216,7 @@ return {
       local cmp = require "cmp"
       cmp.setup {
         completion = {
-          completeopt = "menu,menuone,noinsert",
+          completeopt = "menu,menuone,noselect",
         },
         preselect = cmp.PreselectMode.None,
         snippet = {
@@ -234,13 +233,21 @@ return {
             menu = {},
             maxwidth = 50,
             ellipses_char = "...",
+            before = function(entry, vim_item)
+              if entry.source.name == "nvim_lsp" then
+                vim_item.dup = 0
+              end
+              return vim_item
+            end,
           },
         },
-        sources = cmp.config.sources {
+        sources = cmp.config.sources({
           { name = "luasnip" },
           { name = "nvim_lsp" },
-          { { name = "buffer" }, { name = "path" } },
-        },
+          { name = "path" },
+        }, {
+          { name = "buffer" },
+        }),
         window = {
           completion = cmp.config.window.bordered(),
           documentation = cmp.config.window.bordered(),
@@ -255,7 +262,7 @@ return {
   },
   {
     "mhartington/formatter.nvim",
-    even = "VeryLazy",
+    event = "VeryLazy",
     dependencies = { "williamboman/mason.nvim" },
     config = function()
       local fmt = require "formatter.filetypes"
