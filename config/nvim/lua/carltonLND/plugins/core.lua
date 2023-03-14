@@ -24,6 +24,7 @@ return {
     },
     config = function()
       require("nvim-treesitter.configs").setup {
+        ensure_installed = { "lua", "vim", "help" },
         highlight = { enable = true },
         indent = { enable = true },
         autotag = { enable = true },
@@ -157,6 +158,7 @@ return {
     "stevearc/dressing.nvim",
     event = "VeryLazy",
     opts = {
+      input = { enabled = false },
       select = {
         get_config = function(opts)
           if opts.kind == "codeaction" then
