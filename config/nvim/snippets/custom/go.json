@@ -1,0 +1,12 @@
+{
+  "handle error": {
+    "prefix": "ie",
+    "body": "if err != nil {\n\t${0:return nil, err}\n}",
+    "description": "Snippet for handling an error"
+  },
+  "return no error": {
+    "prefix": "rn",
+    "body": "return ${0:value}, nil",
+    "description": "Snippet for returning with no error"
+  }
+}
