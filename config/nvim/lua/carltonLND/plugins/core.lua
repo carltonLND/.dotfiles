@@ -25,7 +25,7 @@ return {
     config = function()
       require("nvim-treesitter.configs").setup {
         ensure_installed = { "lua", "vim", "help" },
-        highlight = { enable = true },
+        highlight = { enable = true, disable = { "css" } },
         indent = { enable = true },
         autotag = { enable = true },
         additional_vim_regex_highlighting = false,
@@ -89,7 +89,7 @@ return {
         opts = {
           minimum_width = -1,
           timeout = 2000,
-          level = 2,
+          level = 3,
         },
       },
     },

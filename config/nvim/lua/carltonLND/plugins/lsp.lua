@@ -107,6 +107,12 @@ return {
         capabilities = capabilities,
       }
 
+      -- CSS
+      lspconfig["cssls"].setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+      }
+
       -- Python
       lspconfig["pyright"].setup {
         on_attach = on_attach,
@@ -164,7 +170,7 @@ return {
   {
     "L3MON4D3/LuaSnip",
     dependencies = {
-      "rafamadriz/friendly-snippets",
+      "carltonLND/friendly-snippets",
       config = function()
         require("luasnip.loaders.from_vscode").lazy_load()
       end,
@@ -294,6 +300,12 @@ return {
           },
           typescript = {
             fmt.typescript.prettierd,
+          },
+          typescriptreact = {
+            fmt.typescriptreact.prettierd,
+          },
+          javascriptreact = {
+            fmt.javascriptreact.prettierd,
           },
           html = {
             fmt.html.prettierd,
