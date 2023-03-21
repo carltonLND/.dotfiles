@@ -170,7 +170,7 @@ return {
   {
     "L3MON4D3/LuaSnip",
     dependencies = {
-      "carltonLND/friendly-snippets",
+      "carltonLND/friendly-snippets", -- Use my fork to fix tsx html snippets
       config = function()
         require("luasnip.loaders.from_vscode").lazy_load()
       end,
