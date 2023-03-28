@@ -18,6 +18,10 @@ elif [[ $os = "Darwin" ]]; then
     export VISUAL=/opt/homebrew/bin/nvim
 fi
 
+# Disable pagination where not needed
+export GIT_PAGER=""
+export AWS_PAGER=""
+
 # Add Golang to PATH
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
