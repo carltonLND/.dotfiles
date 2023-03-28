@@ -78,6 +78,7 @@ return {
           lsp_doc_border = true,
         },
         messages = {
+          view = "mini",
           view_search = false,
         },
       }
