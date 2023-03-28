@@ -5,7 +5,7 @@
     "description": "Snippet for handling an error"
   },
   "return no error": {
-    "prefix": "rn",
+    "prefix": "ine",
     "body": "return ${0:value}, nil",
     "description": "Snippet for returning with no error"
   }
