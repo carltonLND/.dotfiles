@@ -49,7 +49,10 @@ return {
         update_on_insert = false,
         underline = false,
         signs = {
-          severity = vim.diagnostic.severity.INFO,
+          severity = {
+            vim.diagnostic.severity.INFO,
+            vim.diagnostic.severity.HINT,
+          },
         },
         severity_sort = true,
       }
@@ -272,7 +275,6 @@ return {
     dependencies = { "williamboman/mason.nvim" },
     config = function()
       local fmt = require "formatter.filetypes"
-
       local augroup =
         vim.api.nvim_create_augroup("UserFormatGroup", { clear = true })
       vim.api.nvim_create_autocmd({ "BufWritePost" }, {
