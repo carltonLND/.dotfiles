@@ -33,6 +33,17 @@ return {
     end,
   },
   {
+    "nvim-treesitter/nvim-treesitter-context",
+    event = "BufReadPost",
+    config = function()
+      require("treesitter-context").setup {
+        enable = true,
+        trim_scope = "outer",
+        separator = nil,
+      }
+    end,
+  },
+  {
     "echasnovski/mini.ai",
     event = "VeryLazy",
     dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
