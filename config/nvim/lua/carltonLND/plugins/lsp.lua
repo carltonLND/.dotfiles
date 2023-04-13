@@ -288,8 +288,8 @@ return {
             fmt.lua.stylua,
           },
           python = {
-            fmt.python.isort,
             fmt.python.black,
+            fmt.python.isort,
           },
           rust = {
             fmt.rust.rustfmt,
