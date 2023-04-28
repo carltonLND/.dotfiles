@@ -10,6 +10,15 @@
           "go"
         ],
         "path": "./custom-snippets/go.json"
+      },
+      {
+        "language": [
+          "javascript",
+          "typescript",
+          "javascriptreact",
+          "typescriptreact"
+        ],
+        "path": "./custom-snippets/javascript.json"
       }
     ]
   }
