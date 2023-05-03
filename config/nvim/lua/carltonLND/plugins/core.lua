@@ -86,6 +86,7 @@ return {
             auto_open = { enabled = false },
           },
         },
+
         presets = {
           bottom_search = true,
           long_message_to_split = true,
@@ -94,6 +95,18 @@ return {
         messages = {
           view = "mini",
           view_search = false,
+        },
+        views = {
+          mini = {
+            size = {
+              width = "auto",
+              height = "auto",
+              max_height = 1,
+            },
+          },
+          notify = {
+            replace = true,
+          },
         },
       }
     end,
@@ -104,7 +117,7 @@ return {
         opts = {
           minimum_width = -1,
           timeout = 2000,
-          level = 3,
+          level = 2,
         },
       },
     },

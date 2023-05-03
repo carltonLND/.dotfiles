@@ -2,7 +2,7 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
-    dependencies = { "stevearc/dressing.nvim" },
+    dependencies = { "stevearc/dressing.nvim", "rcarriga/nvim-notify" },
     version = false,
     keys = {
       { "<leader>sf", "<CMD>Telescope find_files<CR>" },
@@ -23,7 +23,10 @@ return {
         end,
       },
     },
-    config = true,
+    config = function()
+      require("telescope").setup {}
+      require("telescope").load_extension "notify"
+    end,
   },
   {
     "alexghergh/nvim-tmux-navigation",
