@@ -42,7 +42,7 @@ return {
 
       vim.diagnostic.config {
         virtual_text = {
-          severity = { min = vim.diagnostic.severity.WARN },
+          severity = { min = vim.diagnostic.severity.ERROR },
           spacing = 4,
           prefix = "●",
         },
@@ -50,6 +50,7 @@ return {
         underline = false,
         signs = {
           severity = {
+            vim.diagnostic.severity.WARN,
             vim.diagnostic.severity.INFO,
             vim.diagnostic.severity.HINT,
           },
