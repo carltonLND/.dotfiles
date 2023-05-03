@@ -109,9 +109,6 @@ return {
       lspconfig["tsserver"].setup {
         on_attach = on_attach,
         capabilities = capabilities,
-
-        -- ESLint is handling diagnostics
-        handlers = { ["textDocument/publishDiagnostics"] = function() end },
       }
 
       -- CSS
@@ -279,12 +276,20 @@ return {
     dependencies = { "williamboman/mason.nvim", "nvim-lua/plenary.nvim" },
     config = function()
       local null_ls = require "null-ls"
-      local augroup =
-        vim.api.nvim_create_augroup("LspFormatting", { clear = true })
+
+      local function has_eslintrc(utils)
+        return utils.root_has_file_matches ".eslintrc.*"
+      end
 
       null_ls.setup {
+        diagnostic_config = {
+          virtual_text = false,
+        },
         sources = {
-          null_ls.builtins.diagnostics.eslint_d,
+          null_ls.builtins.diagnostics.eslint_d.with { condition = has_eslintrc },
+          null_ls.builtins.code_actions.eslint_d.with {
+            condition = has_eslintrc,
+          },
           null_ls.builtins.formatting.stylua,
           null_ls.builtins.formatting.isort.with {
             extra_args = { "--profile", "black" },
@@ -295,6 +300,9 @@ return {
           null_ls.builtins.formatting.gofumpt,
         },
         on_attach = function(client, bufnr)
+          local augroup =
+            vim.api.nvim_create_augroup("LspFormatting", { clear = true })
+
           if client.supports_method "textDocument/formatting" then
             vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
             vim.api.nvim_create_autocmd("BufWritePre", {
