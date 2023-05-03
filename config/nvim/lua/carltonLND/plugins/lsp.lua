@@ -109,6 +109,8 @@ return {
       lspconfig["tsserver"].setup {
         on_attach = on_attach,
         capabilities = capabilities,
+        -- ESLint is handling diagnostics
+        handlers = { ["textDocument/publishDiagnostics"] = function() end },
       }
 
       -- CSS
