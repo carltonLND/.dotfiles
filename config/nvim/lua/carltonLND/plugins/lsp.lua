@@ -109,6 +109,7 @@ return {
       lspconfig["tsserver"].setup {
         on_attach = on_attach,
         capabilities = capabilities,
+
         -- ESLint is handling diagnostics
         handlers = { ["textDocument/publishDiagnostics"] = function() end },
       }
@@ -273,61 +274,43 @@ return {
     end,
   },
   {
-    "mhartington/formatter.nvim",
+    "jose-elias-alvarez/null-ls.nvim",
     event = "VeryLazy",
-    dependencies = { "williamboman/mason.nvim" },
+    dependencies = { "williamboman/mason.nvim", "nvim-lua/plenary.nvim" },
     config = function()
-      local fmt = require "formatter.filetypes"
+      local null_ls = require "null-ls"
       local augroup =
-        vim.api.nvim_create_augroup("UserFormatGroup", { clear = true })
-      vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-        command = "silent FormatWrite",
-        group = augroup,
-      })
+        vim.api.nvim_create_augroup("LspFormatting", { clear = true })
 
-      require("formatter").setup {
-        filetype = {
-          lua = {
-            fmt.lua.stylua,
+      null_ls.setup {
+        sources = {
+          null_ls.builtins.diagnostics.eslint_d,
+          null_ls.builtins.formatting.stylua,
+          null_ls.builtins.formatting.isort.with {
+            extra_args = { "--profile", "black" },
           },
-          python = {
-            fmt.python.black,
-            fmt.python.isort,
-          },
-          rust = {
-            fmt.rust.rustfmt,
-          },
-          go = {
-            fmt.go.gofumpt,
-          },
-          javascript = {
-            fmt.javascript.prettierd,
-          },
-          typescript = {
-            fmt.typescript.prettierd,
-          },
-          typescriptreact = {
-            fmt.typescriptreact.prettierd,
-          },
-          javascriptreact = {
-            fmt.javascriptreact.prettierd,
-          },
-          html = {
-            fmt.html.prettierd,
-          },
-          css = {
-            fmt.css.prettierd,
-          },
-          json = {
-            fmt.json.prettierd,
-          },
-          toml = {
-            fmt.toml.taplo,
-          },
-          sh = {
-            fmt.sh.shfmt,
-          },
+          null_ls.builtins.formatting.black,
+          null_ls.builtins.formatting.prettierd,
+          null_ls.builtins.formatting.rustfmt,
+          null_ls.builtins.formatting.gofumpt,
         },
+        on_attach = function(client, bufnr)
+          if client.supports_method "textDocument/formatting" then
+            vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
+            vim.api.nvim_create_autocmd("BufWritePre", {
+              group = augroup,
+              buffer = bufnr,
+              callback = function()
+                vim.lsp.buf.format {
+                  bufnr = bufnr,
+                  filter = function(client)
+                    return client.name == "null-ls"
+                  end,
+                }
+              end,
+            })
+          end
+        end,
       }
     end,
   },
