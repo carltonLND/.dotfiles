@@ -3,5 +3,10 @@
     "prefix": "arrow",
     "body": "(${1}) => {\n\t${0}\n}",
     "description": "Snippet for creating an arrow function"
+  },
+  "handle inline arrow function": {
+    "prefix": "lambda",
+    "body": "(${1}) => ${0}",
+    "description": "Snippet for creating an inline arrow function"
   }
 }
