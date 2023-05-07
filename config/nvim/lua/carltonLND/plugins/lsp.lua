@@ -281,6 +281,7 @@ return {
         return utils.root_has_file_matches ".eslintrc.*"
       end
 
+      local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
       null_ls.setup {
         diagnostic_config = {
           virtual_text = false,
@@ -300,8 +301,6 @@ return {
           null_ls.builtins.formatting.gofumpt,
         },
         on_attach = function(client, bufnr)
-          local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
           if client.supports_method "textDocument/formatting" then
             vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
             vim.api.nvim_create_autocmd("BufWritePre", {
