@@ -24,7 +24,6 @@ return {
     },
     config = function()
       require("nvim-treesitter.configs").setup {
-        ensure_installed = { "lua", "vim", "help" },
         highlight = { enable = true, disable = { "css" } },
         indent = { enable = true },
         autotag = { enable = true },
