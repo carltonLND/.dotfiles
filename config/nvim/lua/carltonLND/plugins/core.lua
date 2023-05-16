@@ -5,6 +5,7 @@ return {
     config = function()
       vim.o.background = "dark"
       require("vscode").setup {
+        transparent = true,
         italic_comments = false,
         disable_nvimtree_bg = true,
       }
@@ -92,11 +93,13 @@ return {
           lsp_doc_border = true,
         },
         messages = {
-          view = "mini",
           view_search = false,
         },
         views = {
           mini = {
+            win_options = {
+              winblend = 0,
+            },
             size = {
               width = "auto",
               height = "auto",
@@ -114,6 +117,7 @@ return {
       {
         "rcarriga/nvim-notify",
         opts = {
+          background_colour = "#000000",
           minimum_width = -1,
           timeout = 2000,
           level = 2,
@@ -196,10 +200,5 @@ return {
         end,
       },
     },
-  },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    event = "BufReadPost",
-    config = true,
   },
 }
