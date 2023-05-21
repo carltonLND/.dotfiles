@@ -46,6 +46,9 @@ export NVM_DIR="$HOME/.nvm"
 # Enable atuin
 eval "$(atuin init zsh --disable-up-arrow)"
 
+# Source custom fuctions
+source ~/.zsh_functions
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
