@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+mv-swap() {
+  if [[ ! $# = 2 ]]; then
+    echo "Error: Select two files to swap"
+    return 1
+  fi
+
+  local TMPFILE=tmp.$$
+  mv "$1" $TMPFILE && mv "$2" "$1" && mv $TMPFILE "$2"
+}
