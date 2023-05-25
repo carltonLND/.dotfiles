@@ -26,6 +26,7 @@ source $ZSH/oh-my-zsh.sh
 alias vi="nvim"
 alias vim="nvim"
 alias lg="lazygit"
+alias py="python3"
 
 # Set editor to Neovim (sudo -e $file)
 export SUDO_EDITOR=nvim
@@ -39,15 +40,20 @@ export AWS_PAGER=""
 bindkey -v
 KEYTIMEOUT=1
 
+# Load nvm
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-# Enable atuin
-eval "$(atuin init zsh --disable-up-arrow)"
+# Load pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 # Source custom fuctions
 source ~/.zsh_functions
+
+# Enable atuin
+eval "$(atuin init zsh --disable-up-arrow)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
