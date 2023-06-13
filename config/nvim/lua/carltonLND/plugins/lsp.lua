@@ -177,6 +177,7 @@ return {
       "carltonLND/friendly-snippets", -- Use my fork to fix tsx html snippets
       config = function()
         require("luasnip.loaders.from_vscode").lazy_load()
+        require("luasnip").filetype_extend("javascript", { "jsdoc" })
       end,
     },
     opts = {
