@@ -9,3 +9,15 @@ mv-swap() {
   local TMPFILE=tmp.$$
   mv "$1" $TMPFILE && mv "$2" "$1" && mv $TMPFILE "$2"
 }
+
+cjclone() {
+  if [ $# -lt 1 ]; then
+    echo "Error: Define one repo to clone, optionally a destination folder"
+    return 1
+  fi
+
+  local URL=git@github.com:carltonlnd/$1
+  local DIR=$2
+
+  git clone $URL $DIR
+}
