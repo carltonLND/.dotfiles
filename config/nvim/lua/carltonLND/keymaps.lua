@@ -13,6 +13,7 @@ vim.keymap.set("v", "<", "<gv", opts)
 vim.keymap.set("v", ">", ">gv", opts)
 vim.keymap.set("v", "<leader>y", '"+y', opts)
 vim.keymap.set("n", "<leader>y", '"+y', opts)
+vim.keymap.set("v", "<leader>p", '"+p', opts)
 vim.keymap.set("n", "<leader>p", '"+p', opts)
 vim.keymap.set("x", "p", "P", opts)
 vim.keymap.set("x", "P", "p", opts)
@@ -36,6 +37,8 @@ vim.keymap.set(
 vim.keymap.set("n", "s", "<nop>", opts)
 vim.keymap.set("n", "q", "<nop>", opts)
 vim.keymap.set("n", "Q", "<nop>", opts)
+vim.keymap.set("n", "H", "<nop>", opts)
+vim.keymap.set("n", "L", "<nop>", opts)
 
 -- External keymaps
 vim.keymap.set(
