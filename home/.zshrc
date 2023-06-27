@@ -30,6 +30,7 @@ alias vi="nvim"
 alias vim="nvim"
 alias lg="lazygit"
 alias py="python3"
+alias gito="npx git-open"
 
 # Set editor to Neovim (sudo -e $file)
 export SUDO_EDITOR=nvim
