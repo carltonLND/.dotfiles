@@ -26,7 +26,7 @@ vim.opt.inccommand = "nosplit" -- preview incremental substitute
 vim.opt.laststatus = 3
 vim.opt.number = true -- Print line number
 vim.opt.pumheight = 6 -- Maximum number of entries in a popup
-vim.opt.relativenumber = true -- Relative line numbers
+-- vim.opt.relativenumber = true -- Relative line numbers
 vim.opt.scrolloff = 8 -- Lines of context
 vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
 vim.opt.shiftround = true -- Round indent
@@ -49,4 +49,10 @@ vim.opt.wildmode = "longest:full,full" -- Command-line completion mode
 vim.opt.winminwidth = 5 -- Minimum window width
 vim.opt.wrap = false -- Disable line wrap
 vim.opt.hlsearch = false
-vim.opt.fillchars='eob: '
+vim.opt.fillchars = { eob = " ", fold = " " }
+
+-- Folding
+vim.opt.foldmethod = "indent"
+vim.opt.foldenable = false
+vim.opt.foldlevel = 99
+vim.g.markdown_folding = 1 -- enable markdown folding
