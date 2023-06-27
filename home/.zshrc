@@ -20,9 +20,12 @@ plugins=(git tmux zsh-syntax-highlighting z)
 
 # tmux plugin setup
 ZSH_TMUX_DEFAULT_SESSION_NAME="Home"
+ZSH_TMUX_AUTOSTART=true
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+set ignoreeof=5
+
 alias vi="nvim"
 alias vim="nvim"
 alias lg="lazygit"
