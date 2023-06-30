@@ -264,6 +264,34 @@ return {
         },
         mapping = cmp.mapping.preset.insert {
           ["<TAB>"] = cmp.mapping.confirm { select = true },
+          ["<C-s>"] = cmp.mapping {
+            i = function()
+              if cmp.visible() then
+                cmp.abort()
+              else
+                cmp.complete {
+                  config = {
+                    sources = {
+                      { name = "nvim_lsp" },
+                    },
+                  },
+                }
+              end
+            end,
+            c = function()
+              if cmp.visible() then
+                cmp.close()
+              else
+                cmp.complete {
+                  config = {
+                    sources = {
+                      { name = "nvim_lsp" },
+                    },
+                  },
+                }
+              end
+            end,
+          },
         },
         formatting = {
           format = require("lspkind").cmp_format {
