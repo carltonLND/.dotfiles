@@ -118,7 +118,7 @@ return {
           background_colour = "#000000",
           minimum_width = -1,
           timeout = 2000,
-          level = 2,
+          level = 3,
         },
       },
     },
