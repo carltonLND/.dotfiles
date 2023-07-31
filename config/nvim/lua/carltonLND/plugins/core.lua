@@ -1,17 +1,30 @@
 return {
+  -- {
+  --   "Mofiqul/vscode.nvim",
+  --   priority = 1000,
+  --   config = function()
+  --     vim.o.background = "dark"
+  --     require("vscode").setup {
+  --       transparent = true,
+  --       italic_comments = false,
+  --       disable_nvimtree_bg = true,
+  --     }
+  --
+  --     vim.cmd [[colorscheme vscode]]
+  --     vim.cmd [[ hi link NormalFloat Normal ]]
+  --   end,
+  -- },
   {
-    "Mofiqul/vscode.nvim",
+    "EdenEast/nightfox.nvim",
     priority = 1000,
     config = function()
-      vim.o.background = "dark"
-      require("vscode").setup {
-        transparent = true,
-        italic_comments = false,
-        disable_nvimtree_bg = true,
+      require("nightfox").setup {
+        options = {
+          transparent = true,
+        },
       }
 
-      vim.cmd [[colorscheme vscode]]
-      vim.cmd [[ hi link NormalFloat Normal ]]
+      vim.cmd [[colorscheme terafox]]
     end,
   },
   {
