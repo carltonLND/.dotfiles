@@ -25,6 +25,7 @@ return {
       }
 
       vim.cmd [[colorscheme terafox]]
+      vim.cmd [[ hi link TelescopeSelection TelescopeSelectionCaret ]]
     end,
   },
   {
