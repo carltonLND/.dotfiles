@@ -1,33 +1,33 @@
 return {
-  -- {
-  --   "Mofiqul/vscode.nvim",
-  --   priority = 1000,
-  --   config = function()
-  --     vim.o.background = "dark"
-  --     require("vscode").setup {
-  --       transparent = true,
-  --       italic_comments = false,
-  --       disable_nvimtree_bg = true,
-  --     }
-  --
-  --     vim.cmd [[colorscheme vscode]]
-  --     vim.cmd [[ hi link NormalFloat Normal ]]
-  --   end,
-  -- },
   {
-    "EdenEast/nightfox.nvim",
+    "Mofiqul/vscode.nvim",
     priority = 1000,
     config = function()
-      require("nightfox").setup {
-        options = {
-          transparent = true,
-        },
+      vim.o.background = "dark"
+      require("vscode").setup {
+        transparent = true,
+        italic_comments = false,
+        disable_nvimtree_bg = true,
       }
 
-      vim.cmd [[colorscheme terafox]]
-      vim.cmd [[ hi link TelescopeSelection TelescopeSelectionCaret ]]
+      vim.cmd [[colorscheme vscode]]
+      vim.cmd [[ hi link NormalFloat Normal ]]
     end,
   },
+  -- {
+  --   "EdenEast/nightfox.nvim",
+  --   priority = 1000,
+  --   config = function()
+  --     require("nightfox").setup {
+  --       options = {
+  --         transparent = true,
+  --       },
+  --     }
+  --
+  --     vim.cmd [[colorscheme terafox]]
+  --     vim.cmd [[ hi link TelescopeSelection TelescopeSelectionCaret ]]
+  --   end,
+  -- },
   {
     "nvim-treesitter/nvim-treesitter",
     version = false,
@@ -217,6 +217,16 @@ return {
     "iamcco/markdown-preview.nvim",
     build = function()
       vim.fn["mkdp#util#install"]()
+    end,
+  },
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup {
+        -- Configuration here, or leave empty to use defaults
+      }
     end,
   },
 }
