@@ -39,11 +39,3 @@ vim.keymap.set("n", "q", "<nop>", opts)
 vim.keymap.set("n", "Q", "<nop>", opts)
 vim.keymap.set("n", "H", "<nop>", opts)
 vim.keymap.set("n", "L", "<nop>", opts)
-
--- External keymaps
-vim.keymap.set(
-  "n",
-  "<C-f>",
-  "<cmd>silent !tmux neww tmux-sessionizer<CR>",
-  opts
-)
