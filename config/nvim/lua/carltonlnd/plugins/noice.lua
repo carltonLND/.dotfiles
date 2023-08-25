@@ -2,6 +2,9 @@ return {
   "folke/noice.nvim",
   event = "VeryLazy",
   opts = {
+    notify = {
+      view = "mini",
+    },
     lsp = {
       override = {
         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -32,6 +35,7 @@ return {
         filter = {
           event = "msg_show",
           kind = "",
+          find = "written",
         },
         opts = { skip = true },
       },

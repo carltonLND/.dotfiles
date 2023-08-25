@@ -2,6 +2,7 @@ return {
   "nvim-telescope/telescope.nvim",
   tag = "0.1.2",
   dependencies = { "nvim-lua/plenary.nvim" },
+  cmd = "Telescope",
   keys = {
     { "<leader>sf", "<CMD>Telescope find_files<CR>" },
     {
