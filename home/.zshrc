@@ -40,6 +40,10 @@ export EDITOR=nvim
 export GIT_PAGER=""
 export AWS_PAGER=""
 
+# Temp for postgres learning
+export PGUSER=academy
+alias pg="sudo -u postgres"
+
 # Vi mode
 bindkey -v
 KEYTIMEOUT=1
