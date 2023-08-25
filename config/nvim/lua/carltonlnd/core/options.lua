@@ -18,6 +18,7 @@ vim.opt.autoindent = true -- Continue indent from previous line
 vim.opt.wrap = false -- Disable line wrapping
 vim.opt.ignorecase = true -- Ignore case when searching
 vim.opt.smartcase = true -- Case sensitive when searching for caps
+vim.opt.hlsearch = false -- Highlighting search is annoying
 vim.opt.splitright = true -- New vertical split to the right
 vim.opt.splitbelow = true -- New horizontal split to the bottom
 vim.opt.laststatus = 3 -- Only show one status line for current window

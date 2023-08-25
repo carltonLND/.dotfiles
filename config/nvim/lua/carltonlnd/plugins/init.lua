@@ -1,7 +1,6 @@
 return {
   "christoomey/vim-tmux-navigator",
   "inkarkat/vim-ReplaceWithRegister",
-  "stevearc/dressing.nvim",
   {
     "iamcco/markdown-preview.nvim",
     build = function()

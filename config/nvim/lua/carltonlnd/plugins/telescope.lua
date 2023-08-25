@@ -1,7 +1,7 @@
 return {
   "nvim-telescope/telescope.nvim",
-  tag = '0.1.2',
-  dependencies = { 'nvim-lua/plenary.nvim' },
+  tag = "0.1.2",
+  dependencies = { "nvim-lua/plenary.nvim" },
   keys = {
     { "<leader>sf", "<CMD>Telescope find_files<CR>" },
     {
@@ -18,8 +18,8 @@ return {
       "<leader>s$",
       function()
         require("telescope.builtin").find_files { cwd = "~/.config/nvim" }
-      end
-    }
+      end,
+    },
   },
-  config = true
+  config = true,
 }
