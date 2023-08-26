@@ -4,6 +4,7 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "hrsh7th/cmp-nvim-lsp",
+    "williamboman/mason.nvim",
     "pmizio/typescript-tools.nvim",
   },
   config = function()
@@ -66,10 +67,6 @@ return {
     -- Server setup
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-    require("typescript-tools").setup {
-      capabilities = capabilities,
-    }
-
     lspconfig["html"].setup {
       capabilities = capabilities,
     }
@@ -92,6 +89,20 @@ return {
             },
           },
         },
+      },
+    }
+
+    -- External tools setup
+    local mason_registry = require "mason-registry"
+    local tsserver_path = mason_registry
+      .get_package("typescript-language-server")
+      :get_install_path()
+
+    require("typescript-tools").setup {
+      capabilities = capabilities,
+      settings = {
+        tsserver_path = tsserver_path
+          .. "/node_modules/typescript/lib/tsserver.js",
       },
     }
 
