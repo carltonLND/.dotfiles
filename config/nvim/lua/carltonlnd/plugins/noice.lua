@@ -28,6 +28,11 @@ return {
         win_options = {
           winblend = 0,
         },
+        size = {
+          width = "auto",
+          height = "auto",
+          max_height = 3,
+        },
       },
     },
     routes = {
