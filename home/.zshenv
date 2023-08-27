@@ -1,9 +1,6 @@
 # Add cargo to PATH
 . "$HOME/.cargo/env"
 
-# Add global yarn to PATH
-export PATH="$(yarn global bin):$PATH"
-
 # Add .local scripts to PATH
 export PATH=$HOME/.local/scripts/:$PATH
 

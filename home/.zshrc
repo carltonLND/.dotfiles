@@ -51,6 +51,9 @@ KEYTIMEOUT=1
 # Load nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+#
+# Add global yarn to PATH after node ready
+export PATH="$(yarn global bin):$PATH"
 
 # Load pyenv
 export PYENV_ROOT="$HOME/.pyenv"
