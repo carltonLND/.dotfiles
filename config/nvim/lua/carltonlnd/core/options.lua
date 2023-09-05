@@ -30,5 +30,6 @@ vim.opt.pumheight = 6 -- Limit number of entried in popup menu
 vim.opt.fillchars = { eob = " ", fold = " " } -- End of line characters e.g. no ~
 vim.opt.foldmethod = "indent" -- Fold on indent
 vim.opt.foldenable = false -- Disable folds at start
+vim.opt.conceallevel = 3 -- Hide markdown formatting until on that line
 vim.opt.background = "dark" -- Prefer dark colorschemes
 vim.opt.termguicolors = true -- Enable extended color support
