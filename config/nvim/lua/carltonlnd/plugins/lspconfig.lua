@@ -65,18 +65,18 @@ return {
     end, opts)
 
     -- Server setup
-    local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    local lsp_defaults = lspconfig.util.default_config
+    lsp_defaults.capabilities = vim.tbl_deep_extend(
+      "force",
+      lsp_defaults.capabilities,
+      require("cmp_nvim_lsp").default_capabilities()
+    )
 
-    lspconfig["html"].setup {
-      capabilities = capabilities,
-    }
+    lspconfig["html"].setup {}
 
-    lspconfig["cssls"].setup {
-      capabilities = capabilities,
-    }
+    lspconfig["cssls"].setup {}
 
     lspconfig["lua_ls"].setup {
-      capabilities = capabilities,
       settings = {
         Lua = {
           diagnostics = {
@@ -99,7 +99,6 @@ return {
       :get_install_path()
 
     require("typescript-tools").setup {
-      capabilities = capabilities,
       settings = {
         tsserver_path = tsserver_path
           .. "/node_modules/typescript/lib/tsserver.js",
