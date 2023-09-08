@@ -121,6 +121,26 @@ return {
         vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
         vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
         vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        if client == nil then
+          return
+        end
+
+        if client.name == "typescript-tools" then
+          vim.keymap.set(
+            "n",
+            "<leader>co",
+            "<CMD>TSToolsOrganizeImports<CR>",
+            bufopts
+          )
+          vim.keymap.set(
+            "n",
+            "<leader>ci",
+            "<CMD>TSToolsAddMissingImports<CR>",
+            bufopts
+          )
+        end
       end,
     })
   end,
