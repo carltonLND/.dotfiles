@@ -3,6 +3,8 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   config = function()
     local null_ls = require "null-ls"
+    local helpers = require "null-ls.helpers"
+    local utils = require "null-ls.utils"
 
     local formatting = null_ls.builtins.formatting
     local diagnostics = null_ls.builtins.diagnostics
@@ -17,9 +19,16 @@ return {
         formatting.prettierd,
         formatting.stylua,
         diagnostics.eslint_d.with {
-          condition = function(utils)
-            return utils.root_has_file { ".eslintrc.js", ".eslintrc.cjs" }
-          end,
+          cwd = helpers.cache.by_bufnr(function(params)
+            return utils.root_pattern(
+              ".eslintrc",
+              ".eslintrc.js",
+              ".eslintrc.cjs",
+              ".eslintrc.yaml",
+              ".eslintrc.yml",
+              ".eslintrc.json"
+            )(params.bufname)
+          end),
         },
       },
       on_attach = function(current_client, bufnr)

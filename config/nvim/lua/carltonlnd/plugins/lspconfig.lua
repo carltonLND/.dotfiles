@@ -20,21 +20,11 @@ return {
     end
 
     vim.diagnostic.config {
-      virtual_text = {
-        severity = { min = vim.diagnostic.severity.ERROR },
-        spacing = 4,
-        prefix = "●",
-      },
+      virtual_text = false,
       update_on_insert = false,
       underline = false,
-      signs = {
-        severity = {
-          vim.diagnostic.severity.WARN,
-          vim.diagnostic.severity.INFO,
-          vim.diagnostic.severity.HINT,
-        },
-      },
       severity_sort = true,
+      float = { border = "rounded" },
     }
 
     -- Keymaps
@@ -93,17 +83,7 @@ return {
     }
 
     -- External tools setup
-    local mason_registry = require "mason-registry"
-    local tsserver_path = mason_registry
-      .get_package("typescript-language-server")
-      :get_install_path()
-
-    require("typescript-tools").setup {
-      settings = {
-        tsserver_path = tsserver_path
-          .. "/node_modules/typescript/lib/tsserver.js",
-      },
-    }
+    require("typescript-tools").setup {}
 
     -- On attach autocommand
     vim.api.nvim_create_autocmd("LspAttach", {
@@ -116,14 +96,24 @@ return {
         vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
         vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
         vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, bufopts)
-        vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-        vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-        vim.keymap.set('n', '<space>wl', function()
+        vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
+        vim.keymap.set(
+          "n",
+          "<space>wr",
+          vim.lsp.buf.remove_workspace_folder,
+          opts
+        )
+        vim.keymap.set("n", "<space>wl", function()
           print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         end, opts)
         vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
         vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
-        vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
+        vim.keymap.set(
+          { "n", "v" },
+          "<leader>ca",
+          vim.lsp.buf.code_action,
+          opts
+        )
         vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
