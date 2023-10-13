@@ -2,26 +2,12 @@ return {
   "christoomey/vim-tmux-navigator",
   "inkarkat/vim-ReplaceWithRegister",
   {
-    "github/copilot.vim",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function()
-      vim.g.copilot_enabled = false
-      vim.g.copilot_no_tab_map = true
-
-      vim.api.nvim_set_keymap(
-        "i",
-        "<A-Enter>",
-        'copilot#Accept("<CR>")',
-        { silent = true, expr = true }
-      )
-      vim.api.nvim_set_keymap(
-        "n",
-        "<leader>cp",
-        "<CMD>Copilot<CR>",
-        { silent = true }
-      )
-    end,
+    "nvim-treesitter/nvim-treesitter-context",
+    event = { "BufReadPost", "BufNewFile" },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = true,
   },
   {
     "iamcco/markdown-preview.nvim",
